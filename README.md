@@ -29,7 +29,7 @@ A modern, animated team website built with Next.js, React, and Framer Motion. Th
 Before you begin, ensure you have the following installed:
 
 - **Node.js** (version 18 or higher)
-- **npm** or **pnpm** (recommended)
+- **pnpm** (recommended)
 
 You can check your Node.js version with:
 ```bash

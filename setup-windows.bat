@@ -1,8 +1,8 @@
 @echo off
-REM Dynamic Team Website Setup Script for Windows
+REM Dynamic Teen Coalition Website Setup Script for Windows
 REM This script automates the setup process for the DTC website on Windows
 
-echo 🚀 Dynamic Team Website Setup Script
+echo 🚀 Dynamic Teen Coalition Website Setup Script
 echo.
 
 REM Check if Node.js is installed
@@ -26,26 +26,48 @@ if %NODE_VERSION% LSS 18 (
     echo [SUCCESS] Node.js version is compatible
 )
 
-REM Check package manager
-echo [INFO] Checking package manager...
+REM Check and install pnpm
+echo [INFO] Checking pnpm installation...
 where pnpm >nul 2>&1
 if %errorlevel% equ 0 (
-    echo [INFO] Using pnpm as package manager
+    for /f "tokens=*" %%i in ('pnpm --version') do set PNPM_VERSION=%%i
+    echo [SUCCESS] pnpm version %PNPM_VERSION% is installed
     set PACKAGE_MANAGER=pnpm
 ) else (
-    echo [INFO] Using npm as package manager
-    set PACKAGE_MANAGER=npm
+    echo [WARNING] pnpm is not installed. Installing pnpm...
+    npm install -g pnpm
+    if %errorlevel% equ 0 (
+        echo [SUCCESS] pnpm installed successfully
+        set PACKAGE_MANAGER=pnpm
+    ) else (
+        echo [ERROR] Failed to install pnpm. Please install it manually.
+        echo Run: npm install -g pnpm
+        pause
+        exit /b 1
+    )
+)
+
+REM Clear existing node_modules and lock files
+echo [INFO] Preparing for pnpm installation...
+if exist "node_modules" (
+    echo [INFO] Removing existing node_modules...
+    rmdir /s /q node_modules
+)
+
+if exist "package-lock.json" (
+    echo [INFO] Removing package-lock.json to use pnpm...
+    del package-lock.json
 )
 
 REM Install dependencies
-echo [INFO] Installing dependencies...
-%PACKAGE_MANAGER% install
+echo [INFO] Installing dependencies using pnpm...
+pnpm install
 if %errorlevel% neq 0 (
     echo [ERROR] Failed to install dependencies
     pause
     exit /b 1
 )
-echo [SUCCESS] Dependencies installed successfully
+echo [SUCCESS] Dependencies installed successfully using pnpm
 
 REM Check for common issues
 echo [INFO] Checking for common setup issues...
@@ -63,14 +85,20 @@ if not exist "components" (
     exit /b 1
 )
 
+REM Check if data directory exists
+if not exist "data" (
+    echo [WARNING] Data directory not found. Creating it...
+    mkdir data
+)
+
 REM Run build check
 echo [INFO] Running build check to ensure everything is working...
-%PACKAGE_MANAGER% run build >nul 2>&1
+pnpm run build >nul 2>&1
 if %errorlevel% equ 0 (
     echo [SUCCESS] Build check passed! Everything is set up correctly.
 ) else (
     echo [WARNING] Build check failed. This might be due to missing environment variables or other configuration issues.
-    echo [INFO] You can still run the development server with: %PACKAGE_MANAGER% run dev
+    echo [INFO] You can still run the development server with: pnpm run dev
 )
 
 REM Show next steps
@@ -79,16 +107,16 @@ echo [SUCCESS] 🎉 Setup completed successfully!
 echo.
 echo Next steps:
 echo 1. Start the development server:
-echo    %PACKAGE_MANAGER% run dev
+echo    pnpm run dev
 echo.
 echo 2. Open your browser and navigate to:
 echo    http://localhost:3000
 echo.
 echo 3. Available commands:
-echo    %PACKAGE_MANAGER% run dev    - Start development server
-echo    %PACKAGE_MANAGER% run build  - Build for production
-echo    %PACKAGE_MANAGER% run start  - Start production server
-echo    %PACKAGE_MANAGER% run lint   - Run ESLint
+echo    pnpm run dev    - Start development server
+echo    pnpm run build  - Build for production
+echo    pnpm run start  - Start production server
+echo    pnpm run lint   - Run ESLint
 echo.
 echo 4. For more information, check the README.md file
 echo.

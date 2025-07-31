@@ -1,208 +1,222 @@
-# Troubleshooting Guide
+# 🔧 Troubleshooting Guide
 
-This guide helps you resolve common issues when setting up and running the Dynamic Team Website.
+Common issues and their solutions for the DTC website.
 
-## 🚨 Common Issues
+## 🚨 Quick Fixes
 
-### 1. Module Not Found Errors
+### Site Won't Load
+```bash
+# Clear Next.js cache
+rm -rf .next
+pnpm run dev
+```
 
-**Error**: `Module not found: Can't resolve '@/dtcWebsite/lib/utils'`
+### Dependencies Broken
+```bash
+# Clean install with pnpm
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
+```
 
+### Port 3000 Busy
+```bash
+# Use different port
+pnpm run dev -- -p 3001
+```
+
+## 📋 Common Issues
+
+### 1. Node.js Version Issues
+
+**Problem**: "Node.js version is too old"
 **Solution**: 
-- This was a path alias issue that has been fixed
-- If you encounter similar issues, check that your `tsconfig.json` has the correct path mapping:
-  ```json
-  {
-    "compilerOptions": {
-      "paths": {
-        "@/*": ["./*"]
-      }
-    }
-  }
-  ```
+```bash
+# Check current version
+node --version
 
-### 2. Node.js Version Issues
+# Install Node.js 18+ from https://nodejs.org/
+```
 
-**Error**: `Node.js version is too old`
+### 2. pnpm Not Found
 
+**Problem**: "pnpm: command not found"
 **Solution**:
-- Install Node.js 18 or higher from [nodejs.org](https://nodejs.org/)
-- Check your version: `node --version`
+```bash
+# Install pnpm globally
+npm install -g pnpm
 
-### 3. Package Manager Issues
+# Or use npm instead
+npm install
+npm run dev
+```
 
-**Error**: `npm install` fails or `pnpm install` not found
+### 3. Build Errors
 
+**Problem**: "Build failed with errors"
 **Solutions**:
-- **For npm**: `npm install -g npm@latest`
-- **For pnpm**: `npm install -g pnpm`
-- Clear cache: `npm cache clean --force` or `pnpm store prune`
+```bash
+# Clear all caches
+rm -rf .next node_modules pnpm-lock.yaml
+pnpm install
+pnpm run build
 
-### 4. Build Failures
+# Check TypeScript errors
+npx tsc --noEmit
+```
 
-**Error**: `npm run build` fails
+### 4. Module Resolution Errors
 
+**Problem**: "Cannot resolve module"
 **Solutions**:
-1. Clear node_modules and reinstall:
-   ```bash
-   rm -rf node_modules package-lock.json
-   npm install
-   ```
+```bash
+# Reinstall dependencies
+pnpm install --force
 
-2. Check TypeScript errors:
-   ```bash
-   npx tsc --noEmit
-   ```
+# Clear pnpm store
+pnpm store prune
+pnpm install
+```
 
-3. Clear Next.js cache:
-   ```bash
-   rm -rf .next
-   npm run build
-   ```
+### 5. Styling Issues
 
-### 5. Development Server Issues
-
-**Error**: `npm run dev` fails to start
-
+**Problem**: "Styles not loading"
 **Solutions**:
-1. Check if port 3000 is in use:
-   ```bash
-   lsof -ti:3000
-   # Kill the process if needed
-   kill -9 <PID>
-   ```
+```bash
+# Restart development server
+pnpm run dev
 
-2. Try a different port:
-   ```bash
-   npm run dev -- -p 3001
-   ```
+# Clear browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+```
 
-### 6. Styling Issues
+### 6. TypeScript Errors
 
-**Issue**: Styles not loading or Tailwind CSS not working
-
+**Problem**: "Type errors in components"
 **Solutions**:
-1. Check if Tailwind CSS is properly configured in `tailwind.config.ts`
-2. Ensure `globals.css` imports Tailwind directives
-3. Clear browser cache and restart dev server
+```bash
+# Check TypeScript version
+npx tsc --version
 
-### 7. TypeScript Errors
+# Install missing types
+pnpm install @types/node @types/react @types/react-dom
 
-**Error**: TypeScript compilation errors
+# Run type check
+npx tsc --noEmit
+```
 
-**Solutions**:
-1. Install missing types:
-   ```bash
-   npm install @types/node @types/react @types/react-dom
-   ```
+## 🛠️ Development Issues
 
-2. Check TypeScript configuration in `tsconfig.json`
+### Hot Reload Not Working
+```bash
+# Restart development server
+pnpm run dev
 
-### 8. Import Path Issues
+# Check file permissions
+chmod +x setup.sh
+```
 
-**Error**: Cannot resolve module imports
+### ESLint Errors
+```bash
+# Run linting
+pnpm run lint
 
-**Solutions**:
-1. Use absolute imports with `@/` prefix
-2. Check that the file exists in the correct location
-3. Ensure `tsconfig.json` path mapping is correct
+# Auto-fix issues
+pnpm run lint --fix
+```
 
-## 🔧 Performance Issues
+### Performance Issues
+```bash
+# Build to check for issues
+pnpm run build
 
-### Slow Build Times
-- Use `pnpm` instead of `npm` for faster installs
-- Consider using `npm ci` for production builds
-- Enable Next.js build cache
-
-### Large Bundle Size
-- Use dynamic imports for large components
-- Optimize images with Next.js Image component
-- Remove unused dependencies
+# Analyze bundle size
+pnpm install -D @next/bundle-analyzer
+```
 
 ## 🌐 Browser Issues
 
-### CSS Not Loading
-- Check browser console for errors
+### CORS Errors
+- Ensure you're running on `localhost:3000`
+- Check if the development server is running
 - Clear browser cache
-- Try incognito/private mode
 
-### JavaScript Errors
-- Check browser console for detailed error messages
-- Ensure all dependencies are installed
-- Check for version conflicts
+### Console Errors
+- Open browser DevTools (F12)
+- Check Console tab for errors
+- Check Network tab for failed requests
 
-## 🐛 Debugging Tips
+## 🔧 Advanced Fixes
 
-### Enable Verbose Logging
+### Complete Reset
 ```bash
-# For npm
-npm run dev --verbose
-
-# For pnpm
-pnpm run dev --verbose
+# Remove everything and start fresh
+rm -rf node_modules .next pnpm-lock.yaml
+pnpm install
+pnpm run dev
 ```
 
-### Check Dependencies
+### Environment Issues
 ```bash
-# List all dependencies
-npm ls
+# Check Node.js environment
+node --version
+npm --version
+pnpm --version
 
-# Check for outdated packages
-npm outdated
-
-# Audit for security issues
-npm audit
+# Update global packages
+npm update -g
 ```
 
-### Environment Variables
-- Check if `.env.local` file exists
-- Ensure environment variables are properly set
-- Restart dev server after changing env vars
+### Git Issues
+```bash
+# Reset to clean state
+git reset --hard HEAD
+git clean -fd
+pnpm install
+```
 
 ## 📞 Getting Help
 
-If you're still experiencing issues:
+### Before Asking for Help
 
-1. **Check the logs**: Look at terminal output and browser console
-2. **Search issues**: Check if someone else has reported the same problem
-3. **Create an issue**: Provide detailed information including:
-   - Error messages
-   - Steps to reproduce
-   - Your environment (OS, Node.js version, etc.)
-   - Screenshots if applicable
+1. **Check this guide** - Your issue might be listed above
+2. **Check the README** - Look for setup instructions
+3. **Check the console** - Look for error messages
+4. **Try the quick fixes** - Often solves common issues
 
-## 🛠️ Useful Commands
+### When Creating an Issue
 
-```bash
-# Clean install
-rm -rf node_modules package-lock.json
-npm install
+Include:
+- **Operating System**: Windows/macOS/Linux
+- **Node.js Version**: `node --version`
+- **pnpm Version**: `pnpm --version`
+- **Error Message**: Copy the exact error
+- **Steps to Reproduce**: What you did to cause the error
+- **Expected vs Actual**: What should happen vs what happened
 
-# Check for issues
-npm run lint
-npm run build
-
-# Update dependencies
-npm update
-
-# Check Node.js version
-node --version
-
-# Check npm version
-npm --version
-```
-
-## 🔄 Reset Everything
-
-If all else fails, you can reset the project:
+### Useful Commands for Debugging
 
 ```bash
-# Remove all generated files
-rm -rf .next node_modules package-lock.json
+# Check all versions
+node --version && npm --version && pnpm --version
 
-# Reinstall everything
-npm install
+# Check disk space
+df -h
 
-# Start fresh
-npm run dev
+# Check memory usage
+free -h
+
+# Check network connectivity
+ping google.com
 ```
+
+## 🎯 Still Stuck?
+
+1. **Search existing issues** in the repository
+2. **Create a new issue** with detailed information
+3. **Try a different approach** (npm instead of pnpm)
+4. **Check system requirements** (Node.js 18+, sufficient disk space)
+
+---
+
+**Remember**: Most issues can be solved with a clean reinstall! 🚀
+
+## Generated by ChatGPT to assist you with your setup. 

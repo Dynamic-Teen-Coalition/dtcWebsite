@@ -254,25 +254,5 @@ pnpm run lint
 - CSS is purged in production builds
 - Components are lazy-loaded where appropriate
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Test thoroughly in both light and dark modes
-5. Commit your changes: `git commit -m 'Add feature'`
-6. Push to the branch: `git push origin feature-name`
-7. Submit a pull request
-
-## 📄 License
-
-This project is part of the Dynamic Teen Coalition initiative.
-
-## 🆘 Support
-
-For support, please contact the DTC development team or create an issue in the repository.
-
 ---
-
-**Built with ❤️ by the Dynamic Teen Coalition team**
 

@@ -121,8 +121,8 @@ export default function HomePage() {
     name: member.name,
     role: member.role,
     specialties: member.expertise,
-    image: "/placeholder.svg?height=300&width=300&text=" + member.name.replace(/\s+/g, '+'),
-      available: true,
+    image: member.image,
+    available: true,
     bio: member.description,
   }))
 
@@ -194,7 +194,7 @@ export default function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm"
                   >
                     {homeContent.hero.learnButton}
                   </Button>
@@ -231,7 +231,7 @@ export default function HomePage() {
                       key={item.label}
                       variants={fadeInUp}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="text-center p-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl"
+                      className="text-center p-4 bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700 shadow-sm"
                     >
                       <div className="text-blue-600 dark:text-blue-400 mb-2 flex justify-center text-2xl">{item.icon}</div>
                       <div className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</div>
@@ -242,7 +242,7 @@ export default function HomePage() {
 
               <motion.div variants={slideInRight} className="relative">
                 <motion.div
-                  className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl"
+                  className="bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-200/30 dark:border-gray-700"
                   whileHover={{ scale: 1.02, rotateY: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -321,7 +321,7 @@ export default function HomePage() {
                   </div>
 
                   <motion.div className="flex-1 flex justify-center" whileHover={{ scale: 1.05 }}>
-                    <div className="w-64 h-64 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl">
+                    <div className="w-64 h-64 bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl border border-gray-200/30 dark:border-gray-700">
                       <motion.div
                         animate={{
                           scale: activeWave === index ? 1.2 : 1,
@@ -366,7 +366,7 @@ export default function HomePage() {
               {homeContent.howItWorks.levels.map((level, index) => (
                 <motion.div key={level.title} variants={fadeInUp}>
                   <motion.div whileHover={{ scale: 1.05, y: -10 }} whileTap={{ scale: 0.95 }} className="h-full">
-                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
                       <CardContent className="p-6 relative">
                         <motion.div
                           className="text-4xl mb-4"
@@ -428,7 +428,7 @@ export default function HomePage() {
                     className="flex-shrink-0 w-80"
                   >
                     <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-                      <Card className="h-full bg-white/80 dark:bg-gray-100/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                      <Card className="h-full bg-white dark:bg-gray-100 backdrop-blur-sm border border-gray-200/30 dark:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300">
                         <CardContent className="p-0">
                           <div className="relative h-48 overflow-hidden rounded-t-lg">
                             <Image
@@ -483,14 +483,14 @@ export default function HomePage() {
             <div className="relative">
               <button
                 onClick={() => scrollTeam("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-all duration-200"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200/30 dark:border-gray-700"
               >
                 <ChevronLeft className="h-6 w-6 text-gray-600 dark:text-gray-300" />
               </button>
 
               <button
                 onClick={() => scrollTeam("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-all duration-200"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200/30 dark:border-gray-700"
               >
                 <ChevronRight className="h-6 w-6 text-gray-600 dark:text-gray-300" />
               </button>
@@ -510,7 +510,7 @@ export default function HomePage() {
                     className="flex-shrink-0 w-80"
                   >
                     <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-                      <Card className="h-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 dark:shadow-gray-900/50">
+                      <Card className="h-full bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 dark:shadow-gray-900/50">
                         <CardContent className="p-6">
                           <div className="text-center mb-6">
                             <motion.div
@@ -581,7 +581,7 @@ export default function HomePage() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+                      className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm"
                     >
                       View All Board Members and Ambassadors
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -619,7 +619,7 @@ export default function HomePage() {
               {activitiesData.map((activity, index) => (
                 <motion.div key={activity.title} variants={fadeInUp}>
                   <motion.div whileHover={{ scale: 1.05, y: -10 }} whileTap={{ scale: 0.95 }} className="h-full">
-                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
                       <CardContent className="p-6">
                         <motion.div
                           className="text-4xl mb-4"
@@ -711,7 +711,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-2xl mx-auto"
+              className="bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-2xl mx-auto border border-gray-200/30 dark:border-gray-700"
             >
               <form className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">

@@ -21,6 +21,14 @@ import {
   Github,
   MapPin,
   Calendar,
+  Lightbulb,
+  Code,
+  TrendingUp,
+  Heart,
+  Activity,
+  FlaskConical,
+  Laptop,
+  GraduationCap,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -28,6 +36,7 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { GridPattern } from "@/components/grid-pattern"
 import { WavePattern } from "@/components/wave-pattern"
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import { AnimatedLines } from "@/components/animated-background"
 import { 
@@ -73,6 +82,18 @@ export default function BoardMembersPage() {
       MessageCircle,
       BookOpen,
       Rocket,
+      Target,
+      Shield,
+      Star,
+      Zap,
+      Lightbulb,
+      Code,
+      TrendingUp,
+      Heart,
+      Activity,
+      FlaskConical,
+      Laptop,
+      GraduationCap,
     }
     const IconComponent = iconMap[iconName]
     return IconComponent ? <IconComponent className="h-8 w-8" /> : <Users className="h-8 w-8" />
@@ -155,7 +176,7 @@ export default function BoardMembersPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm"
                   >
                     {boardSections.hero.backButton}
                   </Button>
@@ -220,19 +241,27 @@ export default function BoardMembersPage() {
                     className="h-full"
                     onMouseEnter={() => setActiveMember(index)}
                   >
-                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
                       <CardContent className="p-6 relative">
                         {/* Header */}
                         <div className="text-center mb-6">
                           <motion.div
-                            className={`text-white mb-4 mx-auto w-20 h-20 rounded-full bg-gradient-to-r ${member.color} flex items-center justify-center`}
+                            className={`mb-4 mx-auto w-20 h-20 rounded-full ${member.color} p-1 flex items-center justify-center`}
                             whileHover={{ rotate: 360 }}
                             transition={{ duration: 0.5 }}
                             animate={{
                               scale: activeMember === index ? 1.1 : 1,
                             }}
                           >
-                            {getIconComponent(member.iconName)}
+                            <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800">
+                              <Image
+                                src={member.image}
+                                alt={member.name}
+                                width={80}
+                                height={80}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
                           </motion.div>
                           <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">{member.name}</h3>
                           <p className={`text-lg font-medium ${member.textColor} mb-3`}>{member.role}</p>
@@ -243,10 +272,10 @@ export default function BoardMembersPage() {
                               <MapPin className="h-4 w-4 mr-1" />
                               {member.location}
                             </div>
-                            <div className="flex items-center">
+                            {/* <div className="flex items-center">
                               <Calendar className="h-4 w-4 mr-1" />
                               Age {member.age}
-                            </div>
+                            </div> */}
                           </div>
                         </div>
 
@@ -373,10 +402,10 @@ export default function BoardMembersPage() {
               {boardValues.map((value, index) => (
                 <motion.div key={value.title} variants={fadeInUp}>
                   <motion.div whileHover={{ scale: 1.05, y: -10 }} className="h-full">
-                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
                       <CardContent className="p-6">
-                        <motion.div
-                          className={`text-white mb-4 mx-auto w-16 h-16 rounded-full bg-gradient-to-r ${value.color} flex items-center justify-center`}
+                                                                          <motion.div
+                          className={`text-gray-800 dark:text-white mb-4 mx-auto w-16 h-16 rounded-full bg-gradient-to-r ${value.color} flex items-center justify-center`}
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >

@@ -162,7 +162,7 @@ export default function CertificatesPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm"
                   >
                     {pageContent.hero.backButton}
                   </Button>
@@ -379,7 +379,7 @@ export default function CertificatesPage() {
               {joinSteps.map((step, index) => (
                 <motion.div key={step.step} variants={fadeInUp}>
                   <motion.div whileHover={{ scale: 1.05, y: -10 }} className="h-full">
-                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
                       <CardContent className="p-6 relative">
                         <motion.div
                           className={`text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-4`}

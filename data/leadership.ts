@@ -10,6 +10,7 @@ export interface BoardMember {
   achievements: string[]
   expertise: string[]
   iconName: string
+  image: string
   color: string
   bgColor: string
   borderColor: string
@@ -47,7 +48,8 @@ export const boardMembers: BoardMember[] = [
       "Global Diplomacy"
     ],
     iconName: "Crown",
-    color: "from-purple-500 to-pink-500",
+    image: "/pyratepic.webp",
+    color: "from blue-300 to blue-500",
     bgColor: "bg-purple-50 dark:bg-purple-900/20",
     borderColor: "border-purple-200 dark:border-purple-800",
     textColor: "text-purple-700 dark:text-purple-300",
@@ -74,6 +76,7 @@ export const boardMembers: BoardMember[] = [
       "Digital Inclusion"
     ],
     iconName: "Users",
+    image: "/stacypic.webp",
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50 dark:bg-blue-900/20",
     borderColor: "border-blue-200 dark:border-blue-800",
@@ -101,6 +104,7 @@ export const boardMembers: BoardMember[] = [
       "Tech Ethics"
     ],
     iconName: "Rocket",
+    image: "/amrithpic.webp",
     color: "from-green-500 to-emerald-500",
     bgColor: "bg-green-50 dark:bg-green-900/20",
     borderColor: "border-green-200 dark:border-green-800",
@@ -129,6 +133,7 @@ export const boardMembers: BoardMember[] = [
       "International Relations"
     ],
     iconName: "BookOpen",
+    image: "/yumapic.webp",
     color: "from-orange-500 to-red-500",
     bgColor: "bg-orange-50 dark:bg-orange-900/20",
     borderColor: "border-orange-200 dark:border-orange-800",
@@ -156,6 +161,7 @@ export const boardMembers: BoardMember[] = [
       "Content Creation"
     ],
     iconName: "MessageCircle",
+    image: "/borispic.webp",
     color: "from-indigo-500 to-purple-500",
     bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
     borderColor: "border-indigo-200 dark:border-indigo-800",
@@ -183,6 +189,7 @@ export const boardMembers: BoardMember[] = [
       "Cross-Cultural Communication"
     ],
     iconName: "Globe",
+    image: "/netrapic.webp",
     color: "from-teal-500 to-cyan-500",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",
@@ -210,6 +217,7 @@ export const boardMembers: BoardMember[] = [
       "Community Development"
     ],
     iconName: "Lightbulb",
+    image: "/aliapic.webp",
     color: "from-yellow-500 to-orange-500",
     bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
     borderColor: "border-yellow-200 dark:border-yellow-800",
@@ -237,6 +245,7 @@ export const boardMembers: BoardMember[] = [
       "Innovation Management"
     ],
     iconName: "Code",
+    image: "/tejaspic.webp",
     color: "from-gray-500 to-slate-500",
     bgColor: "bg-gray-50 dark:bg-gray-900/20",
     borderColor: "border-gray-200 dark:border-gray-800",
@@ -264,6 +273,7 @@ export const boardMembers: BoardMember[] = [
       "Strategic Planning"
     ],
     iconName: "TrendingUp",
+    image: "/adityapic.webp",
     color: "from-pink-500 to-rose-500",
     bgColor: "bg-pink-50 dark:bg-pink-900/20",
     borderColor: "border-pink-200 dark:border-pink-800",
@@ -291,6 +301,7 @@ export const boardMembers: BoardMember[] = [
       "Advocacy"
     ],
     iconName: "Heart",
+    image: "/bandanapic.webp",
     color: "from-red-500 to-pink-500",
     bgColor: "bg-red-50 dark:bg-red-900/20",
     borderColor: "border-red-200 dark:border-red-800",
@@ -307,7 +318,6 @@ export const boardMembers: BoardMember[] = [
     location: "Singapore",
     description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
     achievements: [
-      "Youth Leadership Award",
       "Community Engagement Expert",
       "Digital Advocacy Leader",
       "Cross-Cultural Communication"
@@ -319,6 +329,7 @@ export const boardMembers: BoardMember[] = [
       "International Relations"
     ],
     iconName: "Star",
+    image: "/jasperpic.webp",
     color: "from-yellow-400 to-orange-400",
     bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
     borderColor: "border-yellow-200 dark:border-yellow-800",
@@ -346,6 +357,7 @@ export const boardMembers: BoardMember[] = [
       "Technology Ethics"
     ],
     iconName: "Shield",
+    image: "/anushupic.webp",
     color: "from-blue-400 to-indigo-400",
     bgColor: "bg-blue-50 dark:bg-blue-900/20",
     borderColor: "border-blue-200 dark:border-blue-800",
@@ -373,6 +385,7 @@ export const boardMembers: BoardMember[] = [
       "Student Leadership"
     ],
     iconName: "GraduationCap",
+    image: "/anayapic.webp",
     color: "from-green-400 to-emerald-400",
     bgColor: "bg-green-50 dark:bg-green-900/20",
     borderColor: "border-green-200 dark:border-green-800",
@@ -400,6 +413,7 @@ export const boardMembers: BoardMember[] = [
       "Community Outreach"
     ],
     iconName: "Laptop",
+    image: "/anvayPic.webp",
     color: "from-purple-400 to-pink-400",
     bgColor: "bg-purple-50 dark:bg-purple-900/20",
     borderColor: "border-purple-200 dark:border-purple-800",
@@ -427,6 +441,7 @@ export const boardMembers: BoardMember[] = [
       "Health Advocacy"
     ],
     iconName: "Activity",
+    image: "/ahaanpic.webp",
     color: "from-red-400 to-pink-400",
     bgColor: "bg-red-50 dark:bg-red-900/20",
     borderColor: "border-red-200 dark:border-red-800",
@@ -454,6 +469,7 @@ export const boardMembers: BoardMember[] = [
       "Educational Innovation"
     ],
     iconName: "FlaskConical",
+    image: "/ishaanPIc.webp",
     color: "from-indigo-400 to-purple-400",
     bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
     borderColor: "border-indigo-200 dark:border-indigo-800",
@@ -481,6 +497,7 @@ export const boardMembers: BoardMember[] = [
       "International Relations"
     ],
     iconName: "Globe",
+    image: "/shamserpic.webp",
     color: "from-teal-400 to-cyan-400",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",
@@ -544,7 +561,7 @@ export const boardValues = [
     title: "Global Perspective",
     description: "Diverse voices from around the world, ensuring inclusive and representative governance",
     iconName: "Globe",
-    color: "from-blue-500 to-indigo-500",
+    color: "from-purple-500 to-pink-500",
   },
   {
     title: "Innovation",

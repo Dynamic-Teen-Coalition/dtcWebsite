@@ -310,7 +310,7 @@ export default function CertificatesPage() {
 
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                           <Button
-                            className={`w-full bg-gradient-to-r ${level.color} text-white hover:opacity-90 py-3 rounded-full font-medium shadow-lg`}
+                            className={`w-full ${level.color} text-white hover:opacity-90 py-3 rounded-full font-medium shadow-lg`}
                             onClick={() => {
                               if (level.discordLink) {
                                 window.open(level.discordLink, '_blank')
@@ -382,7 +382,7 @@ export default function CertificatesPage() {
                     <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
                       <CardContent className="p-6 relative">
                         <motion.div
-                          className={`text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-4`}
+                          className="text-6xl font-bold text-gray-800 dark:text-white mb-4"
                           animate={{
                             scale: [1, 1.1, 1],
                           }}
@@ -395,7 +395,7 @@ export default function CertificatesPage() {
                           {step.step}
                         </motion.div>
                         <motion.div
-                          className={`text-white mb-4 mx-auto w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center`}
+                          className={`text-gray-800 dark:text-white mb-4 mx-auto w-16 h-16 rounded-full  ${step.color} flex items-center justify-center`}
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >

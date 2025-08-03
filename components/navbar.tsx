@@ -52,7 +52,7 @@ export function Navbar() {
   const socialItems = [
     {
       name: "UN Website",
-      href: "https://www.intgovforum.org/en",
+      href: "https://www.intgovforum.org/en/content/dynamic-teen-coalition",
       icon: Globe,
     },
     {

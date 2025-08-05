@@ -3,29 +3,34 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import {
   ArrowDown,
-  Users,
-  Award,
-  Globe,
   Zap,
   CheckCircle,
   ArrowRight,
+  Target,
+  Star,
+  Shield,
+  Users,
+  Award,
+  Globe,
+  Crown,
   MessageCircle,
   BookOpen,
-  Target,
-  Crown,
-  Star,
   Rocket,
-  Shield,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedBackground } from "@/components/animated-background"
 import { GridPattern } from "@/components/grid-pattern"
 import { WavePattern } from "@/components/wave-pattern"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { AnimatedLines } from "@/components/animated-background"
+import { 
+  certificateLevels, 
+  joinSteps, 
+  pageContent 
+} from "@/data/certificates"
+import { DISCORD_INVITE_LINK } from "@/data/discord"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -47,7 +52,7 @@ const pathVariants = {
     pathLength: 1,
     opacity: 1,
     transition: {
-      pathLength: { duration: 2, ease: "easeInOut" },
+      pathLength: { duration: 2, ease: "easeInOut" as const },
       opacity: { duration: 0.5 },
     },
   },
@@ -58,104 +63,35 @@ export default function CertificatesPage() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
   const [activeLevel, setActiveLevel] = useState(0)
 
-  const levels = [
-    {
-      id: "friend",
-      title: "DTC Friend",
-      subtitle: "Anyone of any age",
-      description: "Join the DTC Friends Discord server, introduce yourself, and get involved.",
-      requirements: ["Join Discord server", "Introduce yourself", "Participate in discussions"],
-      benefits: ["Access to community", "Learning opportunities", "Global network"],
-      icon: <Users className="h-8 w-8" />,
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-50 dark:bg-green-900/20",
-      borderColor: "border-green-200 dark:border-green-800",
-      textColor: "text-green-700 dark:text-green-300",
-      buttonText: "Join Discord",
-      duration: "Immediate",
-    },
-    {
-      id: "certificate",
-      title: "DTC Friends 25 Certificate",
-      subtitle: "Teens Only",
-      description: "Earned by teens through contribution and participation. A formal record of your engagement.",
-      requirements: [
-        "Be 13-19 years old",
-        "Active participation for 30+ days",
-        "Complete learning modules",
-        "Contribute to discussions",
-        "Peer collaboration",
-      ],
-      benefits: [
-        "Official DTC credential",
-        "Recognition of expertise",
-        "Portfolio enhancement",
-        "Advanced access",
-        "Mentorship opportunities",
-      ],
-      icon: <Award className="h-8 w-8" />,
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      borderColor: "border-blue-200 dark:border-blue-800",
-      textColor: "text-blue-700 dark:text-blue-300",
-      buttonText: "Start Journey",
-      duration: "1-3 months",
-    },
-    {
-      id: "ambassador",
-      title: "DTC Ambassador",
-      subtitle: "Teens Only",
-      description: "Our trained, outward-facing representatives. Microcertified and actively engaged in global work.",
-      requirements: [
-        "Hold DTC Friends 25 Certificate",
-        "Complete ambassador training",
-        "Demonstrate leadership skills",
-        "Public speaking ability",
-        "Global engagement commitment",
-      ],
-      benefits: [
-        "Official representative status",
-        "Speaking opportunities",
-        "UN meeting participation",
-        "Global network access",
-        "Leadership development",
-      ],
-      icon: <Globe className="h-8 w-8" />,
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      borderColor: "border-purple-200 dark:border-purple-800",
-      textColor: "text-purple-700 dark:text-purple-300",
-      buttonText: "Apply Now",
-      duration: "3-6 months",
-    },
-    {
-      id: "board",
-      title: "DTC Board",
-      subtitle: "Teens Only + One Adult Educational Strategist",
-      description: "The core of DTC's direction and strategy. Teen-led, globally connected, focused on outcomes.",
-      requirements: [
-        "Ambassador certification",
-        "Proven impact and leadership",
-        "Strategic thinking ability",
-        "Global perspective",
-        "Commitment to DTC mission",
-      ],
-      benefits: [
-        "Strategic decision making",
-        "UN system influence",
-        "Global policy impact",
-        "Leadership recognition",
-        "Future career pathways",
-      ],
-      icon: <Crown className="h-8 w-8" />,
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-50 dark:bg-orange-900/20",
-      borderColor: "border-orange-200 dark:border-orange-800",
-      textColor: "text-orange-700 dark:text-orange-300",
-      buttonText: "Board Application",
-      duration: "6+ months",
-    },
-  ]
+  // Refs for smooth scrolling
+  const roadmapRef = useRef<HTMLElement>(null)
+  const howToJoinRef = useRef<HTMLElement>(null)
+  const ctaRef = useRef<HTMLElement>(null)
+
+  const levels = certificateLevels
+
+  // Function to get icon component from icon name
+  const getIconComponent = (iconName: string) => {
+    const iconMap: { [key: string]: React.ComponentType<any> } = {
+      Users,
+      Award,
+      Globe,
+      Crown,
+      MessageCircle,
+      BookOpen,
+      Rocket,
+    }
+    const IconComponent = iconMap[iconName]
+    return IconComponent ? <IconComponent className="h-8 w-8" /> : <Users className="h-8 w-8" />
+  }
+
+  // Smooth scroll function
+  const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
+    ref.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -170,7 +106,6 @@ export default function CertificatesPage() {
       <GridPattern />
       <WavePattern />
       <AnimatedLines />
-      <ThemeToggle />
 
       <div className="relative z-10">
         {/* Hero Section */}
@@ -184,7 +119,7 @@ export default function CertificatesPage() {
               <h1 className="text-6xl md:text-8xl font-bold text-gray-800 dark:text-white mb-8 leading-tight">
                 DTC
                 <br />
-                <span className="text-blue-600 dark:text-blue-400">Certificates</span>
+                <span className="text-blue-600 dark:text-blue-400">{pageContent.hero.title}</span>
               </h1>
             </motion.div>
 
@@ -194,7 +129,7 @@ export default function CertificatesPage() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
             >
-              Your pathway to global digital governance leadership
+              {pageContent.hero.subtitle}
             </motion.p>
 
             <motion.p
@@ -203,7 +138,7 @@ export default function CertificatesPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-3xl mx-auto"
             >
-              From community member to global changemaker - discover your journey with DTC
+              {pageContent.hero.description}
             </motion.p>
 
             <motion.div
@@ -216,8 +151,9 @@ export default function CertificatesPage() {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-4 text-lg rounded-full shadow-lg"
+                  onClick={() => scrollToSection(roadmapRef)}
                 >
-                  Start Your Journey
+                  {pageContent.hero.ctaButton}
                   <ArrowDown className="ml-2 h-5 w-5" />
                 </Button>
               </motion.div>
@@ -226,9 +162,9 @@ export default function CertificatesPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+                    className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm"
                   >
-                    Back to Home
+                    {pageContent.hero.backButton}
                   </Button>
                 </Link>
               </motion.div>
@@ -237,7 +173,7 @@ export default function CertificatesPage() {
         </motion.section>
 
         {/* Animated Roadmap Section */}
-        <section className="py-20 px-4 relative">
+        <section ref={roadmapRef} className="py-20 px-4 relative">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -247,10 +183,10 @@ export default function CertificatesPage() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
-                Your DTC Journey Roadmap
+                {pageContent.roadmap.title}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Follow the path from community member to global leader
+                {pageContent.roadmap.subtitle}
               </p>
             </motion.div>
 
@@ -314,12 +250,11 @@ export default function CertificatesPage() {
                             animate={{ rotate: activeLevel === index ? 360 : 0 }}
                             transition={{ duration: 0.5 }}
                           >
-                            {level.icon}
+                            {getIconComponent(level.iconName)}
                           </motion.div>
                           <div>
                             <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">{level.title}</h3>
                             <p className={`text-lg font-medium ${level.textColor}`}>{level.subtitle}</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Timeline: {level.duration}</p>
                           </div>
                         </div>
 
@@ -375,7 +310,12 @@ export default function CertificatesPage() {
 
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                           <Button
-                            className={`w-full bg-gradient-to-r ${level.color} text-white hover:opacity-90 py-3 rounded-full font-medium shadow-lg`}
+                            className={`w-full ${level.color} text-white hover:opacity-90 py-3 rounded-full font-medium shadow-lg`}
+                            onClick={() => {
+                              if (level.discordLink) {
+                                window.open(level.discordLink, '_blank')
+                              }
+                            }}
                           >
                             {level.buttonText}
                             <ArrowRight className="ml-2 h-4 w-4" />
@@ -402,7 +342,7 @@ export default function CertificatesPage() {
                           }}
                           transition={{ duration: 0.3 }}
                         >
-                          {level.icon}
+                          {getIconComponent(level.iconName)}
                         </motion.div>
                       </div>
                     </motion.div>
@@ -414,7 +354,7 @@ export default function CertificatesPage() {
         </section>
 
         {/* How to Join Section */}
-        <section className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm relative">
+        <section ref={howToJoinRef} className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm relative">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -423,9 +363,9 @@ export default function CertificatesPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">How to Join</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">{pageContent.howToJoin.title}</h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Simple steps to start your DTC journey today
+                {pageContent.howToJoin.subtitle}
               </p>
             </motion.div>
 
@@ -436,42 +376,13 @@ export default function CertificatesPage() {
               viewport={{ once: true, margin: "-50px" }}
               className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
-              {[
-                {
-                  step: "01",
-                  title: "Join Discord",
-                  description: "Click the Discord invite link and join our global community",
-                  icon: <MessageCircle className="h-8 w-8" />,
-                  color: "from-green-500 to-emerald-500",
-                },
-                {
-                  step: "02",
-                  title: "Introduce Yourself",
-                  description: "Share your background, interests, and goals with the community",
-                  icon: <Users className="h-8 w-8" />,
-                  color: "from-blue-500 to-indigo-500",
-                },
-                {
-                  step: "03",
-                  title: "Start Learning",
-                  description: "Engage with content, join discussions, and complete learning modules",
-                  icon: <BookOpen className="h-8 w-8" />,
-                  color: "from-purple-500 to-pink-500",
-                },
-                {
-                  step: "04",
-                  title: "Earn Recognition",
-                  description: "Progress through levels and earn certificates as you contribute",
-                  icon: <Rocket className="h-8 w-8" />,
-                  color: "from-orange-500 to-red-500",
-                },
-              ].map((step, index) => (
+              {joinSteps.map((step, index) => (
                 <motion.div key={step.step} variants={fadeInUp}>
                   <motion.div whileHover={{ scale: 1.05, y: -10 }} className="h-full">
-                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center overflow-hidden">
                       <CardContent className="p-6 relative">
                         <motion.div
-                          className={`text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-4`}
+                          className="text-6xl font-bold text-gray-800 dark:text-white mb-4"
                           animate={{
                             scale: [1, 1.1, 1],
                           }}
@@ -484,11 +395,11 @@ export default function CertificatesPage() {
                           {step.step}
                         </motion.div>
                         <motion.div
-                          className={`text-white mb-4 mx-auto w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center`}
+                          className={`text-gray-800 dark:text-white mb-4 mx-auto w-16 h-16 rounded-full  ${step.color} flex items-center justify-center`}
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >
-                          {step.icon}
+                          {getIconComponent(step.iconName)}
                         </motion.div>
                         <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{step.title}</h3>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{step.description}</p>
@@ -502,7 +413,7 @@ export default function CertificatesPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white relative">
+        <section ref={ctaRef} className="py-20 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white relative">
           <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -510,29 +421,19 @@ export default function CertificatesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Start Your Journey?</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageContent.cta.title}</h2>
               <p className="text-xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
-                Join thousands of teens worldwide who are shaping the future of digital governance. Your voice matters,
-                and your time is now.
+                {pageContent.cta.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button
                     size="lg"
                     className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg"
-                  >
-                    <MessageCircle className="mr-2 h-5 w-5" />
-                    Join DTC Friends Discord
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg rounded-full bg-transparent"
+                    onClick={() => window.open(DISCORD_INVITE_LINK, '_blank')}
                   >
                     <Shield className="mr-2 h-5 w-5" />
-                    Learn About Requirements
+                    {pageContent.cta.discordButton}
                   </Button>
                 </motion.div>
               </div>
@@ -549,8 +450,7 @@ export default function CertificatesPage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-              © 2024 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside
-              out.
+              {pageContent.footer.text}
             </motion.p>
           </div>
         </footer>

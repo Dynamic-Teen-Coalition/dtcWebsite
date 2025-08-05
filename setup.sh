@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Dynamic Team Website Setup Script
+# Dynamic Teen Coalition Website Setup Script
 # This script automates the setup process for the DTC website
 
 set -e  # Exit on any error
@@ -51,32 +51,55 @@ check_node_version() {
     fi
 }
 
-# Function to check package manager
-check_package_manager() {
+# Function to check and install pnpm
+check_and_install_pnpm() {
     if command_exists pnpm; then
-        print_status "Using pnpm as package manager"
+        PNPM_VERSION=$(pnpm --version)
+        print_success "pnpm version $PNPM_VERSION is installed"
         PACKAGE_MANAGER="pnpm"
-    elif command_exists npm; then
-        print_status "Using npm as package manager"
-        PACKAGE_MANAGER="npm"
+        return 0
     else
-        print_error "Neither npm nor pnpm is installed. Please install Node.js first."
-        exit 1
+        print_warning "pnpm is not installed. Installing pnpm..."
+        
+        # Try to install pnpm using npm
+        if command_exists npm; then
+            print_status "Installing pnpm using npm..."
+            npm install -g pnpm
+            if [ $? -eq 0 ]; then
+                print_success "pnpm installed successfully"
+                PACKAGE_MANAGER="pnpm"
+                return 0
+            else
+                print_error "Failed to install pnpm using npm"
+                return 1
+            fi
+        else
+            print_error "Neither npm nor pnpm is installed. Please install Node.js first."
+            return 1
+        fi
     fi
 }
 
 # Function to install dependencies
 install_dependencies() {
-    print_status "Installing dependencies..."
+    print_status "Installing dependencies using pnpm..."
     
-    if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
-        pnpm install
-    else
-        npm install
+    # Clear any existing node_modules and lock files
+    if [ -d "node_modules" ]; then
+        print_status "Removing existing node_modules..."
+        rm -rf node_modules
     fi
     
+    if [ -f "package-lock.json" ]; then
+        print_status "Removing package-lock.json to use pnpm..."
+        rm package-lock.json
+    fi
+    
+    # Install dependencies with pnpm
+    pnpm install
+    
     if [ $? -eq 0 ]; then
-        print_success "Dependencies installed successfully"
+        print_success "Dependencies installed successfully using pnpm"
     else
         print_error "Failed to install dependencies"
         exit 1
@@ -103,23 +126,25 @@ check_common_issues() {
         print_error "Components directory not found. This is required for the project to work."
         exit 1
     fi
+    
+    # Check if data directory exists
+    if [ ! -d "data" ]; then
+        print_warning "Data directory not found. Creating it..."
+        mkdir -p data
+    fi
 }
 
 # Function to run build check
 run_build_check() {
     print_status "Running build check to ensure everything is working..."
     
-    if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
-        pnpm run build > /dev/null 2>&1
-    else
-        npm run build > /dev/null 2>&1
-    fi
+    pnpm run build > /dev/null 2>&1
     
     if [ $? -eq 0 ]; then
         print_success "Build check passed! Everything is set up correctly."
     else
         print_warning "Build check failed. This might be due to missing environment variables or other configuration issues."
-        print_status "You can still run the development server with: $PACKAGE_MANAGER run dev"
+        print_status "You can still run the development server with: pnpm run dev"
     fi
 }
 
@@ -130,16 +155,16 @@ show_next_steps() {
     echo ""
     echo "Next steps:"
     echo "1. Start the development server:"
-    echo "   $PACKAGE_MANAGER run dev"
+    echo "   pnpm run dev"
     echo ""
     echo "2. Open your browser and navigate to:"
     echo "   http://localhost:3000"
     echo ""
     echo "3. Available commands:"
-    echo "   $PACKAGE_MANAGER run dev    - Start development server"
-    echo "   $PACKAGE_MANAGER run build  - Build for production"
-    echo "   $PACKAGE_MANAGER run start  - Start production server"
-    echo "   $PACKAGE_MANAGER run lint   - Run ESLint"
+    echo "   pnpm run dev    - Start development server"
+    echo "   pnpm run build  - Build for production"
+    echo "   pnpm run start  - Start production server"
+    echo "   pnpm run lint   - Run ESLint"
     echo ""
     echo "4. For more information, check the README.md file"
     echo ""
@@ -148,13 +173,13 @@ show_next_steps() {
 
 # Main setup function
 main() {
-    echo "🚀 Dynamic Team Website Setup Script"
+    echo "🚀 Dynamic Teen Coalition Website Setup Script"
     echo ""
     
     # Check prerequisites
     print_status "Checking prerequisites..."
     check_node_version || exit 1
-    check_package_manager
+    check_and_install_pnpm || exit 1
     
     # Install dependencies
     install_dependencies
@@ -162,7 +187,6 @@ main() {
     # Check for common issues
     check_common_issues
     
-    # Run build check
     run_build_check
     
     # Show next steps

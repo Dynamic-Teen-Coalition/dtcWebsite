@@ -12,23 +12,23 @@ export function HeroFloatingDots() {
     const createDot = () => {
       const dot = document.createElement('div')
       dot.className = 'floating-dot'
-      
+
       // Random horizontal starting position
       const startX = Math.random() * 100
       dot.style.left = startX + '%'
-      
+
       // Random horizontal drift
       const randomX = (Math.random() - 0.5) * 100 + 'px'
       dot.style.setProperty('--random-x', randomX)
-      
+
       // Random delay
       dot.style.animationDelay = Math.random() * 2 + 's'
-      
+
       // Random size (small variations)
       const size = Math.random() * 3 + 2
       dot.style.width = size + 'px'
       dot.style.height = size + 'px'
-      
+
       // Random blue shade and intensity
       const blueShades = [
         '#3b82f6',
@@ -39,9 +39,9 @@ export function HeroFloatingDots() {
       const color = blueShades[Math.floor(Math.random() * blueShades.length)]
       dot.style.background = color
       dot.style.boxShadow = `0 0 6px ${color}, 0 0 12px ${color}`
-      
+
       container.appendChild(dot)
-      
+
       // Remove dot after animation completes
       setTimeout(() => {
         if (container.contains(dot)) {

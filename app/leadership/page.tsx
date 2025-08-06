@@ -246,25 +246,33 @@ export default function BoardMembersPage() {
                         {/* Header */}
                         <div className="text-center mb-6">
                           <motion.div
-                            className={`mb-4 mx-auto w-20 h-20 rounded-full ${member.color} p-1 flex items-center justify-center`}
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.5 }}
+                            className={`mb-6 mx-auto w-48 h-56 rounded-2xl ${member.color} p-2 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300`}
+                            whileHover={{ scale: 1.05, y: -5 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
                             animate={{
-                              scale: activeMember === index ? 1.1 : 1,
+                              scale: activeMember === index ? 1.02 : 1,
                             }}
                           >
-                            <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800">
-                              <Image
-                                src={member.image}
-                                alt={member.name}
-                                width={80}
-                                height={80}
-                                className="w-full h-full object-cover"
-                              />
+                            <div className="w-full h-full rounded-xl overflow-hidden bg-white dark:bg-gray-800 p-2 shadow-inner">
+                              <div className="w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800">
+                                <Image
+                                  src={member.image}
+                                  alt={member.name}
+                                  width={192}
+                                  height={224}
+                                  className="w-full h-full object-cover scale-90 rounded-lg shadow-sm hover:scale-95 transition-transform duration-300"
+                                />
+                              </div>
                             </div>
                           </motion.div>
                           <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">{member.name}</h3>
-                          <p className={`text-lg font-medium ${member.textColor} mb-3`}>{member.role}</p>
+                          <div className={`inline-block text-white px-4 py-2 rounded-full text-sm font-medium mb-3 shadow-sm ${
+                            member.role.includes('Co-Chair') ? 'bg-purple-600 dark:bg-purple-500' :
+                            member.role.includes('Ambassador') ? 'bg-green-600 dark:bg-green-500' :
+                            'bg-blue-600 dark:bg-blue-500'
+                          }`}>
+                            {member.role}
+                          </div>
                           
                           {/* Location and Age */}
                           <div className="flex items-center justify-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
@@ -277,93 +285,6 @@ export default function BoardMembersPage() {
                               Age {member.age}
                             </div> */}
                           </div>
-                        </div>
-
-                        {/* Description */}
-                        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-center">
-                          {member.description}
-                        </p>
-
-                        {/* Achievements */}
-                        <div className="mb-6">
-                          <h4 className="font-semibold text-gray-800 dark:text-white mb-3 flex items-center">
-                            <Star className="h-4 w-4 mr-2" />
-                            Key Achievements
-                          </h4>
-                          <ul className="space-y-2">
-                            {member.achievements.slice(0, 3).map((achievement, idx) => (
-                              <motion.li
-                                key={idx}
-                                className="flex items-start text-sm text-gray-600 dark:text-gray-300"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                              >
-                                <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                                {achievement}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Expertise */}
-                        <div className="mb-6">
-                          <h4 className="font-semibold text-gray-800 dark:text-white mb-3 flex items-center">
-                            <Target className="h-4 w-4 mr-2" />
-                            Expertise
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {member.expertise.slice(0, 3).map((skill, idx) => (
-                              <motion.span
-                                key={idx}
-                                className={`px-3 py-1 rounded-full text-xs font-medium ${member.bgColor} ${member.textColor} border ${member.borderColor}`}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                              >
-                                {skill}
-                              </motion.span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Social Links */}
-                        <div className="flex justify-center gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-                          {member.linkedinLink && (
-                            <motion.a
-                              href={member.linkedinLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.1 }}
-                              className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                            >
-                              <Linkedin className="h-4 w-4" />
-                            </motion.a>
-                          )}
-                          {member.twitterLink && (
-                            <motion.a
-                              href={member.twitterLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.1 }}
-                              className="p-2 rounded-full bg-sky-500 text-white hover:bg-sky-600 transition-colors"
-                            >
-                              <Twitter className="h-4 w-4" />
-                            </motion.a>
-                          )}
-                          {member.githubLink && (
-                            <motion.a
-                              href={member.githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ scale: 1.1 }}
-                              className="p-2 rounded-full bg-gray-800 text-white hover:bg-gray-900 transition-colors"
-                            >
-                              <Github className="h-4 w-4" />
-                            </motion.a>
-                          )}
                         </div>
                       </CardContent>
                     </Card>

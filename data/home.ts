@@ -12,6 +12,7 @@ export interface Work {
   category: string
   image: string
   year: string
+  links?: { title: string; url: string }[]
 }
 
 export interface Activity {
@@ -27,7 +28,7 @@ export const waves: Wave[] = [
     description:
       "At IGF 2022 in Ethiopia, 14-year-old Pyrate Ruby Passell asked why there were no teens in the UN 'Youth' track. That single question disrupted a global system built on the outdated belief that 'youth' begins at 18.",
     icon: "⚡",
-    color: "from-red-500 to-orange-500",
+    color: "bg-blue-800",
   },
   {
     title: "Wave Two: Infrastructure & Beta",
@@ -35,7 +36,7 @@ export const waves: Wave[] = [
     description:
       "DTC established its first official Board and launched the DTC Friends 24 Beta Discord server, the UN's first global Discord platform enabling teens to engage asynchronously in internet governance.",
     icon: "🏗️",
-    color: "from-blue-500 to-indigo-500",
+    color: "bg-blue-800",
   },
   {
     title: "Wave Three: Public, Permanent, and Powerful",
@@ -43,32 +44,12 @@ export const waves: Wave[] = [
     description:
       "The DTC Friends 25 Discord Server is now open and thriving, powering the Digital Governance Network (DGN), a global alliance of teen- and youth-led Discord communities.",
     icon: "🚀",
-    color: "from-green-500 to-emerald-500",
+    color: "bg-green-500",
   },
 ]
 
+/*To add a link pls remember to use 'https://' at the beginning of the url*/
 export const works: Work[] = [
-  {
-    title: "Internet Governance Forum 2023",
-    description: "Launched DTC with AI-powered presentations in Kyoto, Japan",
-    category: "UN Conference",
-    image: "/placeholder.svg?height=200&width=300&text=IGF+2023",
-    year: "2023",
-  },
-  {
-    title: "Global Digital Compact",
-    description: "Contributing to high-level consultations on digital governance",
-    category: "Policy Work",
-    image: "/placeholder.svg?height=200&width=300&text=GDC",
-    year: "2024",
-  },
-  {
-    title: "UN Citiverse Challenge",
-    description: "Mentoring university students on frontier technologies and governance",
-    category: "Mentorship",
-    image: "/placeholder.svg?height=200&width=300&text=Citiverse",
-    year: "2024",
-  },
   {
     title: "Digital Governance Network",
     description: "Building global infrastructure linking teen-led communities",
@@ -84,45 +65,73 @@ export const works: Work[] = [
     year: "2024-2025",
   },
   {
+    title: "Ageism Study",
+    description: "Comprehensive analysis of age-based discrimination in digital spaces",
+    category: "Research",
+    image: "/placeholder.svg?height=200&width=300&text=Ageism+Study",
+    year: "2024-2025",
+    links: [
+      { title: "View Study", url: "https://www.google.com" }
+    ]
+  },
+  {
     title: "Teen Ban Mapping Project",
     description: "Documenting age-based discrimination across platforms and laws",
     category: "Research",
     image: "/placeholder.svg?height=200&width=300&text=Teen+Bans",
     year: "2025",
   },
+  {
+    title: "Global Digital Compact",
+    description: "Contributing to high-level consultations on digital governance",
+    category: "Policy Work",
+    image: "/placeholder.svg?height=200&width=300&text=GDC",
+    year: "2024",
+  },
+  {
+    title: "UN Citiverse Challenge",
+    description: "Mentoring university students on frontier technologies and governance",
+    category: "Mentorship",
+    image: "/placeholder.svg?height=200&width=300&text=Citiverse",
+    year: "2024",
+  },
 ]
 
 export const activities: Activity[] = [
   {
-    title: "UN Policy Participation",
-    description: "Participate in high-level UN meetings and contribute to policy development",
+    title: "Redefining Participation in UN Governance",
+    description: "We engage as public actors—not guests—across ECOSOC, WSIS+20, HLPF, IGF, and ITU. Our presence expands multilateralism through a grounded multistakeholder base.",
     icon: "🏛️",
   },
   {
-    title: "Ageism Tracking",
-    description: "Track ageism and access gaps in over 200 UN and IGF institutions",
-    icon: "📊",
+    title: "Repairing the UN's Age Framework",
+    description: "Over three years, we built and piloted a new multistakeholder age structure. It corrects the systemic erasure of teens (13–19) in UN multistakeholder and multilateral processes.",
+    icon: "🧱",
   },
   {
-    title: "Teen Ban Documentation",
-    description: "Document national teen bans and digital participation restrictions",
-    icon: "📋",
+    title: "Exposing Exclusion Across UN Mechanisms",
+    description: "We document teen bans online and ageist procedural blocks at the UN, forming the first global dataset on teen exclusion in governance. Our findings expose systemic failures in how the UN defines, includes, and protects teens.",
+    icon: "🗂️",
   },
   {
-    title: "Global Governance Pathways",
-    description: "Provide teens with a real, sustainable path into global governance at the UN",
-    icon: "🛤️",
+    title: "Designing Intergenerational Participation Models",
+    description: "We prototype new models for shared power between teens and adults, even in virtual worlds. These frameworks are designed to be interoperable across UN and civil society systems.",
+    icon: "🧭",
   },
   {
-    title: "Essential Tools Development",
-    description:
-      "Build essential tools for teen engagement: bots, certificates, knowledge systems, and networks",
-    icon: "🔧",
+    title: "Developing Infrastructure for Inclusion",
+    description: "We build Discord protocols, microlearning systems, and digital certifications. Our tools translate 'access' into actual participation.",
+    icon: "🛠️",
   },
   {
-    title: "Digital Governance Network",
-    description: "Operate the DGN to unify global teen efforts in digital governance and SDGs",
+    title: "Operating the Digital Governance Network (DGN)",
+    description: "We maintain a live civic backbone of youth-led Discord and Slack servers. The DGN is a multistakeholder engine for real-time, SDG-aligned action.",
     icon: "🌐",
+  },
+  {
+    title: "Amplifying Through Our Future Agenda",
+    description: "We have leadership in the Engine Room of Our Future Agenda to expand reach, visibility, and policy alignment. Together, we push teen-led governance from the margins into the UN mainstream.",
+    icon: "🔁",
   },
 ]
 
@@ -177,7 +186,7 @@ export const homeContent = {
         requirement: "Teens Only",
       },
       {
-        title: "DTC Leadership",
+        title: "DTC Board",
         description: "The core of DTC's direction and strategy. Teen-led, globally connected, focused on outcomes.",
         icon: "⚡",
         requirement: "Teens + 1 Adult",
@@ -195,7 +204,7 @@ export const homeContent = {
   },
   activities: {
     title: "What We Do",
-    subtitle: "Creating real impact across the UN system and beyond",
+    subtitle: "We solved the UN’s youth problem—by reshaping its governance architecture. DTC builds a teen-led multistakeholder model anchored within UN multilateralism and amplified by Our Future Agenda.",
   },
   join: {
     title: "Join the Movement",

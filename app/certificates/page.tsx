@@ -23,6 +23,7 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { GridPattern } from "@/components/grid-pattern"
 import { WavePattern } from "@/components/wave-pattern"
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import { AnimatedLines } from "@/components/animated-background"
 import { 
@@ -225,13 +226,16 @@ export default function CertificatesPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
-                    className={`flex flex-col ${
-                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                    } items-center gap-8 lg:gap-16`}
+                    className={level.id === 'board' ? 
+                      "flex justify-center" : 
+                      `flex flex-col ${
+                        index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                      } items-center gap-8 lg:gap-16`
+                    }
                     onMouseEnter={() => setActiveLevel(index)}
                   >
                     {/* Level Card */}
-                    <div className="flex-1 max-w-2xl">
+                    <div className={level.id === 'board' ? "w-full max-w-4xl" : "flex-1 max-w-2xl"}>
                       <motion.div
                         className={`${level.bgColor} ${level.borderColor} border-2 rounded-3xl p-8 shadow-2xl`}
                         whileHover={{ scale: 1.02, y: -5 }}
@@ -324,28 +328,37 @@ export default function CertificatesPage() {
                       </motion.div>
                     </div>
 
-                    {/* Visual Element */}
-                    <motion.div
-                      className="flex-shrink-0"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      animate={{
-                        scale: activeLevel === index ? 1.1 : 1,
-                        rotate: activeLevel === index ? 5 : 0,
-                      }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-2xl">
-                        <motion.div
-                          className={`text-6xl lg:text-8xl bg-gradient-to-r ${level.color} bg-clip-text text-transparent`}
-                          animate={{
-                            scale: activeLevel === index ? 1.2 : 1,
-                          }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {getIconComponent(level.iconName)}
-                        </motion.div>
-                      </div>
-                    </motion.div>
+                    {/* Visual Element - Only for non-board certificates */}
+                    {level.id !== 'board' && (
+                      <motion.div
+                        className="flex-shrink-0"
+                        whileHover={{ scale: 1.05, rotate: 2 }}
+                        animate={{
+                          scale: activeLevel === index ? 1.05 : 1,
+                          rotate: activeLevel === index ? 2 : 0,
+                        }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        {/* Ambassador and Friend levels - show certificate images */}
+                        <div className="w-64 h-48 lg:w-80 lg:h-60 bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 dark:border-gray-700">
+                          <motion.div
+                            className="w-full h-full relative"
+                            animate={{
+                              scale: activeLevel === index ? 1.05 : 1,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <Image
+                              src={level.id === 'ambassador' ? '/ambassador.png' : '/friends.png'}
+                              alt={level.title}
+                              fill
+                              className="object-contain p-2"
+                              sizes="(max-width: 1024px) 256px, 320px"
+                            />
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    )}
                   </motion.div>
                 ))}
               </div>

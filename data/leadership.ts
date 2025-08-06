@@ -76,7 +76,7 @@ export const boardMembers: BoardMember[] = [
       "Digital Inclusion"
     ],
     iconName: "Users",
-    image: "/stacypic.webp",
+    image: "/stacypic3.webp",
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50 dark:bg-blue-900/20",
     borderColor: "border-blue-200 dark:border-blue-800",

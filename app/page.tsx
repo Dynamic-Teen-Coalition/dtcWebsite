@@ -305,7 +305,7 @@ export default function HomePage() {
                   <motion.div className="flex-1 flex justify-center bg-transparent" whileHover={{ scale: 1.05 }}>
                     {index === 0 ? (
                       <motion.div
-                        className="w-80 h-72 lg:w-[24rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg"
+                        className="w-80 h-72 lg:w-[23rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg"
                         animate={{ scale: activeWave === index ? 1.02 : 1 }}
                         transition={{ duration: 0.5 }}
                         whileHover={{ scale: 1.03 }}

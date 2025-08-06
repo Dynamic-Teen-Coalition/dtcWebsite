@@ -567,7 +567,7 @@ export const boardValues = [
     title: "Innovation",
     description: "Embracing new technologies and approaches to solve complex governance challenges",
     iconName: "Rocket",
-    color: "from-green-500 to-emerald-500",
+    color: "from-purple-500 to-pink-500",
   },
   {
     title: "Collaboration",

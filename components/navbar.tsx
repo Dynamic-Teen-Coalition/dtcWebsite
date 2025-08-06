@@ -210,4 +210,4 @@ export function Navbar() {
         </div>
      </motion.nav>
    )
-} 
+}

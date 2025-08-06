@@ -51,6 +51,7 @@ check_node_version() {
     fi
 }
 
+<<<<<<< HEAD
 # Function to check and install pnpm
 check_and_install_pnpm() {
     if command_exists pnpm; then
@@ -77,11 +78,25 @@ check_and_install_pnpm() {
             print_error "Neither npm nor pnpm is installed. Please install Node.js first."
             return 1
         fi
+=======
+# Function to check package manager
+check_package_manager() {
+    if command_exists pnpm; then
+        print_status "Using pnpm as package manager"
+        PACKAGE_MANAGER="pnpm"
+    elif command_exists npm; then
+        print_status "Using npm as package manager"
+        PACKAGE_MANAGER="npm"
+    else
+        print_error "Neither npm nor pnpm is installed. Please install Node.js first."
+        exit 1
+>>>>>>> origin/main
     fi
 }
 
 # Function to install dependencies
 install_dependencies() {
+<<<<<<< HEAD
     print_status "Installing dependencies using pnpm..."
     
     # Clear any existing node_modules and lock files
@@ -100,6 +115,18 @@ install_dependencies() {
     
     if [ $? -eq 0 ]; then
         print_success "Dependencies installed successfully using pnpm"
+=======
+    print_status "Installing dependencies..."
+    
+    if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
+        pnpm install
+    else
+        npm install
+    fi
+    
+    if [ $? -eq 0 ]; then
+        print_success "Dependencies installed successfully"
+>>>>>>> origin/main
     else
         print_error "Failed to install dependencies"
         exit 1
@@ -126,25 +153,40 @@ check_common_issues() {
         print_error "Components directory not found. This is required for the project to work."
         exit 1
     fi
+<<<<<<< HEAD
     
     # Check if data directory exists
     if [ ! -d "data" ]; then
         print_warning "Data directory not found. Creating it..."
         mkdir -p data
     fi
+=======
+>>>>>>> origin/main
 }
 
 # Function to run build check
 run_build_check() {
     print_status "Running build check to ensure everything is working..."
     
+<<<<<<< HEAD
     pnpm run build > /dev/null 2>&1
+=======
+    if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
+        pnpm run build > /dev/null 2>&1
+    else
+        npm run build > /dev/null 2>&1
+    fi
+>>>>>>> origin/main
     
     if [ $? -eq 0 ]; then
         print_success "Build check passed! Everything is set up correctly."
     else
         print_warning "Build check failed. This might be due to missing environment variables or other configuration issues."
+<<<<<<< HEAD
         print_status "You can still run the development server with: pnpm run dev"
+=======
+        print_status "You can still run the development server with: $PACKAGE_MANAGER run dev"
+>>>>>>> origin/main
     fi
 }
 
@@ -155,16 +197,27 @@ show_next_steps() {
     echo ""
     echo "Next steps:"
     echo "1. Start the development server:"
+<<<<<<< HEAD
     echo "   pnpm run dev"
+=======
+    echo "   $PACKAGE_MANAGER run dev"
+>>>>>>> origin/main
     echo ""
     echo "2. Open your browser and navigate to:"
     echo "   http://localhost:3000"
     echo ""
     echo "3. Available commands:"
+<<<<<<< HEAD
     echo "   pnpm run dev    - Start development server"
     echo "   pnpm run build  - Build for production"
     echo "   pnpm run start  - Start production server"
     echo "   pnpm run lint   - Run ESLint"
+=======
+    echo "   $PACKAGE_MANAGER run dev    - Start development server"
+    echo "   $PACKAGE_MANAGER run build  - Build for production"
+    echo "   $PACKAGE_MANAGER run start  - Start production server"
+    echo "   $PACKAGE_MANAGER run lint   - Run ESLint"
+>>>>>>> origin/main
     echo ""
     echo "4. For more information, check the README.md file"
     echo ""
@@ -173,13 +226,21 @@ show_next_steps() {
 
 # Main setup function
 main() {
+<<<<<<< HEAD
     echo "🚀 Dynamic Teen Coalition Website Setup Script"
+=======
+    echo "🚀 Dynamic Team Website Setup Script"
+>>>>>>> origin/main
     echo ""
     
     # Check prerequisites
     print_status "Checking prerequisites..."
     check_node_version || exit 1
+<<<<<<< HEAD
     check_and_install_pnpm || exit 1
+=======
+    check_package_manager
+>>>>>>> origin/main
     
     # Install dependencies
     install_dependencies
@@ -187,6 +248,10 @@ main() {
     # Check for common issues
     check_common_issues
     
+<<<<<<< HEAD
+=======
+    # Run build check
+>>>>>>> origin/main
     run_build_check
     
     # Show next steps

@@ -26,6 +26,7 @@ if %NODE_VERSION% LSS 18 (
     echo [SUCCESS] Node.js version is compatible
 )
 
+<<<<<<< HEAD
 REM Check and install pnpm
 echo [INFO] Checking pnpm installation...
 where pnpm >nul 2>&1
@@ -62,12 +63,32 @@ if exist "package-lock.json" (
 REM Install dependencies
 echo [INFO] Installing dependencies using pnpm...
 pnpm install
+=======
+REM Check package manager
+echo [INFO] Checking package manager...
+where pnpm >nul 2>&1
+if %errorlevel% equ 0 (
+    echo [INFO] Using pnpm as package manager
+    set PACKAGE_MANAGER=pnpm
+) else (
+    echo [INFO] Using npm as package manager
+    set PACKAGE_MANAGER=npm
+)
+
+REM Install dependencies
+echo [INFO] Installing dependencies...
+%PACKAGE_MANAGER% install
+>>>>>>> origin/main
 if %errorlevel% neq 0 (
     echo [ERROR] Failed to install dependencies
     pause
     exit /b 1
 )
+<<<<<<< HEAD
 echo [SUCCESS] Dependencies installed successfully using pnpm
+=======
+echo [SUCCESS] Dependencies installed successfully
+>>>>>>> origin/main
 
 REM Check for common issues
 echo [INFO] Checking for common setup issues...
@@ -85,6 +106,7 @@ if not exist "components" (
     exit /b 1
 )
 
+<<<<<<< HEAD
 REM Check if data directory exists
 if not exist "data" (
     echo [WARNING] Data directory not found. Creating it...
@@ -94,11 +116,20 @@ if not exist "data" (
 REM Run build check
 echo [INFO] Running build check to ensure everything is working...
 pnpm run build >nul 2>&1
+=======
+REM Run build check
+echo [INFO] Running build check to ensure everything is working...
+%PACKAGE_MANAGER% run build >nul 2>&1
+>>>>>>> origin/main
 if %errorlevel% equ 0 (
     echo [SUCCESS] Build check passed! Everything is set up correctly.
 ) else (
     echo [WARNING] Build check failed. This might be due to missing environment variables or other configuration issues.
+<<<<<<< HEAD
     echo [INFO] You can still run the development server with: pnpm run dev
+=======
+    echo [INFO] You can still run the development server with: %PACKAGE_MANAGER% run dev
+>>>>>>> origin/main
 )
 
 REM Show next steps
@@ -107,16 +138,27 @@ echo [SUCCESS] 🎉 Setup completed successfully!
 echo.
 echo Next steps:
 echo 1. Start the development server:
+<<<<<<< HEAD
 echo    pnpm run dev
+=======
+echo    %PACKAGE_MANAGER% run dev
+>>>>>>> origin/main
 echo.
 echo 2. Open your browser and navigate to:
 echo    http://localhost:3000
 echo.
 echo 3. Available commands:
+<<<<<<< HEAD
 echo    pnpm run dev    - Start development server
 echo    pnpm run build  - Build for production
 echo    pnpm run start  - Start production server
 echo    pnpm run lint   - Run ESLint
+=======
+echo    %PACKAGE_MANAGER% run dev    - Start development server
+echo    %PACKAGE_MANAGER% run build  - Build for production
+echo    %PACKAGE_MANAGER% run start  - Start production server
+echo    %PACKAGE_MANAGER% run lint   - Run ESLint
+>>>>>>> origin/main
 echo.
 echo 4. For more information, check the README.md file
 echo.

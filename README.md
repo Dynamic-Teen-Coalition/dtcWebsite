@@ -27,6 +27,7 @@ A modern, animated website for the Dynamic Teen Coalition built with Next.js, Re
 - **Package Manager**: pnpm (exclusively)
 - **Theme**: next-themes for dark/light mode
 - **Forms**: React Hook Form with Zod validation
+- **Charts**: Recharts
 
 ## 📋 Prerequisites
 
@@ -247,12 +248,52 @@ pnpm install
 pnpm run lint
 ```
 
+**Module not found errors**:
+- Ensure all dependencies are installed: `pnpm install`
+- Clear node_modules and reinstall: `rm -rf node_modules && pnpm install`
+
+**Styling issues**:
+- Clear browser cache
+- Restart the development server
+
 ### Performance Optimization
 
 - Images are optimized using Next.js Image component
 - Animations are hardware-accelerated with Framer Motion
 - CSS is purged in production builds
 - Components are lazy-loaded where appropriate
+- Use `pnpm run build` to check for build-time issues
+- Monitor bundle size with `pnpm run build`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -am 'Add feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+If you encounter any issues:
+
+1. Check the troubleshooting section above
+2. Search existing issues in the repository
+3. Create a new issue with detailed information
+
+## 🎯 Next Steps
+
+- [ ] Add more team member profiles
+- [ ] Implement contact form functionality
+- [ ] Add blog/news section
+- [ ] Integrate with CMS for content management
+- [ ] Add analytics tracking
+- [ ] Implement SEO optimizations
 
 ---
 
+**Happy coding! 🚀**

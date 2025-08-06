@@ -274,7 +274,7 @@ export default function HomePage() {
                 >
                   <div className="flex-1">
                     <motion.div
-                      className={`${wave.color} text-white rounded-3xl p-8 shadow-2xl`}
+                      className={`${wave.color} text-white dark:text-white rounded-3xl p-8 shadow-2xl bg-opacity-90 dark:bg-opacity-100`}
                       whileHover={{ scale: 1.02, rotateY: index % 2 === 0 ? 5 : -5 }}
                       animate={{
                         scale: activeWave === index ? 1.02 : 1,
@@ -318,39 +318,38 @@ export default function HomePage() {
                           sizes="(max-width: 1024px) 384px, 448px"
                         />
                       </motion.div>
-                    ) : index === 1 ? (
+                                          ) : index === 1 ? (
+                        <motion.div
+                          className="w-96 h-72 lg:w-[25rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg" // use rounded-lg or rounded-2xl
+                          animate={{ scale: activeWave === index ? 1.02 : 1 }}
+                          transition={{ duration: 0.5 }}
+                          whileHover={{ scale: 1.03 }}
+                        >
+                          <Image
+                            src="/second.webp"
+                            alt={wave.title}
+                            fill
+                            className="rounded-lg shadow-xl" // apply object-cover to ensure proper fit
+                            sizes="(max-width: 1024px) 384px, 450px"
+                          />
+                        </motion.div>
+
+                    ) : (
+                      // Third wave - same as first image
                       <motion.div
-                        className="w-96 h-72 lg:w-[28rem] lg:h-80 relative bg-transparent overflow-hidden rounded-2xl"
+                        className="w-80 h-72 lg:w-[28rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg"
                         animate={{ scale: activeWave === index ? 1.02 : 1 }}
                         transition={{ duration: 0.5 }}
                         whileHover={{ scale: 1.03 }}
                       >
                         <Image
-                          src="/second.webp"
+                          src="/third.webp"
                           alt={wave.title}
                           fill
                           className="rounded-lg shadow-xl"
-                          sizes="(max-width: 1024px) 384px, 450px"
+                          sizes="(max-width: 1024px) 384px, 448px"
                         />
                       </motion.div>
-                    ) : (
-                      // Third wave - keep icon
-                      <div className="w-64 h-64 bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl border border-gray-200/30 dark:border-gray-700">
-                        <motion.div
-                          animate={{
-                            scale: activeWave === index ? 1.2 : 1,
-                            rotate: activeWave === index ? 180 : 0,
-                          }}
-                          transition={{ duration: 0.5 }}
-                          className={`text-6xl`}
-                          style={{ 
-                            color: wave.color === 'bg-blue-800' ? '#1e40af' : 
-                                   wave.color === 'bg-green-500' ? '#22c55e' : '#1e40af'
-                          }}
-                        >
-                          {wave.icon}
-                        </motion.div>
-                      </div>
                     )}
                   </motion.div>
                 </motion.div>

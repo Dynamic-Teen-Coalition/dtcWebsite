@@ -28,7 +28,7 @@ export const waves: Wave[] = [
     description:
       "At IGF 2022 in Ethiopia, 14-year-old Pyrate Ruby Passell asked why there were no teens in the UN 'Youth' track. That single question disrupted a global system built on the outdated belief that 'youth' begins at 18, erasing teen voices entirely. She joined the IGF 2023 Youth Planning Committee while contributing to the Global Digital Compact. As part of the UN Foundation's inaugural Engine Room cohort, she advanced teen roles in digital governance across multiple UN platforms. When the IGF Secretariat asked her to create a Teen Dynamic Coalition in 2023, we built a teen movement that launched in March 2024.",
     icon: "⚡",
-    color: "bg-blue-600 dark:bg-blue-800",
+    color: "bg-un-blue",
   },
   {
     title: "Wave Two: Infrastructure & Beta",
@@ -36,7 +36,7 @@ export const waves: Wave[] = [
     description:
       "DTC formed its first Board, secured teen seats across UN Working Groups, Policy Networks, and Dynamic Coalitions, and contributed to and endorsed the Global Digital Compact. With support from UN partners, we launched the DTC Friends 24 Beta Discord—the UN's first Discord server for asynchronous global governance. Pyrate Ruby piloted the first TikTok Certificate, a microcredential recognizing teen-led advocacy through short-form media and policy engagement.",
     icon: "🏗️",
-    color: "bg-blue-600 dark:bg-blue-800",
+    color: "bg-un-blue",
   },
   {
     title: "Wave Three: Public, Permanent, and Powerful",
@@ -44,7 +44,7 @@ export const waves: Wave[] = [
     description:
       "As Amrith Kumar steps into Co-Chair to lead IGF work, Pyrate Ruby shifts focus to dismantling ageism across the UN system. Already a force in global digital governance, she mentored in the UN's first Citiverse Challenge and was named a UN Foundation Engine Room Changemaker. The DTC Friends 25 Discord Server now thrives as a living ecosystem where teens worldwide participate in real-time digital governance. DTC powers the Digital Governance Network (DGN), connecting teen-led Discord communities globally. We are building the future, systematically, collaboratively, and from the inside out.",
     icon: "🚀",
-    color: "bg-green-600 dark:bg-green-500",
+    color: "bg-un-blue",
   },
 ]
 

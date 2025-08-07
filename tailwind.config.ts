@@ -83,6 +83,7 @@ const config = {
           800: "#166534",
           900: "#064e3b",
         },
+        "un-blue": "#5b92e5",
       },
       borderRadius: {
         lg: "var(--radius)",

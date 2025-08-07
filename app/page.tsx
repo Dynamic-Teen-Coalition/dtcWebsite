@@ -17,6 +17,7 @@ import {
   Brain,
   Rocket,
   Mail,
+  Info,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -33,6 +34,7 @@ import {
   waves as wavesData, 
   works as worksData, 
   activities as activitiesData, 
+  partners as partnersData,
   homeContent 
 } from "@/data/home"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
@@ -76,6 +78,7 @@ export default function HomePage() {
 
   const teamScrollRef = useRef<HTMLDivElement>(null)
   const [activeWave, setActiveWave] = useState(0)
+  const [selectedPartner, setSelectedPartner] = useState<any>(null)
 
   // Convert waves data to include React components
   const waves = wavesData.map(wave => ({
@@ -93,6 +96,16 @@ export default function HomePage() {
       teamScrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
+      })
+    }
+  }
+
+  const scrollToDGN = () => {
+    const dgnSection = document.getElementById('dgn-section')
+    if (dgnSection) {
+      dgnSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       })
     }
   }
@@ -244,16 +257,19 @@ export default function HomePage() {
         </section>
 
         {/* Three Waves Section */}
-        <section className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm relative">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-20 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          
+          <div className="max-w-7xl mx-auto relative">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="text-center mb-20"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
+              <h2 className="text-4xl md:text-6xl font-bold bg-black dark:bg-un-blue bg-clip-text text-transparent mb-6">
                 {homeContent.waves.title}
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -261,97 +277,95 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <div className="space-y-8">
+            <div className="space-y-20">
               {waves.map((wave, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 100 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
-                  className={`flex flex-col ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8`}
+                  className="group"
                   onMouseEnter={() => setActiveWave(index)}
                 >
-                  <div className="flex-1">
-                    <motion.div
-                      className={`${wave.color} text-white dark:text-white rounded-3xl p-8 shadow-2xl bg-opacity-90 dark:bg-opacity-100`}
-                      whileHover={{ scale: 1.02, rotateY: index % 2 === 0 ? 5 : -5 }}
-                      animate={{
-                        scale: activeWave === index ? 1.02 : 1,
-                        boxShadow:
-                          activeWave === index
-                            ? "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-                            : "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-                      }}
+                  <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-cols-2' : ''}`}>
+                    {/* Content Side */}
+                    <motion.div 
+                      className={`${index % 2 === 1 ? 'lg:order-2' : ''} space-y-6`}
+                      whileHover={{ x: index % 2 === 0 ? 10 : -10 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className="flex items-center mb-4">
+                      {/* Wave Number Badge */}
+                      <motion.div
+                        className="inline-flex items-center gap-3 bg-un-blue text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg"
+                        whileHover={{ scale: 1.05 }}
+                      >
                         <motion.div
-                          className="mr-4"
                           animate={{ rotate: activeWave === index ? 360 : 0 }}
-                          transition={{ duration: 0.5 }}
+                          transition={{ duration: 0.6 }}
                         >
                           {wave.icon}
                         </motion.div>
-                        <div>
-                          <h3 className="text-2xl font-bold mb-1">{wave.title}</h3>
-                          <p className="text-lg opacity-90">{wave.period}</p>
-                        </div>
+                        <span>Wave {index + 1}</span>
+                      </motion.div>
+
+                      {/* Title and Period */}
+                      <div>
+                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+                          {wave.title.split(': ')[1] || wave.title}
+                        </h3>
+                        <p className="text-xl font-medium text-blue-600 dark:text-blue-400 mb-6">
+                          {wave.period}
+                        </p>
                       </div>
-                      <p className="text-lg leading-relaxed opacity-95">{wave.description}</p>
+
+                      {/* Description */}
+                      <div className="relative">
+                        <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
+                        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-6">
+                          {wave.description}
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Image Side */}
+                    <motion.div 
+                      className={`${index % 2 === 1 ? 'lg:order-1' : ''} relative`}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <div className="relative">
+                        {/* Decorative elements */}
+                        <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-3xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-2xl"></div>
+                        
+                        {/* Main image container */}
+                        <motion.div
+                          className="relative bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-2xl"
+                          animate={{
+                            y: activeWave === index ? -10 : 0,
+                            boxShadow: activeWave === index 
+                              ? "0 25px 50px -12px rgba(59, 130, 246, 0.25)" 
+                              : "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                          }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <div className="aspect-[4/3] rounded-xl overflow-hidden">
+                            <Image
+                              src={index === 0 ? "/first.webp" : index === 1 ? "/second.webp" : "/third.webp"}
+                              alt={wave.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 1024px) 100vw, 50vw"
+                            />
+                          </div>
+                          
+                          {/* Image overlay gradient */}
+                          <div className="absolute inset-4 bg-gradient-to-t from-blue-900/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </motion.div>
+                      </div>
                     </motion.div>
                   </div>
-
-                  <motion.div className="flex-1 flex justify-center bg-transparent" whileHover={{ scale: 1.05 }}>
-                    {index === 0 ? (
-                      <motion.div
-                        className="w-80 h-72 lg:w-[23rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg"
-                        animate={{ scale: activeWave === index ? 1.02 : 1 }}
-                        transition={{ duration: 0.5 }}
-                        whileHover={{ scale: 1.03 }}
-                      >
-                        <Image
-                          src="/first.webp"
-                          alt={wave.title}
-                          fill
-                          className=" rounded-lg shadow-xl"
-                          sizes="(max-width: 1024px) 384px, 448px"
-                        />
-                      </motion.div>
-                                          ) : index === 1 ? (
-                        <motion.div
-                          className="w-96 h-72 lg:w-[25rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg" // use rounded-lg or rounded-2xl
-                          animate={{ scale: activeWave === index ? 1.02 : 1 }}
-                          transition={{ duration: 0.5 }}
-                          whileHover={{ scale: 1.03 }}
-                        >
-                          <Image
-                            src="/second.webp"
-                            alt={wave.title}
-                            fill
-                            className="rounded-lg shadow-xl" // apply object-cover to ensure proper fit
-                            sizes="(max-width: 1024px) 384px, 450px"
-                          />
-                        </motion.div>
-
-                    ) : (
-                      // Third wave - same as first image
-                      <motion.div
-                        className="w-80 h-72 lg:w-[28rem] lg:h-80 relative bg-transparent overflow-hidden rounded-lg"
-                        animate={{ scale: activeWave === index ? 1.02 : 1 }}
-                        transition={{ duration: 0.5 }}
-                        whileHover={{ scale: 1.03 }}
-                      >
-                        <Image
-                          src="/third.webp"
-                          alt={wave.title}
-                          fill
-                          className="rounded-lg shadow-xl"
-                          sizes="(max-width: 1024px) 384px, 448px"
-                        />
-                      </motion.div>
-                    )}
-                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -458,21 +472,37 @@ export default function HomePage() {
                         </div>
                         <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{work.title}</h3>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{work.description}</p>
-                        {work.links && work.links.length > 0 && (
+                        
+                        {/* Special handling for Digital Governance Network */}
+                        {work.title === "Digital Governance Network" ? (
                           <div className="flex flex-wrap gap-2">
-                            {work.links.map((link, linkIndex) => (
-                              <Link key={linkIndex} href={link.url} target="_blank" rel="noopener noreferrer">
-                                <motion.div
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                  className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
-                                >
-                                  {link.title}
-                                  <ExternalLink className="ml-1 h-3 w-3" />
-                                </motion.div>
-                              </Link>
-                            ))}
+                            <motion.button
+                              onClick={scrollToDGN}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                            >
+                              View Partners
+                              <ArrowRight className="ml-1 h-3 w-3" />
+                            </motion.button>
                           </div>
+                        ) : (
+                          work.links && work.links.length > 0 && (
+                            <div className="flex flex-wrap gap-2">
+                              {work.links.map((link, linkIndex) => (
+                                <Link key={linkIndex} href={link.url} target="_blank" rel="noopener noreferrer">
+                                  <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                                  >
+                                    {link.title}
+                                    <ExternalLink className="ml-1 h-3 w-3" />
+                                  </motion.div>
+                                </Link>
+                              ))}
+                            </div>
+                          )
                         )}
                       </CardContent>
                     </Card>
@@ -482,6 +512,153 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Digital Governance Network Section */}
+        <section id="dgn-section" className="py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 relative">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">{homeContent.dgn.title}</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-4">
+                {homeContent.dgn.subtitle}
+              </p>
+              <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                {homeContent.dgn.description}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {partnersData.filter(partner => partner.featured).map((partner, index) => (
+                <motion.div key={partner.id} variants={fadeInUp}>
+                  <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <Card className="h-full bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                      <CardContent className="p-6 text-center">
+                        <motion.div
+                          className="mb-6 mx-auto w-20 h-20 rounded-xl overflow-hidden shadow-lg"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Image
+                            src={partner.logo}
+                            alt={`${partner.organization} logo`}
+                            width={80}
+                            height={80}
+                            className="w-full h-full object-cover rounded-xl"
+                          />
+                        </motion.div>
+                        
+                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{partner.organization}</h3>
+                        <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">{partner.fullName}</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{partner.title}</p>
+                        
+                        <div className="flex gap-2 justify-center">
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Button
+                              onClick={() => setSelectedPartner(partner)}
+                              size="sm"
+                              variant="outline"
+                              className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500"
+                            >
+                              <Info className="w-4 h-4 mr-1" />
+                              More Details
+                            </Button>
+                          </motion.div>
+                          
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Button
+                              onClick={() => window.open(partner.socialLink, '_blank')}
+                              size="sm"
+                              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-1" />
+                              Connect
+                            </Button>
+                          </motion.div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Partner Details Modal */}
+        {selectedPartner && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedPartner(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src={selectedPartner.logo}
+                      alt={`${selectedPartner.organization} logo`}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{selectedPartner.organization}</h3>
+                    <p className="text-blue-600 dark:text-blue-400 font-medium">{selectedPartner.fullName}</p>
+                    <p className="text-gray-600 dark:text-gray-400">{selectedPartner.title}</p>
+                  </div>
+                </div>
+                <Button
+                  onClick={() => setSelectedPartner(null)}
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  ✕
+                </Button>
+              </div>
+              
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">About the Organization</h4>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {selectedPartner.description}
+                </p>
+              </div>
+              
+              <div className="flex gap-4">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    onClick={() => window.open(selectedPartner.socialLink, '_blank')}
+                    className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Connect on Social
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
 
         {/* Board Members Section */}
         <section className="py-20 px-4 relative">

@@ -21,6 +21,18 @@ export interface Activity {
   icon: string
 }
 
+export interface Partner {
+  id: string
+  name: string
+  fullName: string
+  title: string
+  organization: string
+  logo: string
+  socialLink: string
+  description: string
+  featured?: boolean
+}
+
 export const waves: Wave[] = [
   {
     title: "Wave One: Disruption",
@@ -63,6 +75,9 @@ export const works: Work[] = [
     category: "Platform",
     image: "/placeholder.svg?height=200&width=300&text=Discord",
     year: "2024-2025",
+    links: [
+      { title: "Join DTC Friends Discord", url: "https://discord.gg/brH8Bs3Y" }
+    ]
   },
   {
     title: "Ageism Study",
@@ -71,7 +86,7 @@ export const works: Work[] = [
     image: "/placeholder.svg?height=200&width=300&text=Ageism+Study",
     year: "2024-2025",
     links: [
-      { title: "View Study", url: "https://www.google.com" }
+      { title: "View Study", url: "https://docs.google.com/forms/d/e/1FAIpQLSeT6-FRiJ03x-rr6CxL2BdxO4Qj_2sSzZpludZE8dxogst-7g/viewform" }
     ]
   },
   {
@@ -94,6 +109,9 @@ export const works: Work[] = [
     category: "Mentorship",
     image: "/placeholder.svg?height=200&width=300&text=Citiverse",
     year: "2024",
+    links: [
+      { title: "Read More Here", url: "https://www.itu.int/metaverse/virtual-worlds/1st-un-citiverse-challenge/mentors/" }
+    ]
   },
 ]
 
@@ -133,6 +151,31 @@ export const activities: Activity[] = [
     description: "We have leadership in the Engine Room of Our Future Agenda to expand reach, visibility, and policy alignment. Together, we push teen-led governance from the margins into the UN mainstream.",
     icon: "🔁",
   },
+]
+
+export const partners: Partner[] = [
+  {
+    id: "founding-partner-1",
+    name: "Immunova AI",
+    fullName: "Eve Ang",
+    title: "Founder of Immunova AI",
+    organization: "Immunova AI",
+    logo: "/Immunova.png",
+    socialLink: "https://immunova.ai/",
+    description: "Immunova AI is a cloud-based, multimodal AI platform to forecast patient-specific immunotherapy responses by integrating whole-slide H&E medical images, transcriptomic profiles, and structured clinical data into one analytical pipeline. Powered by a 10-person core team from 7 countries and a 250-strong youth network across 45+ countries, Immunova combines five modules using Vision Transformers, Graph Neural Networks and Transformer encoders. After our successful 1.0 proof-of-concept, Immunova has secured more than US$10,000 in non-dilutive funding to support further development. Immunova’s work has also been recognised by MICCAI, Moonshot Platform, beVisioneers: Mercedes-Benz, Heal The Planet and Paris Collaborative. Currently, Immunova is collaborating with partner laboratories to conduct beta-testing at Harvard Medical School, Massachusetts General Hospital, Yale School of Medicine, Columbia Department of Medicine, and the Computational Biology Unit at the University of Bergen.",
+    featured: true
+  },
+  {
+    id: "founding-partner-2", 
+    name: "Founding Partner",
+    fullName: "Founding Partner",
+    title: "Founder",
+    organization: "Founding Partner",
+    logo: "/placeholder.svg?height=80&width=80&text=IA",
+    socialLink: "https://twitter.com/michaeljohnson",
+    description: "No Information Available",
+    featured: true
+  }
 ]
 
 export const homeContent = {
@@ -197,6 +240,12 @@ export const homeContent = {
     title: "Our Works",
     subtitle: "Building infrastructure, shaping policy, and creating real change",
   },
+  dgn: {
+    title: "Digital Governance Network",
+    subtitle: "Strategic partners advancing teen inclusion in global governance",
+    description: "Our founding partners share our vision of authentic youth participation in digital governance. Together, we're building the infrastructure for sustainable teen leadership in global policy spaces.",
+    viewMoreButton: "View All Partners",
+  },
   boardMembers: {
     title: "DTC Leadership",
     subtitle: "Teen-led leadership driving global change",
@@ -204,7 +253,7 @@ export const homeContent = {
   },
   activities: {
     title: "What We Do",
-    subtitle: "We solved the UN’s youth problem—by reshaping its governance architecture. DTC builds a teen-led multistakeholder model anchored within UN multilateralism and amplified by Our Future Agenda.",
+    subtitle: "We solved the UN's youth problem—by reshaping its governance architecture. DTC builds a teen-led multistakeholder model anchored within UN multilateralism and amplified by Our Future Agenda.",
   },
   join: {
     title: "Join the Movement",

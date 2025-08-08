@@ -162,14 +162,25 @@ export default function HomePage() {
                     ease: "easeInOut"
                   }}
                 >
-                  <Image
-                    src="/dtclogo.png"
-                    alt="Dynamic Teen Coalition Logo"
-                    width={300}
-                    height={200}
-                    className="w-72 h-40 md:w-72 md:h-48 lg:w-72 lg:h-56 drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300 dark:brightness-110 dark:contrast-110"
-                    priority
-                  />
+                                     {(() => {
+                      const [showStatic, setShowStatic] = useState(false);
+                      
+                      useEffect(() => {
+                        const timer = setTimeout(() => {
+                          setShowStatic(true);
+                        }, 2000); // set this to match gif duration...
+
+                        return () => clearTimeout(timer);
+                      }, []);
+
+                      return (
+                        <img
+                          src={showStatic ? "/dtclogo.png" : "/slowerlogo.gif"}
+                          alt="Dynamic Teen Coalition Logo"
+                          className="w-96 h-56 md:w-[28rem] md:h-64 lg:w-[32rem] lg:h-72 drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300 dark:brightness-110 dark:contrast-110 object-contain"
+                        />
+                      );
+                    })()}
                   {/* Glow effect for dark mode */}
                   <div className="absolute inset-0 w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full bg-un-blue/20 blur-xl opacity-0 dark:opacity-30 transition-opacity duration-300"></div>
                 </motion.div>

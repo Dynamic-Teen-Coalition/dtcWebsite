@@ -139,6 +139,42 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
+              {/* DTC Logo */}
+              <motion.div 
+                className="flex justify-center mb-8"
+                initial={{ opacity: 0, scale: 0.5, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: [0, -2, 2, 0],
+                  transition: { duration: 0.6 }
+                }}
+              >
+                <motion.div
+                  className="relative"
+                  animate={{
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Image
+                    src="/dtclogo.png"
+                    alt="Dynamic Teen Coalition Logo"
+                    width={300}
+                    height={200}
+                    className="w-72 h-40 md:w-72 md:h-48 lg:w-72 lg:h-56 drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300 dark:brightness-110 dark:contrast-110"
+                    priority
+                  />
+                  {/* Glow effect for dark mode */}
+                  <div className="absolute inset-0 w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full bg-un-blue/20 blur-xl opacity-0 dark:opacity-30 transition-opacity duration-300"></div>
+                </motion.div>
+              </motion.div>
+
               <motion.h1
                 className="text-6xl md:text-8xl font-bold text-gray-600 dark:text-white mb-8 leading-tight"
                 whileHover={{ scale: 1.02 }}

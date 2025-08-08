@@ -32,6 +32,7 @@ import {
   pageContent 
 } from "@/data/certificates"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
+import LogoAnimation from "@/components/logo-animation"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -117,6 +118,15 @@ export default function CertificatesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
+              {/* DTC Logo */}
+              <div className="flex justify-center ">
+                <img
+                  src="/dtclogo.png"
+                  alt="DTC Logo"
+                  className="w-84 h-72 object-contain drop-shadow-lg mb-8"
+                />
+              </div>
+
               <h1 className="text-6xl md:text-8xl font-bold text-gray-800 dark:text-white mb-8 leading-tight">
                 DTC
                 <br />

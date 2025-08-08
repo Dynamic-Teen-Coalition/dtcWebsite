@@ -30,6 +30,7 @@ export interface Partner {
   logo: string
   founderImage?: string
   socialLink: string
+  linkedinLink?: string
   description: string
   featured?: boolean
 }
@@ -164,6 +165,7 @@ export const partners: Partner[] = [
     logo: "/Immunova.png",
     founderImage: "/eve.jpeg",
     socialLink: "https://immunova.ai/",
+    linkedinLink: "https://sg.linkedin.com/in/eveayl",
     description: "Immunova AI is a cloud-based, multimodal AI platform to forecast patient-specific immunotherapy responses by integrating whole-slide H&E medical images, transcriptomic profiles, and structured clinical data into one analytical pipeline. Powered by a 10-person core team from 7 countries and a 250-strong youth network across 45+ countries, Immunova combines five modules using Vision Transformers, Graph Neural Networks and Transformer encoders. After our successful 1.0 proof-of-concept, Immunova has secured more than US$10,000 in non-dilutive funding to support further development. Immunova’s work has also been recognised by MICCAI, Moonshot Platform, beVisioneers: Mercedes-Benz, Heal The Planet and Paris Collaborative. Currently, Immunova is collaborating with partner laboratories to conduct beta-testing at Harvard Medical School, Massachusetts General Hospital, Yale School of Medicine, Columbia Department of Medicine, and the Computational Biology Unit at the University of Bergen.",
     featured: true
   },

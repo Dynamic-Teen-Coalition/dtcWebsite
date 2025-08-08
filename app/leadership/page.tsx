@@ -45,6 +45,7 @@ import {
   boardValues 
 } from "@/data/leadership"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
+import LogoAnimation from "@/components/logo-animation"
 
 
 const fadeInUp = {
@@ -130,6 +131,15 @@ export default function BoardMembersPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
+              {/* DTC Logo */}
+              <div className="flex justify-center mb-8">
+                <img
+                  src="/dtclogo.png"
+                  alt="DTC Logo"
+                  className="w-64 h-40 object-contain drop-shadow-lg"
+                />
+              </div>
+
               <h1 className="text-6xl md:text-8xl font-bold text-gray-800 dark:text-white mb-8 leading-tight">
                 DTC
                 <br />

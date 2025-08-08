@@ -18,6 +18,7 @@ import {
   Rocket,
   Mail,
   Info,
+  Linkedin,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -29,6 +30,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { AnimatedLines } from "@/components/animated-background"
 import { HeroFloatingDots } from "@/components/hero-floating-dots"
+import LogoAnimation from "@/components/logo-animation"
 import { boardMembers } from "@/data/leadership"
 import { 
   waves as wavesData, 
@@ -162,25 +164,11 @@ export default function HomePage() {
                     ease: "easeInOut"
                   }}
                 >
-                                     {(() => {
-                      const [showStatic, setShowStatic] = useState(false);
-                      
-                      useEffect(() => {
-                        const timer = setTimeout(() => {
-                          setShowStatic(true);
-                        }, 2000); // set this to match gif duration...
-
-                        return () => clearTimeout(timer);
-                      }, []);
-
-                      return (
-                        <img
-                          src={showStatic ? "/dtclogo.png" : "/slowerlogo.gif"}
-                          alt="Dynamic Teen Coalition Logo"
-                          className="w-96 h-56 md:w-[28rem] md:h-64 lg:w-[32rem] lg:h-72 drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300 dark:brightness-110 dark:contrast-110 object-contain"
-                        />
-                      );
-                    })()}
+                                      <LogoAnimation
+                      duration={2000}
+                      animatedSrc="/slowerlogo.gif"
+                      staticSrc="/dtclogo.png"
+                    />
                   {/* Glow effect for dark mode */}
                   <div className="absolute inset-0 w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full bg-un-blue/20 blur-xl opacity-0 dark:opacity-30 transition-opacity duration-300"></div>
                 </motion.div>
@@ -742,7 +730,21 @@ export default function HomePage() {
                         
                         <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{selectedPartner.fullName}</h4>
                         <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-1">Founder</p>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm">{selectedPartner.title}</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">{selectedPartner.title}</p>
+                        
+                        {/* LinkedIn Button */}
+                        {selectedPartner.linkedinLink && (
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Button
+                              onClick={() => window.open(selectedPartner.linkedinLink, '_blank')}
+                              size="sm"
+                              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white flex items-center gap-2"
+                            >
+                              <Linkedin className="w-4 h-4" />
+                              LinkedIn
+                            </Button>
+                          </motion.div>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -301,7 +301,7 @@ export const boardMembers: BoardMember[] = [
       "Advocacy"
     ],
     iconName: "Heart",
-    image: "/bandanapic.webp",
+    image: "/hackwithher.jpg",
     color: "from-red-500 to-pink-500",
     bgColor: "bg-red-50 dark:bg-red-900/20",
     borderColor: "border-red-200 dark:border-red-800",

@@ -608,53 +608,98 @@ export default function HomePage() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg">
-                    <Image
-                      src={selectedPartner.logo}
-                      alt={`${selectedPartner.organization} logo`}
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1">
+                  {/* Organization Section */}
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{selectedPartner.organization}</h3>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium">{selectedPartner.fullName}</p>
-                    <p className="text-gray-600 dark:text-gray-400">{selectedPartner.title}</p>
-                  </div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700 p-2 flex-shrink-0">
+                        <Image
+                          src={selectedPartner.logo}
+                          alt={`${selectedPartner.organization} logo`}
+                          width={64}
+                          height={64}
+                          className="w-full h-full object-contain rounded-lg"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{selectedPartner.organization}</h3>
+                      </div>
+                    </div>
+                  </div>              
                 </div>
+                
                 <Button
                   onClick={() => setSelectedPartner(null)}
                   variant="ghost"
                   size="sm"
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex-shrink-0 ml-4"
                 >
                   ✕
                 </Button>
               </div>
               
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">About the Organization</h4>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {selectedPartner.description}
-                </p>
-              </div>
-              
-              <div className="flex gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    onClick={() => window.open(selectedPartner.socialLink, '_blank')}
-                    className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Connect on Social
-                  </Button>
-                </motion.div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Organization Details */}
+                <div className="lg:col-span-2 space-y-6">
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-4">About the Organization</h4>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm mb-6">
+                      {selectedPartner.description}
+                    </p>
+                  </div>
+
+                  {/* Connect Section */}
+                  <div>
+                    <h5 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Connect & Learn More</h5>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedPartner.socialLink, '_blank')}
+                          className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 flex items-center justify-center w-full sm:w-auto"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Connect on Social
+                        </Button>
+                      </motion.div>
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          variant="outline"
+                          onClick={() => window.open(selectedPartner.socialLink, '_blank')}
+                          className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center w-full sm:w-auto"
+                        >
+                          Visit Website
+                        </Button>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Founder Profile Card */}
+                {selectedPartner.founderImage && (
+                  <div className="lg:col-span-1">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="w-28 h-28 rounded-full overflow-hidden mb-4 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                          <Image
+                            src={selectedPartner.founderImage}
+                            alt={`${selectedPartner.fullName} photo`}
+                            width={112}
+                            height={112}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        
+                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{selectedPartner.fullName}</h4>
+                        <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-1">Founder</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">{selectedPartner.title}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>

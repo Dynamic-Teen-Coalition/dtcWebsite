@@ -15,6 +15,7 @@ import {
   Moon,
   Menu,
   X,
+  Earth,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
@@ -39,6 +40,12 @@ export function Navbar() {
       isActive: pathname === "/",
     },
     {
+      name: "DGN",
+      href: "/dgn",
+      icon: Globe,
+      isActive: pathname === "/dgn",
+    },
+    {
       name: "Certificates",
       href: "/certificates",
       icon: FileText,
@@ -56,7 +63,7 @@ export function Navbar() {
     {
       name: "UN Website",
       href: "https://www.intgovforum.org/en/content/dynamic-teen-coalition",
-      icon: Globe,
+      icon: Earth,
     },
     {
       name: "Linktree",

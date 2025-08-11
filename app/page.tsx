@@ -291,11 +291,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Three Waves Section */}
         <section className="py-20 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20 relative overflow-hidden">
-          {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-          
           <div className="max-w-7xl mx-auto relative">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -407,7 +404,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* How DTC Works Section */}
         <section className="py-20 px-4 relative">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -572,15 +568,15 @@ export default function HomePage() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true, margin: "-50px" }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto"
             >
               {partnersData.filter(partner => partner.featured).map((partner, index) => (
-                <motion.div key={partner.id} variants={fadeInUp}>
+                <motion.div key={partner.id} variants={fadeInUp} className="w-full max-w-sm">
                   <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
                     <Card className="h-full bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                      <CardContent className="p-6 text-center">
+                      <CardContent className="p-8 text-center">
                         <motion.div
-                          className="mb-6 mx-auto w-20 h-20 rounded-xl overflow-hidden shadow-lg"
+                          className="mb-8 mx-auto w-36 h-32 rounded-xl overflow-hidden shadow-lg"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ duration: 0.3 }}
                         >
@@ -593,9 +589,9 @@ export default function HomePage() {
                           />
                         </motion.div>
                         
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{partner.organization}</h3>
-                        <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">{partner.fullName}</p>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{partner.title}</p>
+                        <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">{partner.organization}</h3>
+                        <p className="text-blue-600 dark:text-blue-400 font-medium mb-2 text-lg">{partner.fullName}</p>
+                        <p className="text-gray-600 dark:text-gray-400 mb-6">{partner.title}</p>
                         
                         <div className="flex gap-2 justify-center">
                           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -603,7 +599,7 @@ export default function HomePage() {
                               onClick={() => setSelectedPartner(partner)}
                               size="sm"
                               variant="outline"
-                              className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500"
+                              className="border-un-blue dark:border-un-blue text-un-blue dark:text-un-blue hover:bg-un-blue hover:text-white dark:hover:bg-un-blue"
                             >
                               <Info className="w-4 h-4 mr-1" />
                               More Details
@@ -614,7 +610,7 @@ export default function HomePage() {
                             <Button
                               onClick={() => window.open(partner.socialLink, '_blank')}
                               size="sm"
-                              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                              className="bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white"
                             >
                               <ExternalLink className="w-4 h-4 mr-1" />
                               Connect
@@ -626,6 +622,28 @@ export default function HomePage() {
                   </motion.div>
                 </motion.div>
               ))}
+            </motion.div>
+            
+            {/* Learn More Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-center mt-12"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white px-8 py-3"
+                >
+                  <Link href="/dgn">
+                    <ArrowRight className="w-5 h-5 mr-2" />
+                    Learn More About DGN
+                  </Link>
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </section>

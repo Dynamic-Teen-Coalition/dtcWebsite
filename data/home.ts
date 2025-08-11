@@ -171,14 +171,14 @@ export const partners: Partner[] = [
   },
   {
     id: "founding-partner-2", 
-    name: "Founding Partner",
-    fullName: "Founding Partner",
-    title: "Founder",
+    name: "HackWitHer",
+    fullName: "Bandana Kaur",
+    title: "Cybersecurity Researcher",
     organization: "Founding Partner",
-    logo: "/placeholder.svg?height=80&width=80&text=IA",
-    founderImage: "/placeholder-user.jpg",
-    socialLink: "https://twitter.com/michaeljohnson",
-    description: "No Information Available",
+    logo: "/hackwithher.JPEG",
+    founderImage: "/hackwithher.jpg",
+    socialLink: "https://linktr.ee/hackwither",
+    description: "HackWitHer is a brand built on one simple motto: making cyberspace livable for all. Founded at the age of 15 to bridge the gap between those who design technology and those most affected by it, HackWitHer operates on three core pillars. First, accessibility; cybersecurity knowledge should be open, understandable, and actionable for everyone, not locked behind jargon or privilege. Second, representation; women and underrepresented voices must be visible in cybersecurity, showing that femininity and intelligence not only coexist but strengthen one another. Third, offense as defense; the best protection comes from thinking like an attacker, anticipating threats, and staying steps ahead. Recognized as one of the Top 30 Ethical Hacking Content Creators of 2025 and acknowledged for vulnerability disclosure in security research by NASA, the US Department of Education, the Government of India, and more, HackWitHer empowers the next generation to shape a digital world where safety, inclusion, and innovation thrive.",
     featured: true
   }
 ]

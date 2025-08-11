@@ -84,7 +84,7 @@ const config = {
           900: "#064e3b",
         },
         "un-blue": "#5b92e5",
-        "un-gold": "#5c55e"
+        "un-gold": "#5c55ee"
       },
       borderRadius: {
         lg: "var(--radius)",

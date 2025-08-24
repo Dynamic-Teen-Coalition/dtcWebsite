@@ -19,6 +19,8 @@ import {
   Mail,
   Info,
   Linkedin,
+  Bell,
+  X,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -81,6 +83,14 @@ export default function HomePage() {
   const teamScrollRef = useRef<HTMLDivElement>(null)
   const [activeWave, setActiveWave] = useState(0)
   const [selectedPartner, setSelectedPartner] = useState<any>(null)
+  
+  // Typewriter effect state
+  const [typewriterText, setTypewriterText] = useState("")
+  const [showEmoji, setShowEmoji] = useState(false)
+  const [hasTyped, setHasTyped] = useState(false)
+  
+  // Notification popup state
+  const [showNotificationPopup, setShowNotificationPopup] = useState(false)
 
   // Convert waves data to include React components
   const waves = wavesData.map(wave => ({
@@ -120,6 +130,25 @@ export default function HomePage() {
     available: true,
     bio: member.description,
   }))
+
+  // Typewriter effect function
+  const startTypewriter = () => {
+    if (hasTyped) return;
+    
+    const text = "We didn't just show up. We reshaped the system."
+    let i = 0;
+    setHasTyped(true);
+    
+    const typeInterval = setInterval(() => {
+      if (i < text.length) {
+        setTypewriterText(text.slice(0, i + 1))
+        i++
+      } else {
+        clearInterval(typeInterval)
+        setTimeout(() => setShowEmoji(true), 500)
+      }
+    }, 50)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-un-blue-50 to-indigo-100 dark:from-gray-900 dark:to-un-blue-950 transition-colors duration-300 relative overflow-hidden">
@@ -455,6 +484,157 @@ export default function HomePage() {
                   </motion.div>
                 </motion.div>
               ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* UN Event Highlights Section */}
+        <section className="py-20 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="max-w-7xl mx-auto relative">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">📢 DTC in Action: Very Recent UN Event Highlights</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
+                We spoke with purpose, from ECOSOC to the IGF, defending teen rights and building up our lifelong, inclusive multistakeholder model.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {[
+                {
+                  emoji: "🎯",
+                  title: "ECOSOC",
+                  description: "Anusha & Anvay went to the UN NY in person to deliver high-level teen rights policy conversations",
+                  category: "In Person"
+                },
+                {
+                  emoji: "🧠",
+                  title: "DCCG",
+                  description: "Amrith spoke on civil rights and the glaring lack of structural inclusion",
+                  category: "Civil Rights"
+                },
+                {
+                  emoji: "💡",
+                  title: "ITU Citiverse",
+                  description: "Pyrate Ruby mentored multiple university teams who are building future cities now with teens in mind",
+                  category: "Mentorship"
+                },
+                {
+                  emoji: "🌟",
+                  title: "Future Agenda Engine Room",
+                  description: "Pyrate Ruby is the first under 18 Changemaker for UN Partnerships",
+                  category: "Historic First"
+                },
+                {
+                  emoji: "🌐",
+                  title: "WSIS+20",
+                  description: "Alia, Amrith & Netra introduced our inclusive lifelong multistakeholder model to evolving global frameworks, where Dr. Vint Cerf agreed to take the model to the IGF Leadership Panel",
+                  category: "Global Impact"
+                },
+                {
+                  emoji: "🛠️",
+                  title: "GDC Townhall",
+                  description: "Amrith pushed our inclusive lifelong multistakeholder model to structurally include teens at the UN and in all digital governance",
+                  category: "Structural Change"
+                },
+                {
+                  emoji: "🔥",
+                  title: "IGF 2025",
+                  description: "Amrith (x2) & Aditya fought for our inclusive, lifelong multistakeholder model, and against blanket teen bans online",
+                  category: "Digital Rights"
+                },
+                {
+                  emoji: "📣",
+                  title: "WSIS+20 Co-Facilitator Consultations",
+                  description: "Amrith and Netra demanded structural protection of teen civil rights in their Elements Paper",
+                  category: "Policy Advocacy"
+                },
+                {
+                  emoji: "🔍",
+                  title: "HLPF",
+                  description: "onsite at the UN NY again, Anusha & Aditya spotlighted weak teen safeguarding & the need for true teen-centered accountability",
+                  category: "Accountability"
+                }
+              ].map((event, index) => (
+                <motion.div key={event.title} variants={fadeInUp}>
+                  <motion.div 
+                    whileHover={{ scale: 1.02, y: -3 }} 
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="h-full"
+                  >
+                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                      <CardContent className="p-6">
+                        {/* Category Tag and Emoji */}
+                        <div className="flex items-center justify-between mb-4">
+                          <motion.div
+                            className="text-2xl"
+                            animate={{
+                              rotate: [0, 5, -5, 0],
+                              scale: [1, 1.1, 1],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Number.POSITIVE_INFINITY,
+                              repeatDelay: 4,
+                            }}
+                          >
+                            {event.emoji}
+                          </motion.div>
+                          <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm font-medium">
+                            {event.category}
+                          </span>
+                        </div>
+                        
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{event.title}</h3>
+                        
+                        {/* Description */}
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">{event.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              onViewportEnter={startTypewriter}
+              className="text-center mt-16"
+            >
+              <div className="bg-white dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-gray-200/30 dark:border-gray-700 shadow-lg">
+                {showEmoji && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-3xl mb-4"
+                  >
+                    ✨
+                  </motion.div>
+                )}
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 min-h-[3rem] flex items-center justify-center">
+                  {typewriterText}
+                  {typewriterText.length > 0 && typewriterText.length < 45 && (
+                    <span className="animate-pulse ml-1">|</span>
+                  )}
+                </h3>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -931,106 +1111,202 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Join the Movement Section */}
-        <section className="py-20 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white relative">
-          <div className="max-w-6xl mx-auto text-center">
+        {/* Join the Movement Section - Enhanced Design */}
+        <section className="py-32 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:to-un-blue-950 relative overflow-hidden">
+          {/* Enhanced Background Elements */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/10 dark:bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-400/10 dark:bg-cyan-400/10 rounded-full blur-3xl"></div>
+          
+          <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Movement</h2>
-              <p className="text-xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
+              {/* Enhanced Icon */}
+              <motion.div
+                className="mb-12"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600/10 dark:bg-white/15 backdrop-blur-sm rounded-3xl border border-blue-600/30 dark:border-white/30 shadow-2xl">
+                  <Rocket className="w-10 h-10 text-blue-600 dark:text-white" />
+                </div>
+              </motion.div>
+
+              <motion.h2 
+                className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-800 dark:text-white leading-tight tracking-tight"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                Ready to Join the{" "}
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-cyan-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent">
+                  Movement
+                </span>
+                ?
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-white/90 font-normal mb-16 max-w-4xl mx-auto"
+              >
                 We are building the future, systematically, collaboratively, and from the inside out. Whether you're a
                 teen ready to make a difference or an organization looking to partner with youth leaders, there's a
                 place for you in the DTC movement.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              </motion.p>
+              
+              {/* Enhanced Button Grid */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto mb-8"
+              >
+                {/* Discord Button */}
+                <motion.div 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1"
+                >
                   <Link href={DISCORD_INVITE_LINK}>
-                  <Button
-                    size="lg"
-                    className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg"
-                  >
-                    Join DTC Friends Discord
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
+                    <Button
+                      size="lg"
+                      className="w-full bg-blue-600 hover:bg-blue-700 dark:hover:from-indigo-700 dark:hover:to-purple-700 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
+                    >
+                      Join DTC Friends Discord
+                      <ExternalLink className="ml-2 h-5 w-5" />
+                    </Button>
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+
+                {/* Get Notifications Button */}
+                <motion.div 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1"
+                >
+                  <Button
+                    onClick={() => setShowNotificationPopup(true)}
+                    size="lg"
+                    className="w-full bg-un-blue hover:from-emerald-600 hover:to-green-700 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
+                  >
+                    Get Notifications
+                    <Bell className="ml-2 h-5 w-5" />
+                  </Button>
+                </motion.div>
+              </motion.div>
+              
+              {/* Learn About Certificates Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Link href="/certificates">
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg rounded-full bg-transparent"
+                      className="border-2 border-gray-300 dark:border-white/60 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 hover:border-gray-400 dark:hover:border-white/80 px-8 py-4 text-lg font-semibold rounded-2xl bg-transparent backdrop-blur-sm transition-all duration-300"
                     >
                       Learn About Certificates
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                 </motion.div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Notification Popup */}
+        {showNotificationPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4"
+            onClick={() => setShowNotificationPopup(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 rounded-3xl p-12 max-w-2xl w-full shadow-2xl text-white"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between mb-10">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight">Get notified for DTC updates!</h2>
+                <Button
+                  onClick={() => setShowNotificationPopup(false)}
+                  variant="ghost"
+                  size="sm"
+                  className="text-white/70 hover:text-white hover:bg-white/10 ml-4 flex-shrink-0"
+                >
+                  <X className="w-6 h-6" />
+                </Button>
+              </div>
+              
+              <p className="text-xl text-white/90 mb-12 leading-relaxed max-w-xl">
+                No spam. Only useful updates on DTC initiatives, UN activities, and opportunities to get involved.
+              </p>
+
+              {/* Email Form */}
+              <div className="space-y-8">
+                <form className="flex flex-col gap-6">
+                  <div className="w-full">
+                    <motion.input
+                      type="email"
+                      placeholder="Your e-mail address"
+                      className="w-full px-8 py-5 rounded-2xl border-0 focus:outline-none focus:ring-2 focus:ring-white/30 text-gray-900 placeholder-gray-500 bg-white/95 shadow-lg text-lg"
+                      required
+                      whileFocus={{ scale: 1.02 }}
+                    />
+                  </div>
+                  <div className="flex justify-center mt-4">
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 rounded-2xl whitespace-nowrap shadow-xl hover:shadow-2xl transition-all duration-300 text-lg font-bold border-0"
+                      >
+                        Sign up →
+                      </Button>
+                    </motion.div>
+                  </div>
+                </form>
+                
+                <div className="text-center pt-6 border-t border-white/20">
+                  <p className="text-sm text-white/80 mb-4">
+                    Official DTC mailing list:
+                  </p>
+                  <a
+                    href="https://mail.intgovforum.org/mailman/listinfo/dtc_intgovforum.org"
+                    className="text-white/90 hover:text-white hover:underline font-medium text-sm break-all"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    mail.intgovforum.org/mailman/listinfo/dtc_intgovforum.org
+                  </a>
+                </div>
               </div>
             </motion.div>
-          </div>
-        </section>
-
-        {/* Mailing List Section */}
-        <section className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Stay Connected</h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-                Subscribe to our official mailing list for updates on DTC initiatives, UN activities, and opportunities
-                to get involved.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl max-w-2xl mx-auto border border-gray-200/30 dark:border-gray-700"
-            >
-              <form className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <motion.input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="w-full px-6 py-4 rounded-full border border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 text-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-700"
-                    required
-                    whileFocus={{ scale: 1.02 }}
-                  />
-                </div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-4 rounded-full whitespace-nowrap shadow-lg"
-                  >
-                    <Mail className="mr-2 h-5 w-5" />
-                    Subscribe
-                  </Button>
-                </motion.div>
-              </form>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                Official DTC mailing list:{" "}
-                <a
-                  href="https://mail.intgovforum.org/mailman/listinfo/dtc_intgovforum.org"
-                  className="text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  mail.intgovforum.org/mailman/listinfo/dtc_intgovforum.org
-                </a>
-              </p>
-            </motion.div>
-          </div>
-        </section>
+          </motion.div>
+        )}
 
         {/* Footer */}
         <footer className="py-12 px-4 bg-gray-900 dark:bg-black text-white relative">

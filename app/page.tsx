@@ -39,6 +39,7 @@ import {
   works as worksData, 
   activities as activitiesData, 
   partners as partnersData,
+  events as eventsData,
   homeContent 
 } from "@/data/home"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
@@ -141,13 +142,23 @@ export default function HomePage() {
     
     const typeInterval = setInterval(() => {
       if (i < text.length) {
+        let currentChar = text[i];
+        
+        if (currentChar === '<') {
+          const tagEnd = text.indexOf('>', i);
+          if (tagEnd !== -1) {
+            i = tagEnd + 1; 
+            setTypewriterText(text.slice(0, i))
+            return;
+          }
+        }
+        
         setTypewriterText(text.slice(0, i + 1))
         i++
       } else {
         clearInterval(typeInterval)
-        setTimeout(() => setShowEmoji(true), 500)
       }
-    }, 50)
+    }, 100) // Faster typing: 50ms -> 25ms
   }
 
   return (
@@ -512,62 +523,7 @@ export default function HomePage() {
               viewport={{ once: true, margin: "-50px" }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {[
-                {
-                  emoji: "🎯",
-                  title: "ECOSOC",
-                  description: "Anusha & Anvay went to the UN NY in person to deliver high-level teen rights policy conversations",
-                  category: "In Person"
-                },
-                {
-                  emoji: "🧠",
-                  title: "DCCG",
-                  description: "Amrith spoke on civil rights and the glaring lack of structural inclusion",
-                  category: "Civil Rights"
-                },
-                {
-                  emoji: "💡",
-                  title: "ITU Citiverse",
-                  description: "Pyrate Ruby mentored multiple university teams who are building future cities now with teens in mind",
-                  category: "Mentorship"
-                },
-                {
-                  emoji: "🌟",
-                  title: "Future Agenda Engine Room",
-                  description: "Pyrate Ruby is the first under 18 Changemaker for UN Partnerships",
-                  category: "Historic First"
-                },
-                {
-                  emoji: "🌐",
-                  title: "WSIS+20",
-                  description: "Alia, Amrith & Netra introduced our inclusive lifelong multistakeholder model to evolving global frameworks, where Dr. Vint Cerf agreed to take the model to the IGF Leadership Panel",
-                  category: "Global Impact"
-                },
-                {
-                  emoji: "🛠️",
-                  title: "GDC Townhall",
-                  description: "Amrith pushed our inclusive lifelong multistakeholder model to structurally include teens at the UN and in all digital governance",
-                  category: "Structural Change"
-                },
-                {
-                  emoji: "🔥",
-                  title: "IGF 2025",
-                  description: "Amrith (x2) & Aditya fought for our inclusive, lifelong multistakeholder model, and against blanket teen bans online",
-                  category: "Digital Rights"
-                },
-                {
-                  emoji: "📣",
-                  title: "WSIS+20 Co-Facilitator Consultations",
-                  description: "Amrith and Netra demanded structural protection of teen civil rights in their Elements Paper",
-                  category: "Policy Advocacy"
-                },
-                {
-                  emoji: "🔍",
-                  title: "HLPF",
-                  description: "onsite at the UN NY again, Anusha & Aditya spotlighted weak teen safeguarding & the need for true teen-centered accountability",
-                  category: "Accountability"
-                }
-              ].map((event, index) => (
+              {eventsData.map((event, index) => (
                 <motion.div key={event.title} variants={fadeInUp}>
                   <motion.div 
                     whileHover={{ scale: 1.02, y: -3 }} 

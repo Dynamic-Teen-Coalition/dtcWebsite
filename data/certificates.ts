@@ -149,7 +149,7 @@ export const pageContent = {
   cta: {
     title: "Ready to Start Your Journey?",
     description: "Join thousands of teens worldwide who are shaping the future of digital governance. Your voice matters, and your time is now.",
-    discordButton: "Join DTC Friends Discord",
+    discordButton: "Join the DTC Friends Discord",
   },
   footer: {
     text: "© 2025 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside out.",

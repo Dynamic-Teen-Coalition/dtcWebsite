@@ -385,7 +385,7 @@ export const boardMembers: BoardMember[] = [
       "Student Leadership"
     ],
     iconName: "GraduationCap",
-    image: "/anayapic.webp",
+    image: "/anayapic.jpg",
     color: "from-green-400 to-emerald-400",
     bgColor: "bg-green-50 dark:bg-green-900/20",
     borderColor: "border-green-200 dark:border-green-800",
@@ -540,10 +540,10 @@ export const boardSections = {
     subtitle: "The principles that guide our leadership",
   },
   join: {
-    title: "Join Our Leadership",
+    title: "Ready to Start Your Journey?",
     subtitle: "Opportunities to contribute to DTC's mission",
-    description: "We're always looking for passionate teens who want to make a difference in digital governance. Explore opportunities to join our team.",
-    ctaButton: "Apply for Leadership Position",
+    description: "Join thousands of teens worldwide who are shaping the future of digital governance. Your voice matters, and your time is now.",
+    ctaButton: "Join the DTC Friends Discord",
   },
   footer: {
     text: "© 2025 Dynamic Teen Coalition. Teen-led, globally connected, focused on outcomes.",

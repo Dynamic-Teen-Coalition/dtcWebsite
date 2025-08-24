@@ -132,11 +132,11 @@ export default function BoardMembersPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               {/* DTC Logo */}
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center ">
                 <img
                   src="/dtclogo.png"
                   alt="DTC Logo"
-                  className="w-64 h-40 object-contain drop-shadow-lg"
+                  className="w-84 h-72 object-contain drop-shadow-lg mb-8"
                 />
               </div>
 

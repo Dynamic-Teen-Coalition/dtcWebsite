@@ -197,62 +197,8 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
-  {
-    id: "alia-gupta",
-    name: "Alia Gupta",
-    role: "DTC Board Member",
-    age: "",
-    location: "India",
-    description: "Leading innovative projects and initiatives. Passionate about creating positive change through technology and advocacy.",
-    achievements: [
-      "Project Eyeris",
-      "Innovation Award Winner",
-      "Youth Leadership Excellence",
-      "Community Impact Leader"
-    ],
-    expertise: [
-      "Project Management",
-      "Innovation Strategy",
-      "Youth Leadership",
-      "Community Development"
-    ],
-    iconName: "Lightbulb",
-    image: "/aliapic.webp",
-    color: "from-yellow-500 to-orange-500",
-    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
-    borderColor: "border-yellow-200 dark:border-yellow-800",
-    textColor: "text-yellow-700 dark:text-yellow-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "tejas-karusala",
-    name: "Tejas Karusala",
-    role: "DTC Board Member",
-    age: "",
-    location: "USA",
-    description: "Driving technological innovation and digital transformation initiatives. Expert in building scalable solutions.",
-    achievements: [
-      "Practicum",
-      "Tech Innovation Award",
-      "Software Development Excellence",
-      "Open Source Contributor"
-    ],
-    expertise: [
-      "Software Engineering",
-      "System Architecture",
-      "Digital Transformation",
-      "Innovation Management"
-    ],
-    iconName: "Code",
-    image: "/tejaspic.webp",
-    color: "from-gray-500 to-slate-500",
-    bgColor: "bg-gray-50 dark:bg-gray-900/20",
-    borderColor: "border-gray-200 dark:border-gray-800",
-    textColor: "text-gray-700 dark:text-gray-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
+  // DTC Lead Ambassador
+
   {
     id: "aditya-majumdar",
     name: "Aditya Majumdar",
@@ -313,7 +259,7 @@ export const boardMembers: BoardMember[] = [
   {
     id: "jasper-tay-seng-hon",
     name: "Jasper Tay Seng Hon",
-    role: "DTC Ambassador",
+    role: "DTC Board Member",
     age: "",
     location: "Singapore",
     description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
@@ -330,7 +276,7 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Star",
     image: "/jasperpic.webp",
-    color: "from-yellow-400 to-orange-400",
+    color: "from-yellow-500 to-orange-500",
     bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
     borderColor: "border-yellow-200 dark:border-yellow-800",
     textColor: "text-yellow-700 dark:text-yellow-300",
@@ -340,7 +286,7 @@ export const boardMembers: BoardMember[] = [
   {
     id: "anusha-sharma",
     name: "Anusha Sharma",
-    role: "DTC Ambassador",
+    role: "DTC Board Member",
     age: "",
     location: "USA",
     description: "Advocating for youth voices in digital policy and promoting inclusive technology initiatives.",
@@ -358,10 +304,66 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Shield",
     image: "/anushupic.webp",
-    color: "from-blue-400 to-indigo-400",
+    color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50 dark:bg-blue-900/20",
     borderColor: "border-blue-200 dark:border-blue-800",
     textColor: "text-blue-700 dark:text-blue-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "tejas-karusala",
+    name: "Tejas Karusala",
+    role: "DTC Lead Ambassador",
+    age: "",
+    location: "USA",
+    description: "Driving technological innovation and digital transformation initiatives. Expert in building scalable solutions.",
+    achievements: [
+      "Practicum",
+      "Tech Innovation Award",
+      "Software Development Excellence",
+      "Open Source Contributor"
+    ],
+    expertise: [
+      "Software Engineering",
+      "System Architecture",
+      "Digital Transformation",
+      "Innovation Management"
+    ],
+    iconName: "Code",
+    image: "/tejaspic.webp",
+    color: "from-gray-400 to-slate-400",
+    bgColor: "bg-gray-50 dark:bg-gray-900/20",
+    borderColor: "border-gray-200 dark:border-gray-800",
+    textColor: "text-gray-700 dark:text-gray-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "alia-gupta",
+    name: "Alia Gupta",
+    role: "DTC Ambassador",
+    age: "",
+    location: "India",
+    description: "Leading innovative projects and initiatives. Passionate about creating positive change through technology and advocacy.",
+    achievements: [
+      "Project Eyeris",
+      "Innovation Award Winner",
+      "Youth Leadership Excellence",
+      "Community Impact Leader"
+    ],
+    expertise: [
+      "Project Management",
+      "Innovation Strategy",
+      "Youth Leadership",
+      "Community Development"
+    ],
+    iconName: "Lightbulb",
+    image: "/aliapic.webp",
+    color: "from-yellow-400 to-orange-400",
+    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
+    borderColor: "border-yellow-200 dark:border-yellow-800",
+    textColor: "text-yellow-700 dark:text-yellow-300",
     linkedinLink: "",
     twitterLink: ""
   },

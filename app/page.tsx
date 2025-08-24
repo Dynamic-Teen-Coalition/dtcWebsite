@@ -135,7 +135,7 @@ export default function HomePage() {
   const startTypewriter = () => {
     if (hasTyped) return;
     
-    const text = "We didn't just show up. We reshaped the system."
+    const text = "We didn't just <span class='text-un-blue font-extrabold'>show up</span>.\nWe <span class='text-un-gold font-extrabold'>reshaped</span> the system."
     let i = 0;
     setHasTyped(true);
     
@@ -615,26 +615,51 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
               onViewportEnter={startTypewriter}
-              className="text-center mt-16"
+              className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 mt-20 max-w-7xl mx-auto px-8"
             >
-              <div className="bg-white dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-gray-200/30 dark:border-gray-700 shadow-lg">
-                {showEmoji && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-3xl mb-4"
-                  >
-                    ✨
-                  </motion.div>
-                )}
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 min-h-[3rem] flex items-center justify-center">
-                  {typewriterText}
-                  {typewriterText.length > 0 && typewriterText.length < 45 && (
-                    <span className="animate-pulse ml-1">|</span>
-                  )}
-                </h3>
-              </div>
+              {/* Logo on the left */}
+              <motion.div 
+                className="flex-shrink-0 order-2 lg:order-1"
+                initial={{ opacity: 0, x: -50, scale: 0.8 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.7, type: "spring", bounce: 0.3 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: [0, -3, 3, 0],
+                  transition: { duration: 0.6 }
+                }}
+              >
+                <div className="relative p-4 md:p-6 lg:p-8">
+                  <LogoAnimation
+                    duration={2000}
+                    animatedSrc="/slowerlogo.gif"
+                    staticSrc="/dtclogo.png"
+                      className="w-3xl h-56  md:w-3xl md:h-56 lg:w-3xl lg:h-64 drop-shadow-2xl"
+                  />
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-4 md:inset-6 lg:inset-8 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full bg-un-blue/10 blur-2xl opacity-60 dark:opacity-40 animate-pulse"></div>
+                </div>
+              </motion.div>
+
+              {/* Text box on the right */}
+              <motion.div 
+                className="flex-1 order-1 lg:order-2 w-full lg:max-w-3xl"
+                initial={{ opacity: 0, x: 50, y: 20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9, type: "spring", bounce: 0.2 }}
+              >
+                <div className="bg-gradient-to-br from-white/95 to-gray-50/95 dark:from-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] group">
+                  {/* Decorative top border */}
+                  <div className="w-20 h-1 bg-gradient-to-r from-un-blue to-blue-600 rounded-full mb-6 group-hover:w-32 transition-all duration-500"></div>
+                  
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent leading-tight tracking-tight whitespace-pre-line">
+                    <span dangerouslySetInnerHTML={{ __html: typewriterText }} />
+                    {typewriterText.length > 0 && typewriterText.length < 200 && (
+                      <span className="animate-pulse ml-2 text-un-blue">|</span>
+                    )}
+                  </h3>                  
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -779,7 +804,7 @@ export default function HomePage() {
                               onClick={() => setSelectedPartner(partner)}
                               size="sm"
                               variant="outline"
-                              className="border-un-blue dark:border-un-blue text-un-blue dark:text-un-blue hover:bg-un-blue hover:text-white dark:hover:bg-un-blue"
+                              className="border-un-blue dark:border-un-blue text-un-blue dark:text-un-blue hover:bg-un-blue hover:text-white dark:hover:bg-gray-800"
                             >
                               <Info className="w-4 h-4 mr-1" />
                               More Details
@@ -1246,7 +1271,7 @@ export default function HomePage() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 rounded-3xl p-12 max-w-2xl w-full shadow-2xl text-white"
+              className="bg-background rounded-3xl p-12 max-w-2xl w-full shadow-2xl text-foreground"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between mb-10">

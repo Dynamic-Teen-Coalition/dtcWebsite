@@ -42,6 +42,13 @@
 .text-un-blue-800 { color: #2D4B73; }
 .text-un-blue-200 { color: #B8D4F7; }
 
+/* UN Gold Color Definitions */
+.text-un-gold { color: #FFB81C; }
+.bg-un-gold { background-color: #FFB81C; }
+.border-un-gold { border-color: #FFB81C; }
+.hover\:bg-un-gold:hover { background-color: #FFB81C; }
+.hover\:text-un-gold:hover { color: #FFB81C; }
+
 /* UN Blue gradients */
 .from-un-blue { --tw-gradient-from: #5B92E5 var(--tw-gradient-from-position); }
 .from-un-blue-dark { --tw-gradient-from: #7BAEF2 var(--tw-gradient-from-position); }

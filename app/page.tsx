@@ -158,7 +158,7 @@ export default function HomePage() {
       } else {
         clearInterval(typeInterval)
       }
-    }, 100) // Faster typing: 50ms -> 25ms
+    }, 100) // Faster typing
   }
 
   return (
@@ -169,7 +169,6 @@ export default function HomePage() {
       <AnimatedLines />
 
       <div className="relative z-10">
-        {/* Hero Section with Parallax */}
         <motion.section
           style={{ y, opacity }}
           className="relative min-h-screen flex items-center justify-center px-4 py-20"
@@ -181,7 +180,6 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              {/* DTC Logo */}
               <motion.div 
                 className="flex justify-center mb-8"
                 initial={{ opacity: 0, scale: 0.5, y: 50 }}
@@ -209,7 +207,6 @@ export default function HomePage() {
                       animatedSrc="/slowerlogo.gif"
                       staticSrc="/dtclogo.png"
                     />
-                  {/* Glow effect for dark mode */}
                   <div className="absolute inset-0 w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full bg-un-blue/20 blur-xl opacity-0 dark:opacity-30 transition-opacity duration-300"></div>
                 </motion.div>
               </motion.div>
@@ -381,7 +378,6 @@ export default function HomePage() {
                         <span>Wave {index + 1}</span>
                       </motion.div>
 
-                      {/* Title and Period */}
                       <div>
                         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
                           {wave.title.split(': ')[1] || wave.title}

@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AnimatedBackground } from "@/components/animated-background"
+import Footer from "@/components/footer"
 import { GridPattern } from "@/components/grid-pattern"
 import Link from "next/link"
 import Image from "next/image"
@@ -58,7 +59,7 @@ export default function DGNPage() {
             <h1 className="text-6xl md:text-8xl font-bold text-gray-800 dark:text-white mb-8 leading-tight">
               DTC
               <br />
-              <span className="text-blue-600 dark:text-blue-400">Digital Governance Network</span>
+              <span className="text-blue-600 dark:text-blue-400 sm:text-8xl">Digital Governance Network</span>
             </h1>
           </motion.div>
 
@@ -214,25 +215,26 @@ export default function DGNPage() {
             {/* Step 1 */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-6">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 bg-un-blue text-white rounded-full font-bold text-lg">
+                      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-un-blue text-white rounded-full font-bold text-base sm:text-lg">
                         1
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Fill out the application form</h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight">Fill out the application form</h3>
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                         Complete our comprehensive application form to share information about your organization, its mission, and how it aligns with the UN Sustainable Development Goals.
                       </p>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Button
                           asChild
-                          className="bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white"
+                          size="sm"
+                          className="bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white w-full sm:w-auto text-sm sm:text-base"
                         >
                           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEUShrJS6WMk6MZgkUD6tZGlUe4pRVeEN8lNgHinYReiIjdw/viewform" target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2" />
+                            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                             Complete Application
                           </a>
                         </Button>
@@ -246,26 +248,28 @@ export default function DGNPage() {
             {/* Step 2 */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-6">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 bg-un-blue text-white rounded-full font-bold text-lg">
+                      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-un-blue text-white rounded-full font-bold text-base sm:text-lg">
                         2
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Join our Discord</h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight">Join our Discord</h3>
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                         Connect with the DTC Friends Discord community and introduce your organization in the #introducing-my-org channel to network with other teen-led organizations.
                       </p>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Button
                           asChild
-                          className="bg-un-blue hover:bg-un-blue dark:bg-un-blue dark:hover:bg-un-blue/90 text-white"
+                          size="sm"
+                          className="bg-un-blue hover:bg-un-blue dark:bg-un-blue dark:hover:bg-un-blue/90 text-white w-full sm:w-auto text-sm sm:text-base pr-4 pl-4"
                         >
                           <a href="https://discord.gg/brH8Bs3Y" target="_blank" rel="noopener noreferrer">
-                            <MessageCircle className="w-4 h-4 mr-2" />
-                            Join Discord & Introduce Your Org
+                            <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                            <span className="hidden sm:inline">Join Discord & Introduce Your Org</span>
+                            <span className="sm:hidden">Join Discord & Introduce</span>
                           </a>
                         </Button>
                       </motion.div>
@@ -278,38 +282,42 @@ export default function DGNPage() {
             {/* Step 3 */}
             <motion.div variants={fadeInUp}>
               <Card className="bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-6">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 bg-un-blue text-white rounded-full font-bold text-lg">
+                      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-un-blue text-white rounded-full font-bold text-base sm:text-lg">
                         3
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Earn a DTC Certificate</h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 leading-tight">Earn a DTC Certificate</h3>
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                         Have one of your organization members work toward earning a DTC Friends certificate (for teens) or DTC Allies certificate (for 20+). This grants your Discord or Slack server listing on our AI chatbot at dynamicteencoalition.org.
                       </p>
-                      <div className="flex gap-4">
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
                           <Button
                             asChild
-                            className="bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white"
+                            size="sm"
+                            className="w-full bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white text-sm sm:text-base"
                           >
                             <Link href="/certificates">
-                              <Award className="w-4 h-4 mr-2" />
-                              Learn About Certificates
+                              <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                              <span className="hidden sm:inline">Learn About Certificates</span>
+                              <span className="sm:hidden">Certificates</span>
                             </Link>
                           </Button>
                         </motion.div>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
                           <Button
                             asChild
+                            size="sm"
                             variant="outline"
-                            className="border-un-gold dark:border-un-gold text-un-gold dark:text-un-gold hover:bg-un-gold/5 dark:hover:bg-un-gold/10"
+                            className="w-full border-un-gold dark:border-un-gold text-un-gold dark:text-un-gold hover:bg-un-gold/5 dark:hover:bg-un-gold/10 text-sm sm:text-base"
                           >
                             <a href="https://discord.gg/Cw6rnNNpN3" target="_blank" rel="noopener noreferrer">
-                              View #dtc-friends Channel
+                              <span className="hidden sm:inline">View #dtc-friends Channel</span>
+                              <span className="sm:hidden">View Channel</span>
                             </a>
                           </Button>
                         </motion.div>
@@ -458,6 +466,9 @@ export default function DGNPage() {
           </motion.div>
         </div>
       </section>
+
+      <Footer />
+
     </div>
   )
 }

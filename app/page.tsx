@@ -33,6 +33,7 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { AnimatedLines } from "@/components/animated-background"
+import Footer from "@/components/footer"
 import { HeroFloatingDots } from "@/components/hero-floating-dots"
 import LogoAnimation from "@/components/logo-animation"
 import { boardMembers } from "@/data/leadership"
@@ -94,6 +95,8 @@ export default function HomePage() {
   
   // Notification popup state
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
+  const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Convert waves data to include React components
   const waves = wavesData.map(wave => ({
@@ -115,6 +118,45 @@ export default function HomePage() {
     }
   }
 
+  // Continuous smooth scroll functionality for team carousel
+  useEffect(() => {
+    const container = teamScrollRef.current
+    if (!container) return
+
+    let animationId: number
+    let startTime: number
+    const scrollSpeed = 1 // pixels per frame (adjust for speed)
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      
+      if (container && !isPaused) {
+        // For seamless infinite scroll, reset when we've scrolled past halfway point
+        const halfwayPoint = container.scrollWidth / 2
+        
+        if (container.scrollLeft >= halfwayPoint) {
+          container.scrollLeft = 0
+        } else {
+          // Continuous smooth scrolling
+          container.scrollLeft += scrollSpeed
+        }
+      }
+      
+      animationId = requestAnimationFrame(animate)
+    }
+
+    animationId = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId)
+      }
+      if (touchTimeoutRef.current) {
+        clearTimeout(touchTimeoutRef.current)
+      }
+    }
+  }, [isPaused])
+
   const scrollToDGN = () => {
     const dgnSection = document.getElementById('dgn-section')
     if (dgnSection) {
@@ -125,7 +167,7 @@ export default function HomePage() {
     }
   }
 
-  const homePageBoardMembers = boardMembers.slice(0, 4).map(member => ({
+  const homePageBoardMembers = boardMembers.map(member => ({
     name: member.name,
     role: member.role,
     specialties: member.expertise,
@@ -133,6 +175,9 @@ export default function HomePage() {
     available: true,
     bio: member.description,
   }))
+
+  // Duplicate members for seamless infinite scroll
+  const infiniteMembers = [...homePageBoardMembers, ...homePageBoardMembers]
 
   // Typewriter effect function
   const startTypewriter = () => {
@@ -353,7 +398,7 @@ export default function HomePage() {
                   {homeContent.introduction.description2}
                 </p>
 
-                <motion.div className="grid grid-cols-3 gap-4 mt-8" variants={staggerContainer}>
+                <motion.div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8" variants={staggerContainer}>
                   {homeContent.introduction.principles.map((item, index) => (
                     <motion.div
                       key={item.label}
@@ -362,7 +407,7 @@ export default function HomePage() {
                       className="text-center p-4 bg-white dark:bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700 shadow-sm"
                     >
                       <div className="text-blue-600 dark:text-blue-400 mb-2 flex justify-center text-2xl">{item.icon}</div>
-                      <div className="text-sm font-medium text-gray-700 dark:text-gray-300">{item.label}</div>
+                      <div className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 leading-tight">{item.label}</div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -872,65 +917,64 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-2 sm:p-4"
+            style={{ 
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)'
+            }}
             onClick={() => setSelectedPartner(null)}
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-xs sm:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto relative z-[120]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1">
-                  {/* Organization Section */}
-                  <div>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700 p-2 flex-shrink-0">
-                        <Image
-                          src={selectedPartner.logo}
-                          alt={`${selectedPartner.organization} logo`}
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain rounded-lg"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{selectedPartner.organization}</h3>
-                      </div>
-                    </div>
-                  </div>              
+              <div className="flex items-start justify-between mb-4 sm:mb-6">
+                <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700 p-1 sm:p-2 flex-shrink-0">
+                    <Image
+                      src={selectedPartner.logo}
+                      alt={`${selectedPartner.organization} logo`}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 dark:text-white leading-tight">{selectedPartner.organization}</h3>
+                  </div>
                 </div>
                 
                 <Button
                   onClick={() => setSelectedPartner(null)}
                   variant="ghost"
                   size="sm"
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex-shrink-0 ml-4"
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex-shrink-0 ml-2 sm:ml-4 p-1 sm:p-2"
                 >
                   ✕
                 </Button>
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {/* Organization Details */}
-                <div className="lg:col-span-2 space-y-6">
+                <div className="lg:col-span-2 space-y-4 sm:space-y-6">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-4">About the Organization</h4>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm mb-6">
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">About the Organization</h4>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base mb-4 sm:mb-6">
                       {selectedPartner.description}
                     </p>
                   </div>
 
                   {/* Connect Section */}
                   <div>
-                    <h5 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Connect & Learn More</h5>
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white mb-3">Connect & Learn More</h5>
+                    <div className="flex flex-col gap-3">
                       <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                         <Button
                           onClick={() => window.open(selectedPartner.socialLink, '_blank')}
-                          className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 flex items-center justify-center w-full sm:w-auto"
+                          className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 flex items-center justify-center w-full"
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Connect on Social
@@ -940,7 +984,7 @@ export default function HomePage() {
                         <Button
                           variant="outline"
                           onClick={() => window.open(selectedPartner.socialLink, '_blank')}
-                          className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center w-full sm:w-auto"
+                          className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center w-full"
                         >
                           Visit Website
                         </Button>
@@ -952,9 +996,9 @@ export default function HomePage() {
                 {/* Founder Profile Card */}
                 {selectedPartner.founderImage && (
                   <div className="lg:col-span-1">
-                    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
                       <div className="flex flex-col items-center text-center">
-                        <div className="w-28 h-28 rounded-full overflow-hidden mb-4 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden mb-3 sm:mb-4 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
                           <Image
                             src={selectedPartner.founderImage}
                             alt={`${selectedPartner.fullName} photo`}
@@ -964,9 +1008,9 @@ export default function HomePage() {
                           />
                         </div>
                         
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{selectedPartner.fullName}</h4>
-                        <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-1">Founder</p>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">{selectedPartner.title}</p>
+                        <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-1 leading-tight">{selectedPartner.fullName}</h4>
+                        <p className="text-blue-600 dark:text-blue-400 font-medium text-xs sm:text-sm mb-1">Founder</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-3 leading-tight">{selectedPartner.title}</p>
                         
                         {/* LinkedIn Button */}
                         {selectedPartner.linkedinLink && (
@@ -974,9 +1018,9 @@ export default function HomePage() {
                             <Button
                               onClick={() => window.open(selectedPartner.linkedinLink, '_blank')}
                               size="sm"
-                              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white flex items-center gap-2"
+                              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white flex items-center gap-2 text-xs sm:text-sm"
                             >
-                              <Linkedin className="w-4 h-4" />
+                              <Linkedin className="w-3 h-3 sm:w-4 sm:h-4" />
                               LinkedIn
                             </Button>
                           </motion.div>
@@ -1007,40 +1051,44 @@ export default function HomePage() {
             </motion.div>
 
             <div className="relative">
-              <button
-                onClick={() => scrollTeam("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200/30 dark:border-gray-700"
-              >
-                <ChevronLeft className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-              </button>
-
-              <button
-                onClick={() => scrollTeam("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200/30 dark:border-gray-700"
-              >
-                <ChevronRight className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-              </button>
-
               <div
                 ref={teamScrollRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-12"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                className="flex gap-3 sm:gap-6 overflow-hidden pb-4 px-4 sm:px-12"
+                style={{ 
+                  scrollbarWidth: "none", 
+                  msOverflowStyle: "none",
+                  overflowX: "scroll"
+                }}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onTouchStart={() => {
+                  setIsPaused(true)
+                  if (touchTimeoutRef.current) {
+                    clearTimeout(touchTimeoutRef.current)
+                  }
+                }}
+                onTouchEnd={() => {
+                  // Resume scrolling after a short delay to allow for scrolling
+                  touchTimeoutRef.current = setTimeout(() => {
+                    setIsPaused(false)
+                  }, 2000)
+                }}
               >
-                {homePageBoardMembers.map((member, index) => (
+                {infiniteMembers.map((member, index) => (
                   <motion.div
-                    key={member.name}
+                    key={`${member.name}-${index}`}
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex-shrink-0 w-80"
+                    className="flex-shrink-0 w-64 sm:w-80"
                   >
                     <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
                       <Card className="h-full bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 dark:shadow-gray-900/50">
-                        <CardContent className="p-6">
-                          <div className="text-center mb-6">
+                        <CardContent className="p-4 sm:p-6">
+                          <div className="text-center mb-4 sm:mb-6">
                             <motion.div
-                              className="mb-6 mx-auto w-40 h-48 rounded-2xl c flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300"
+                              className="mb-4 sm:mb-6 mx-auto w-32 h-40 sm:w-40 sm:h-48 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300"
                               whileHover={{ scale: 1.05, y: -5 }}
                               transition={{ duration: 0.3, ease: "easeOut" }}
                             >
@@ -1056,8 +1104,8 @@ export default function HomePage() {
                                 </div>
                               </div>
                             </motion.div>
-                            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{member.name}</h3>
-                              <div className={`inline-block text-white px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-sm ${
+                            <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-2">{member.name}</h3>
+                              <div className={`inline-block text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 shadow-sm ${
                                 member.role.includes('Co-Chair') ? 'bg-purple-600 dark:bg-purple-500' :
                                 member.role.includes('Ambassador') ? 'bg-green-600 dark:bg-green-500' :
                                 'bg-blue-600 dark:bg-blue-500'
@@ -1084,10 +1132,11 @@ export default function HomePage() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-8 py-4 text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm"
+                      className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-lg rounded-full bg-white dark:bg-gray-800/80 backdrop-blur-sm text-center"
                     >
-                      View All Board Members and Ambassadors
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <span className="hidden sm:inline">View All Board Members and Ambassadors</span>
+                      <span className="sm:hidden">View All Members</span>
+                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                     </Button>
                   </motion.div>
                 </Link>
@@ -1177,13 +1226,14 @@ export default function HomePage() {
               </motion.div>
 
               <motion.h2 
-                className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-800 dark:text-white leading-tight tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 text-gray-800 dark:text-white leading-tight tracking-tight px-4"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                Ready to Join the{" "}
+                <span className="hidden sm:inline">Ready to Join the{" "}</span>
+                <span className="sm:hidden">Join the{" "}</span>
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-cyan-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent">
                   Movement
                 </span>
@@ -1195,7 +1245,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-white/90 font-normal mb-16 max-w-4xl mx-auto"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-600 dark:text-white/90 font-normal mb-12 sm:mb-16 max-w-4xl mx-auto px-4"
               >
                 We are building the future, systematically, collaboratively, and from the inside out. Whether you're a
                 teen ready to make a difference or an organization looking to partner with youth leaders, there's a
@@ -1208,21 +1258,21 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto mb-8"
+                className="flex flex-col gap-3 sm:gap-4 justify-center max-w-lg sm:max-w-2xl mx-auto mb-6 sm:mb-8 px-4"
               >
                 {/* Discord Button */}
                 <motion.div 
                   whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.98 }}
-                  className="flex-1"
                 >
                   <Link href={DISCORD_INVITE_LINK}>
                     <Button
                       size="lg"
-                      className="w-full bg-blue-600 hover:bg-blue-700 dark:hover:from-indigo-700 dark:hover:to-purple-700 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
+                      className="w-full bg-blue-600 hover:bg-blue-700 dark:hover:from-indigo-700 dark:hover:to-purple-700 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
                     >
-                      Join DTC Friends Discord
-                      <ExternalLink className="ml-2 h-5 w-5" />
+                      <span className="hidden sm:inline">Join DTC Friends Discord</span>
+                      <span className="sm:hidden">Join Discord</span>
+                      <ExternalLink className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                     </Button>
                   </Link>
                 </motion.div>
@@ -1231,15 +1281,14 @@ export default function HomePage() {
                 <motion.div 
                   whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.98 }}
-                  className="flex-1"
                 >
                   <Button
                     onClick={() => setShowNotificationPopup(true)}
                     size="lg"
-                    className="w-full bg-un-blue hover:from-emerald-600 hover:to-green-700 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
+                    className="w-full bg-un-blue hover:from-emerald-600 hover:to-green-700 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
                   >
                     Get Notifications
-                    <Bell className="ml-2 h-5 w-5" />
+                    <Bell className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </Button>
                 </motion.div>
               </motion.div>
@@ -1250,6 +1299,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.6 }}
+                className="px-4"
               >
                 <motion.div 
                   whileHover={{ scale: 1.05 }} 
@@ -1259,10 +1309,11 @@ export default function HomePage() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-2 border-gray-300 dark:border-white/60 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 hover:border-gray-400 dark:hover:border-white/80 px-8 py-4 text-lg font-semibold rounded-2xl bg-transparent backdrop-blur-sm transition-all duration-300"
+                      className="border-2 border-gray-300 dark:border-white/60 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 hover:border-gray-400 dark:hover:border-white/80 px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl sm:rounded-2xl bg-transparent backdrop-blur-sm transition-all duration-300"
                     >
-                      Learn About Certificates
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <span className="hidden sm:inline">Learn About Certificates</span>
+                      <span className="sm:hidden">Certificates</span>
+                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                     </Button>
                   </Link>
                 </motion.div>
@@ -1345,75 +1396,9 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         )}
-
-        {/* Footer */}
-        <footer className="py-12 px-4 bg-gray-900 dark:bg-black text-white relative">
-          <div className="max-w-6xl mx-auto text-center">
-            {/* Social Media Icons in Footer */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-8"
-            >
-              <div className="flex justify-center items-center gap-6">
-                {homeContent.socialMedia.links.map((social, index) => {
-                  const isImageIcon = social.icon.startsWith('/');
-                  const IconComponent = !isImageIcon ? (
-                    social.icon === "ExternalLink" ? ExternalLink :
-                    social.icon === "Globe" ? Globe :
-                    social.icon === "Youtube" ? Youtube :
-                    social.icon === "Linkedin" ? Linkedin : ExternalLink
-                  ) : null;
-                  
-                  return (
-                    <motion.div
-                      key={social.name}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.2 + (index * 0.1) }}
-                      whileHover={{ scale: 1.2, y: -3 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-10 h-10 bg-gray-800 dark:bg-gray-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700 dark:border-gray-600 hover:border-un-blue dark:hover:border-un-blue hover:bg-gray-700 dark:hover:bg-gray-600"
-                        aria-label={social.name}
-                      >
-                        {isImageIcon ? (
-                          <Image
-                            src={social.icon}
-                            alt={social.name}
-                            width={20}
-                            height={20}
-                            className="w-5 h-5 object-contain"
-                          />
-                        ) : (
-                          IconComponent && <IconComponent className="w-5 h-5 text-gray-300 hover:text-white transition-colors" />
-                        )}
-                      </a>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-
-            <motion.p
-              className="text-gray-400"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              © 2025 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside
-              out.
-            </motion.p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   )
 }
+

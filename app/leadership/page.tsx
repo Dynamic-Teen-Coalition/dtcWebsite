@@ -33,6 +33,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AnimatedBackground } from "@/components/animated-background"
+import CTA from "@/components/CTA"
+import Footer from "@/components/footer"
 import { GridPattern } from "@/components/grid-pattern"
 import { WavePattern } from "@/components/wave-pattern"
 import Link from "next/link"
@@ -72,6 +74,7 @@ export default function BoardMembersPage() {
   const boardMembersRef = useRef<HTMLElement>(null)
   const valuesRef = useRef<HTMLElement>(null)
   const joinRef = useRef<HTMLElement>(null)
+  const ctaRef = useRef<HTMLElement | null>(null)
 
   // Function to get icon component from icon name
   const getIconComponent = (iconName: string) => {
@@ -353,65 +356,9 @@ export default function BoardMembersPage() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section ref={joinRef} className="py-20 px-4 bg-gradient-to-br from-un-blue-50 to-indigo-100 dark:from-gray-900 dark:to-un-blue-950 relative">
-          <div className="max-w-6xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent">
-                {boardSections.join.title}
-              </h2>
-              <p className="text-xl mb-12 max-w-4xl mx-auto leading-relaxed text-gray-600 dark:text-gray-300">
-                {boardSections.join.description}
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white px-8 py-4 text-lg"
-                  >
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEUShrJS6WMk6MZgkUD6tZGlUe4pRVeEN8lNgHinYReiIjdw/viewform" target="_blank" rel="noopener noreferrer">
-                      <Shield className="w-5 h-5 mr-2" />
-                      Apply for Leadership Position
-                    </a>
-                  </Button>
-                </motion.div>
-                
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-un-blue dark:border-un-blue text-un-blue dark:text-un-blue hover:bg-un-blue/5 dark:hover:bg-un-blue/10 px-8 py-4 text-lg"
-                    onClick={() => window.open(DISCORD_INVITE_LINK, '_blank')}
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    {boardSections.join.ctaButton}
-                  </Button>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        <CTA ctaRef={ctaRef} />
 
-        {/* Footer */}
-        <footer className="py-12 px-4 bg-gray-900 dark:bg-black text-white relative">
-          <div className="max-w-6xl mx-auto text-center">
-            <motion.p
-              className="text-gray-400"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              {boardSections.footer.text}
-            </motion.p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   )

@@ -173,7 +173,7 @@ export default function HomePage() {
       <div className="relative z-10">
         <motion.section
           style={{ y, opacity }}
-          className="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-20"
+          className="relative min-h-screen flex items-center justify-center px-4 pt-32 md:pt-40 pb-20"
         >
           <HeroFloatingDots />
           <div className="max-w-6xl mx-auto text-center">

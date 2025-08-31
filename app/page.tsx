@@ -21,6 +21,8 @@ import {
   Linkedin,
   Bell,
   X,
+  Instagram,
+  Youtube
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -171,7 +173,7 @@ export default function HomePage() {
       <div className="relative z-10">
         <motion.section
           style={{ y, opacity }}
-          className="relative min-h-screen flex items-center justify-center px-4 py-20"
+          className="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-20"
         >
           <HeroFloatingDots />
           <div className="max-w-6xl mx-auto text-center">
@@ -267,6 +269,65 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </motion.div>
+            </motion.div>
+
+            {/* Social Media Icons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-16"
+            >
+              <div className="flex justify-center items-center gap-6">
+                {homeContent.socialMedia.links.map((social, index) => {
+                  const isImageIcon = social.icon.startsWith('/');
+                  const IconComponent = !isImageIcon ? (
+                    social.icon === "ExternalLink" ? ExternalLink :
+                    social.icon === "Globe" ? Globe :
+                    social.icon === "Youtube" ? Youtube :
+                    social.icon === "Linkedin" ? Linkedin : ExternalLink
+                  ) : null;
+                  
+                  return (
+                    <motion.div
+                      key={social.name}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.8 + (index * 0.1) }}
+                      whileHover={{ scale: 1.2, y: -3 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <a
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-12 h-12 bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700 hover:border-un-blue dark:hover:border-un-blue"
+                        aria-label={social.name}
+                      >
+                        {isImageIcon ? (
+                          <Image
+                            src={social.icon}
+                            alt={social.name}
+                            width={24}
+                            height={24}
+                            className="w-6 h-6 object-contain"
+                          />
+                        ) : (
+                          IconComponent && <IconComponent className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-un-blue dark:hover:text-un-blue transition-colors" />
+                        )}
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4"
+              >
+                {homeContent.socialMedia.title}
+              </motion.p>
             </motion.div>
           </div>
         </motion.section>
@@ -670,7 +731,7 @@ export default function HomePage() {
                               whileTap={{ scale: 0.95 }}
                               className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
                             >
-                              View Partners
+                              View Allies
                               <ArrowRight className="ml-1 h-3 w-3" />
                             </motion.button>
                           </div>
@@ -1288,6 +1349,59 @@ export default function HomePage() {
         {/* Footer */}
         <footer className="py-12 px-4 bg-gray-900 dark:bg-black text-white relative">
           <div className="max-w-6xl mx-auto text-center">
+            {/* Social Media Icons in Footer */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-8"
+            >
+              <div className="flex justify-center items-center gap-6">
+                {homeContent.socialMedia.links.map((social, index) => {
+                  const isImageIcon = social.icon.startsWith('/');
+                  const IconComponent = !isImageIcon ? (
+                    social.icon === "ExternalLink" ? ExternalLink :
+                    social.icon === "Globe" ? Globe :
+                    social.icon === "Youtube" ? Youtube :
+                    social.icon === "Linkedin" ? Linkedin : ExternalLink
+                  ) : null;
+                  
+                  return (
+                    <motion.div
+                      key={social.name}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.2 + (index * 0.1) }}
+                      whileHover={{ scale: 1.2, y: -3 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <a
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-10 h-10 bg-gray-800 dark:bg-gray-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700 dark:border-gray-600 hover:border-un-blue dark:hover:border-un-blue hover:bg-gray-700 dark:hover:bg-gray-600"
+                        aria-label={social.name}
+                      >
+                        {isImageIcon ? (
+                          <Image
+                            src={social.icon}
+                            alt={social.name}
+                            width={20}
+                            height={20}
+                            className="w-5 h-5 object-contain"
+                          />
+                        ) : (
+                          IconComponent && <IconComponent className="w-5 h-5 text-gray-300 hover:text-white transition-colors" />
+                        )}
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
             <motion.p
               className="text-gray-400"
               initial={{ opacity: 0 }}

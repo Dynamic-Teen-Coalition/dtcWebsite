@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Dynamic Teen Coalition",
-  description: "The first and only ongoing Teen Board at the United Nations",
+  description: "Dynamic Teen Coalition: The UN's First Teen-Led Multistakeholder Movement.",
   generator: 'dtcwebsite'
 }
 

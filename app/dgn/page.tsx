@@ -308,7 +308,7 @@ export default function DGNPage() {
                             variant="outline"
                             className="border-un-gold dark:border-un-gold text-un-gold dark:text-un-gold hover:bg-un-gold/5 dark:hover:bg-un-gold/10"
                           >
-                            <a href="https://discord.gg/brH8Bs3Y" target="_blank" rel="noopener noreferrer">
+                            <a href="https://discord.gg/Cw6rnNNpN3" target="_blank" rel="noopener noreferrer">
                               View #dtc-friends Channel
                             </a>
                           </Button>

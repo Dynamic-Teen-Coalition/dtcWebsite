@@ -193,14 +193,14 @@ export const partners: Partner[] = [
 export const homeContent = {
   hero: {
     title: "Dynamic Teen Coalition",
-    subtitle: "The first and only teen board at the United Nations",
+    subtitle: "The UN's First Teen-Led Multistakeholder Movement.",
     description: "A Movement, Not Just an Organization",
     ctaButton: "Join DTC Friends",
     learnButton: "Learn More",
   },
   introduction: {
     title: "Fighting for Real Teen Inclusion",
-    description1: "The Dynamic Teen Coalition (DTC) is the first and only teen board at the United Nations, founded to fight for real teen inclusion in global digital governance. We are a movement of teens demanding access, shaping policy, and creating infrastructure that didn't exist before us.",
+    description1: "The Dynamic Teen Coalition (DTC) is a movement of teens demanding access, shaping policy, and creating infrastructure that didn't exist before us at the United Nations.",
     description2: "DTC is merit-based, participation-driven, and impact-oriented. We create and contribute across the entire UN ecosystem, from policy networks to global consultations, offering direct teen access to decision-making spaces never explicitly designed for us.",
     principles: [
       { label: "Merit-Based", icon: "🏆" },
@@ -254,9 +254,9 @@ export const homeContent = {
   },
   dgn: {
     title: "Digital Governance Network",
-    subtitle: "Strategic partners advancing teen inclusion in global governance",
-    description: "Our founding partners share our vision of authentic youth participation in digital governance. Together, we're building the infrastructure for sustainable teen leadership in global policy spaces.",
-    viewMoreButton: "View All Partners",
+    subtitle: "Strategic Allies advancing teen inclusion in global governance",
+    description: "Our founding Allies share our vision of authentic youth participation in digital governance. Together, we're building the infrastructure for sustainable teen leadership in global policy spaces.",
+    viewMoreButton: "View All Allies",
   },
   boardMembers: {
     title: "DTC Leadership",
@@ -283,6 +283,31 @@ export const homeContent = {
   },
   footer: {
     text: "© 2025 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside out.",
+  },
+  socialMedia: {
+    title: "Connect with Us",
+    links: [
+      {
+        name: "Linktree",
+        url: "https://linktr.ee/dtcigf",
+        icon: "/Linktree_id_-jZiqwW_1.png"
+      },
+      {
+        name: "IGF Website",
+        url: "https://www.intgovforum.org/en/content/dynamic-teen-coalition",
+        icon: "Globe"
+      },
+      {
+        name: "Youtube",
+        url: "https://www.youtube.com/@DynamicTeenCoalition",
+        icon: "Youtube"
+      },
+      {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/company/dynamic-teen-coalition/",
+        icon: "Linkedin"
+      }
+    ]
   },
 }
 

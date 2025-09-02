@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Dynamic Teen Coalition",
   description: "Dynamic Teen Coalition: The UN's First Teen-Led Multistakeholder Movement.",
-  generator: 'dtcwebsite'
+  generator: 'dtcwebsite',
+  icons: {
+    icon: '/dtclogo.png',
+  }
 }
 
 export const viewport: Viewport = {

@@ -79,6 +79,16 @@ export const works: Work[] = [
     year: "2025",
   },
   {
+    title: "UN Citiverse Challenge",
+    description: "Mentoring university students on frontier technologies and governance",
+    category: "Mentorship",
+    image: "/placeholder.svg?height=200&width=300&text=Citiverse",
+    year: "2025",
+    links: [
+      { title: "Read More Here", url: "https://www.itu.int/metaverse/virtual-worlds/1st-un-citiverse-challenge/mentors/" }
+    ]
+  },
+  {
     title: "DTC Friends Discord Platform",
     description: "The UN's first global Discord platform for teen engagement",
     category: "Platform",
@@ -103,7 +113,7 @@ export const works: Work[] = [
     description: "Documenting age-based discrimination across platforms and laws",
     category: "Research",
     image: "/placeholder.svg?height=200&width=300&text=Teen+Bans",
-    year: "2025",
+    year: "2024-2025",
   },
   {
     title: "Global Digital Compact",
@@ -111,16 +121,6 @@ export const works: Work[] = [
     category: "Policy Work",
     image: "/placeholder.svg?height=200&width=300&text=GDC",
     year: "2024",
-  },
-  {
-    title: "UN Citiverse Challenge",
-    description: "Mentoring university students on frontier technologies and governance",
-    category: "Mentorship",
-    image: "/placeholder.svg?height=200&width=300&text=Citiverse",
-    year: "2024",
-    links: [
-      { title: "Read More Here", url: "https://www.itu.int/metaverse/virtual-worlds/1st-un-citiverse-challenge/mentors/" }
-    ]
   },
 ]
 

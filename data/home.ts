@@ -124,6 +124,9 @@ export const works: Work[] = [
     category: "Policy Work",
     image: "/placeholder.svg?height=200&width=300&text=GDC",
     year: "2024",
+    links: [
+      { title: "View our work", url: "https://www.youtube.com/playlist?list=PLmc3Zo0InVW9HkasC33_CK13zrnO530uY" }
+    ]
   },
 ]
 

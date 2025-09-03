@@ -295,20 +295,10 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  size="lg"
-                  className="bg-un-blue hover:bg-un-blue-dark text-white px-8 py-4 text-lg rounded-full shadow-lg"
-                >
-                  {homeContent.hero.ctaButton}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link href="/certificates">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="border-gray-600 dark:border-white text-gray-600 dark:text-white hover:bg-gray-600 hover:text-white dark:hover:bg-white dark:hover:text-blue-950 px-8 py-4 text-lg rounded-full bg-transparent backdrop-blur-sm"
+                    className="bg-un-blue hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0"
                   >
                     {homeContent.hero.learnButton}
                   </Button>

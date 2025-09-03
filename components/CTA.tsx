@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { pageContent } from "@/data/certificates";
-import { Shield, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { DISCORD_INVITE_LINK } from "@/data/discord";
 
 export default function CTA({ ctaRef }: { ctaRef: React.RefObject<HTMLElement | null> }) {
@@ -28,34 +28,15 @@ export default function CTA({ ctaRef }: { ctaRef: React.RefObject<HTMLElement | 
               {pageContent.cta.description}
             </p>
 
-            <div className="flex flex-col gap-4 sm:gap-6 justify-center max-w-lg sm:max-w-none mx-auto px-2">
+            <div className="flex justify-center max-w-lg sm:max-w-none mx-auto px-2">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
-                >
-                  <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSeEUShrJS6WMk6MZgkUD6tZGlUe4pRVeEN8lNgHinYReiIjdw/viewform"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                    <span className="hidden sm:inline">Apply for Leadership Position</span>
-                    <span className="sm:hidden">Apply for Leadership</span>
-                  </a>
-                </Button>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto border-un-blue dark:border-un-blue text-un-blue dark:text-un-blue hover:bg-un-blue/5 dark:hover:bg-un-blue/10 px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
+                  className="w-full sm:w-auto bg-un-blue hover:bg-un-blue/90 dark:bg-un-blue dark:hover:bg-un-blue/90 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-0"
                 >
                   <a href={DISCORD_INVITE_LINK} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
+                    <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
                     {pageContent.cta.discordButton}
                   </a>
                 </Button>

@@ -30,7 +30,7 @@ export const certificateLevels: CertificateLevel[] = [
   {
     id: "friend",
     title: "DTC Friend",
-    subtitle: "Anyone of any age",
+    subtitle: "Teens Only",
     description: "Join the DTC Friends Discord server, introduce yourself, and get involved.",
     requirements: ["Join Discord server", "Introduce yourself", "Participate in discussions"],
     benefits: ["Access to community", "Learning opportunities", "Global network"],

@@ -114,10 +114,13 @@ export const works: Work[] = [
     category: "Research",
     image: "/placeholder.svg?height=200&width=300&text=Teen+Bans",
     year: "2024-2025",
+    links: [
+      { title: "View Study", url: "https://docs.google.com/spreadsheets/d/1zHiw7h_BNnXkTRnvXF-Ov8QYzRTmdVR-j0HwA5AWBos/edit?gid=0#gid=0" }
+    ]
   },
   {
     title: "Global Digital Compact",
-    description: "Contributing to high-level consultations on digital governance",
+    description: "DTC was invited to, contributed to, and endorsed the GDC",
     category: "Policy Work",
     image: "/placeholder.svg?height=200&width=300&text=GDC",
     year: "2024",
@@ -196,7 +199,7 @@ export const homeContent = {
     subtitle: "The UN's First Teen-Led Multistakeholder Movement.",
     description: "A Movement, Not Just an Organization",
     ctaButton: "Join DTC Friends",
-    learnButton: "Learn More",
+    learnButton: "Learn about DTC Friends",
   },
   introduction: {
     title: "Fighting for Real Teen Inclusion",

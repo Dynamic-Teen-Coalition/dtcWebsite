@@ -223,7 +223,7 @@ export const organizations: Organization[] = [
   {
     id: "neurocove-foundation",
     name: "The NeuroCove Foundation",
-    logo: "/placeholder-logo.png",
+    logo: "/neurocove.png",
     description: "Helping immigrants access mental health resources and get the care they need at such a critical period. An international community with high school members across 9 different countries and 4 continents making a difference in their communities.",
     website: "https://linktr.ee/neurocove?utm_source=linktree_profile_share&ltsid=f44a071c-ff8a-48f9-b726-4d30ec8053de",
     socialLinks: {},
@@ -255,7 +255,7 @@ export const organizations: Organization[] = [
   {
     id: "aequitas-stem",
     name: "Aequitas STEM",
-    logo: "/placeholder-logo.png",
+    logo: "/aequitas.jpg",
     description: "A nonprofit social enterprise bridging the digital divide and expanding equitable access to STEM education in under-resourced communities through refurbished technology donations, interactive engineering kits, and instructional content delivery.",
     website: "https://www.instagram.com/aequitas.stem/",
     socialLinks: {

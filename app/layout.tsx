@@ -32,10 +32,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <Navbar03 />
-          <PageTransition>
-            {children}
-          </PageTransition>
+          <div className="relative">
+            <Navbar03 />
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </div>
+          {/* Modal portal container */}
+          <div id="modal-root"></div>
         </ThemeProvider>
       </body>
     </html>

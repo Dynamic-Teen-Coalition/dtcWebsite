@@ -41,6 +41,7 @@ import { AnimatedLines } from "@/components/animated-background"
 import Footer from "@/components/footer"
 import { HeroFloatingDots } from "@/components/hero-floating-dots"
 import LogoAnimation from "@/components/logo-animation"
+import { Portal } from "@/components/portal"
 import { boardMembers } from "@/data/leadership"
 import { 
   waves as wavesData, 
@@ -910,22 +911,23 @@ export default function HomePage() {
 
         {/* Partner Details Modal */}
         {selectedPartner && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-2 sm:p-4"
-            style={{ 
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)'
-            }}
-            onClick={() => setSelectedPartner(null)}
-          >
+          <Portal>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 z-[99999] flex items-center justify-center p-2 sm:p-4"
+              style={{ 
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)'
+              }}
+              onClick={() => setSelectedPartner(null)}
+            >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-xs sm:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto relative z-[120]"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-xs sm:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto relative z-[100000]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between mb-4 sm:mb-6">
@@ -1029,6 +1031,7 @@ export default function HomePage() {
               </div>
             </motion.div>
           </motion.div>
+          </Portal>
         )}
 
         {/* DGN Allies Section */}
@@ -1120,22 +1123,23 @@ export default function HomePage() {
 
         {/* Organization Details Modal */}
         {selectedOrganization && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-2 sm:p-4"
-            style={{ 
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)'
-            }}
-            onClick={() => setSelectedOrganization(null)}
-          >
+          <Portal>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 z-[99999] flex items-center justify-center p-2 sm:p-4"
+              style={{ 
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)'
+              }}
+              onClick={() => setSelectedOrganization(null)}
+            >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-xs sm:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto relative z-[120]"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-xs sm:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto relative z-[100000]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between mb-4 sm:mb-6">
@@ -1303,6 +1307,7 @@ export default function HomePage() {
               </div>
             </motion.div>
           </motion.div>
+          </Portal>
         )}
 
         {/* Board Members Section */}

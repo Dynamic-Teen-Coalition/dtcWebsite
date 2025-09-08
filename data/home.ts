@@ -208,7 +208,7 @@ export const partners: Partner[] = [
     name: "Hack With Her",
     fullName: "Bandana Kaur",
     title: "Cybersecurity Researcher",
-    organization: "Founding Partner",
+    organization: "Hack With Her",
     logo: "/hackwithher.JPEG",
     founderImage: "/hackwithher.jpg",
     socialLink: "https://linktr.ee/hackwither",

@@ -22,7 +22,12 @@ import {
   Bell,
   X,
   Instagram,
-  Youtube
+  Youtube,
+  Star,
+  CheckCircle,
+  Twitter,
+  MessageCircle,
+  Slack
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -43,6 +48,7 @@ import {
   activities as activitiesData, 
   partners as partnersData,
   events as eventsData,
+  organizations as organizationsData,
   homeContent 
 } from "@/data/home"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
@@ -87,6 +93,7 @@ export default function HomePage() {
   const teamScrollRef = useRef<HTMLDivElement>(null)
   const [activeWave, setActiveWave] = useState(0)
   const [selectedPartner, setSelectedPartner] = useState<any>(null)
+  const [selectedOrganization, setSelectedOrganization] = useState<any>(null)
   
   // Typewriter effect state
   const [typewriterText, setTypewriterText] = useState("")
@@ -1016,6 +1023,280 @@ export default function HomePage() {
                           </motion.div>
                         )}
                       </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* DGN Allies Section */}
+        <section className="py-20 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="max-w-7xl mx-auto relative">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">{homeContent.organizations.title}</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-4">
+                {homeContent.organizations.subtitle}
+              </p>
+              <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                {homeContent.organizations.description}
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            >
+              {organizationsData.filter(org => org.featured).map((organization, index) => (
+                <motion.div key={organization.id} variants={fadeInUp}>
+                  <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <Card className="h-full bg-white dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                      <CardContent className="p-6">
+                        <motion.div
+                          className="mb-6 mx-auto w-20 h-20 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700 p-2"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Image
+                            src={organization.logo}
+                            alt={`${organization.name} logo`}
+                            width={80}
+                            height={80}
+                            className="w-full h-full object-contain rounded-lg"
+                          />
+                        </motion.div>
+                        <div className="text-center mb-6">
+                          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{organization.name}</h3>
+                          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            {organization.description}
+                          </p>
+                        </div>
+
+                        <div className="flex gap-2 justify-center">
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Button
+                              onClick={() => setSelectedOrganization(organization)}
+                              size="sm"
+                              variant="outline"
+                              className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white"
+                            >
+                              <Info className="w-4 h-4 mr-1" />
+                              Details
+                            </Button>
+                          </motion.div>
+                          
+                          {organization.website !== "#" && (
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                              <Button
+                                onClick={() => window.open(organization.website, '_blank')}
+                                size="sm"
+                                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                              >
+                                <ExternalLink className="w-4 h-4 mr-1" />
+                                Visit
+                              </Button>
+                            </motion.div>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Organization Details Modal */}
+        {selectedOrganization && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-2 sm:p-4"
+            style={{ 
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)'
+            }}
+            onClick={() => setSelectedOrganization(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 max-w-xs sm:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] overflow-y-auto relative z-[120]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between mb-4 sm:mb-6">
+                <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700 p-2 flex-shrink-0">
+                    <Image
+                      src={selectedOrganization.logo}
+                      alt={`${selectedOrganization.name} logo`}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white leading-tight">{selectedOrganization.name}</h3>
+                  </div>
+                </div>
+                
+                <Button
+                  onClick={() => setSelectedOrganization(null)}
+                  variant="ghost"
+                  size="sm"
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex-shrink-0 ml-2 sm:ml-4 p-1 sm:p-2"
+                >
+                  ✕
+                </Button>
+              </div>
+              
+              <div className="space-y-6">
+                {/* Description */}
+                <div>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3">About</h4>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+                    {selectedOrganization.description}
+                  </p>
+                </div>
+                {selectedOrganization.sdgGoals && (
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3">UN Sustainable Development Goals</h4>
+                    <div className="grid gap-2">
+                      {selectedOrganization.sdgGoals.map((goal: string, index: number) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800"
+                        >
+                          <Target className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{goal}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {selectedOrganization.achievements && (
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3">Key Achievements</h4>
+                    <div className="grid gap-2">
+                      {selectedOrganization.achievements.map((achievement: string, index: number) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800"
+                        >
+                          <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{achievement}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Social Links */}
+                {(selectedOrganization.website !== "#" || 
+                  selectedOrganization.socialLinks.linkedin || 
+                  selectedOrganization.socialLinks.twitter || 
+                  selectedOrganization.socialLinks.discord || 
+                  selectedOrganization.socialLinks.slack || 
+                  selectedOrganization.socialLinks.whatsapp) && (
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-3">Connect & Follow</h4>
+                    <div className="flex flex-wrap gap-3">
+                    {selectedOrganization.website !== "#" && (
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedOrganization.website, '_blank')}
+                          className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white flex items-center gap-2"
+                        >
+                          <Globe className="w-4 h-4" />
+                          Website
+                        </Button>
+                      </motion.div>
+                    )}
+                    
+                    {selectedOrganization.socialLinks.linkedin && (
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedOrganization.socialLinks.linkedin, '_blank')}
+                          variant="outline"
+                          className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 flex items-center gap-2"
+                        >
+                          <Linkedin className="w-4 h-4" />
+                          LinkedIn
+                        </Button>
+                      </motion.div>
+                    )}
+                    
+                    {selectedOrganization.socialLinks.twitter && (
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedOrganization.socialLinks.twitter, '_blank')}
+                          variant="outline"
+                          className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 flex items-center gap-2"
+                        >
+                          <Twitter className="w-4 h-4" />
+                          Twitter
+                        </Button>
+                      </motion.div>
+                    )}
+                    
+                    {selectedOrganization.socialLinks.discord && (
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedOrganization.socialLinks.discord, '_blank')}
+                          variant="outline"
+                          className="border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 flex items-center gap-2"
+                        >
+                          <Network className="w-4 h-4" />
+                          Discord
+                        </Button>
+                      </motion.div>
+                    )}
+                    
+                    {selectedOrganization.socialLinks.slack && (
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedOrganization.socialLinks.slack, '_blank')}
+                          variant="outline"
+                          className="border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 flex items-center gap-2"
+                        >
+                          <Slack className="w-4 h-4" />
+                          Slack
+                        </Button>
+                      </motion.div>
+                    )}
+                    
+                    {selectedOrganization.socialLinks.whatsapp && (
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          onClick={() => window.open(selectedOrganization.socialLinks.whatsapp, '_blank')}
+                          variant="outline"
+                          className="border-green-600 dark:border-green-400 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 flex items-center gap-2"
+                        >
+                          <MessageCircle className="w-4 h-4" />
+                          WhatsApp
+                        </Button>
+                      </motion.div>
+                    )}
                     </div>
                   </div>
                 )}

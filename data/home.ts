@@ -168,6 +168,27 @@ export const activities: Activity[] = [
   },
 ]
 
+// New interface for promotional organizations
+export interface Organization {
+  id: string
+  name: string
+  logo: string
+  description: string
+  website: string
+  socialLinks: {
+    linkedin?: string
+    twitter?: string
+    instagram?: string
+    youtube?: string
+    discord?: string
+    slack?: string
+    whatsapp?: string
+  }
+  featured?: boolean
+  achievements?: string[]
+  sdgGoals?: string[]
+}
+
 export const partners: Partner[] = [
   {
     id: "founding-partner-1",
@@ -179,12 +200,12 @@ export const partners: Partner[] = [
     founderImage: "/eve.jpeg",
     socialLink: "https://immunova.ai/",
     linkedinLink: "https://sg.linkedin.com/in/eveayl",
-    description: "Immunova AI is a cloud-based, multimodal AI platform to forecast patient-specific immunotherapy responses by integrating whole-slide H&E medical images, transcriptomic profiles, and structured clinical data into one analytical pipeline. Powered by a 10-person core team from 7 countries and a 250-strong youth network across 45+ countries, Immunova combines five modules using Vision Transformers, Graph Neural Networks and Transformer encoders. After our successful 1.0 proof-of-concept, Immunova has secured more than US$10,000 in non-dilutive funding to support further development. Immunova’s work has also been recognised by MICCAI, Moonshot Platform, beVisioneers: Mercedes-Benz, Heal The Planet and Paris Collaborative. Currently, Immunova is collaborating with partner laboratories to conduct beta-testing at Harvard Medical School, Massachusetts General Hospital, Yale School of Medicine, Columbia Department of Medicine, and the Computational Biology Unit at the University of Bergen.",
+    description: "Immunova AI is a cloud-based, multimodal AI platform to forecast patient-specific immunotherapy responses by integrating whole-slide H&E medical images, transcriptomic profiles, and structured clinical data into one analytical pipeline. Powered by a 10-person core team from 7 countries and a 250-strong youth network across 45+ countries, Immunova combines five modules using Vision Transformers, Graph Neural Networks and Transformer encoders. After our successful 1.0 proof-of-concept, Immunova has secured more than US$10,000 in non-dilutive funding to support further development. Immunova's work has also been recognised by MICCAI, Moonshot Platform, beVisioneers: Mercedes-Benz, Heal The Planet and Paris Collaborative. Currently, Immunova is collaborating with partner laboratories to conduct beta-testing at Harvard Medical School, Massachusetts General Hospital, Yale School of Medicine, Columbia Department of Medicine, and the Computational Biology Unit at the University of Bergen.",
     featured: true
   },
   {
-    id: "founding-partner-2", 
-    name: "HackWitHer",
+    id: "Hack With Her", 
+    name: "Hack With Her",
     fullName: "Bandana Kaur",
     title: "Cybersecurity Researcher",
     organization: "Founding Partner",
@@ -193,6 +214,89 @@ export const partners: Partner[] = [
     socialLink: "https://linktr.ee/hackwither",
     description: "HackWitHer is a brand built on one simple motto: making cyberspace livable for all. Founded at the age of 15 to bridge the gap between those who design technology and those most affected by it, HackWitHer operates on three core pillars. First, accessibility; cybersecurity knowledge should be open, understandable, and actionable for everyone, not locked behind jargon or privilege. Second, representation; women and underrepresented voices must be visible in cybersecurity, showing that femininity and intelligence not only coexist but strengthen one another. Third, offense as defense; the best protection comes from thinking like an attacker, anticipating threats, and staying steps ahead. Recognized as one of the Top 30 Ethical Hacking Content Creators of 2025 and acknowledged for vulnerability disclosure in security research by NASA, the US Department of Education, the Government of India, and more, HackWitHer empowers the next generation to shape a digital world where safety, inclusion, and innovation thrive.",
     featured: true
+  }
+]
+
+// Organizations data for the new promotional section
+export const organizations: Organization[] = [
+  {
+    id: "neurocove-foundation",
+    name: "The NeuroCove Foundation",
+    logo: "/placeholder-logo.png",
+    description: "Helping immigrants access mental health resources and get the care they need at such a critical period. An international community with high school members across 9 different countries and 4 continents making a difference in their communities.",
+    website: "https://linktr.ee/neurocove?utm_source=linktree_profile_share&ltsid=f44a071c-ff8a-48f9-b726-4d30ec8053de",
+    socialLinks: {},
+    featured: true,
+    sdgGoals: ["SDG 3: Good Health and Well-Being", "SDG 10: Reduced Inequalities"],
+    achievements: [
+      "High school members across 9 countries and 4 continents",
+      "Helping immigrants worldwide access mental health care",
+      "Focus on underserved immigrant communities"
+    ]
+  },
+  {
+    id: "techminds-community",
+    name: "TechMinds Community",
+    logo: "/placeholder-logo.png",
+    description: "An international STEM education community providing electrical science and STEM programs to underserved students globally. Breaking the norm that STEM is just a bookish subject by making it fun, innovative, and collaborative.",
+    website: "#",
+    socialLinks: {
+    },
+    featured: true,
+    sdgGoals: ["SDG 4: Quality Education"],
+    achievements: [
+      "Members from Afghanistan, India, Nigeria, Nepal, USA",
+      "One-month long electrical science programs",
+      "Free STEM education for underserved communities",
+      "Activity-based learning approach"
+    ]
+  },
+  {
+    id: "aequitas-stem",
+    name: "Aequitas STEM",
+    logo: "/placeholder-logo.png",
+    description: "A nonprofit social enterprise bridging the digital divide and expanding equitable access to STEM education in under-resourced communities through refurbished technology donations, interactive engineering kits, and instructional content delivery.",
+    website: "https://www.instagram.com/aequitas.stem/",
+    socialLinks: {
+      slack: "https://join.slack.com/t/aequitasstem/shared_invite/zt-2o4d8saf4-EbAlAn46xFRScEQPTyvfjA"
+    },
+    featured: true,
+    sdgGoals: [
+      "SDG 4: Quality Education",
+      "SDG 10: Reduced Inequalities", 
+      "SDG 9: Industry, Innovation, and Infrastructure",
+      "SDG 8: Decent Work and Economic Growth"
+    ],
+    achievements: [
+      "Partners with Title I schools across US and India",
+      "Distributes refurbished technology to underserved students",
+      "Hands-on STEM workshops and engineering programs",
+      "K-12 computer science and engineering exposure"
+    ]
+  },
+  {
+    id: "spectrum-of-support",
+    name: "The Spectrum of Support",
+    logo: "/placeholder-logo.png",
+    description: "A youth-led initiative empowering neurodivergent children who fall into behavioral 'grey zones' and lack access to formal diagnoses or support. Using storytelling, educational programming, and behavioral tools to promote inclusive advocacy.",
+    website: "https://join.slack.com/t/thespectrumofsupport/shared_invite/zt-39douxzf8-1TO5a4XQEvsyxOXPfu195g",
+    socialLinks: {
+      slack: "https://join.slack.com/t/thespectrumofsupport/shared_invite/zt-39douxzf8-1TO5a4XQEvsyxOXPfu195g"
+    },
+    featured: true,
+    sdgGoals: [
+      "SDG 3: Good Health and Well-Being",
+      "SDG 4: Quality Education",
+      "SDG 10: Reduced Inequalities",
+      "SDG 16: Peace, Justice and Strong Institutions"
+    ],
+    achievements: [
+      "20+ international teen volunteers",
+      "Directly served over 1,000 students",
+      "Global partnerships with therapy networks",
+      "Creates Scratch games for emotional regulation",
+      "Based in Pennsylvania with international expansion"
+    ]
   }
 ]
 
@@ -289,6 +393,11 @@ export const homeContent = {
   },
   footer: {
     text: "© 2025 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside out.",
+  },
+  organizations: {
+    title: "DGN Allies",
+    subtitle: "Strategic Allies advancing teen inclusion in digital governance",
+    description: "",
   },
   socialMedia: {
     title: "Connect with Us",

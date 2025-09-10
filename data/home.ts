@@ -448,7 +448,7 @@ export const events: Event[] = [
   },
   {
     emoji: "🌟",
-    title: "Future Agenda Engine Room",
+    title: "Our Future Agenda Engine Room",
     description: "Pyrate Ruby is the first under 18 Changemaker for UN Partnerships",
     category: "Historic First"
   },

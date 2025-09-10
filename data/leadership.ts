@@ -506,6 +506,34 @@ export const boardMembers: BoardMember[] = [
     textColor: "text-teal-700 dark:text-teal-300",
     linkedinLink: "",
     twitterLink: ""
+  },
+  {
+    id: "gabriella-luma",
+    name: "Gabriella Luma",
+    role: "DTC Ambassador",
+    age: "",
+    location: "USA",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/gabby.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
   }
 ]
 

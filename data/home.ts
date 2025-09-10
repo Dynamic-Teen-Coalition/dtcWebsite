@@ -238,7 +238,7 @@ export const organizations: Organization[] = [
   {
     id: "techminds-community",
     name: "TechMinds Community",
-    logo: "/placeholder-logo.png",
+    logo: "/techminds.png",
     description: "An international STEM education community providing electrical science and STEM programs to underserved students globally. Breaking the norm that STEM is just a bookish subject by making it fun, innovative, and collaborative.",
     website: "#",
     socialLinks: {
@@ -278,7 +278,7 @@ export const organizations: Organization[] = [
   {
     id: "spectrum-of-support",
     name: "The Spectrum of Support",
-    logo: "/placeholder-logo.png",
+    logo: "/speclogofinal.png",
     description: "A youth-led initiative empowering neurodivergent children who fall into behavioral 'grey zones' and lack access to formal diagnoses or support. Using storytelling, educational programming, and behavioral tools to promote inclusive advocacy.",
     website: "https://join.slack.com/t/thespectrumofsupport/shared_invite/zt-39douxzf8-1TO5a4XQEvsyxOXPfu195g",
     socialLinks: {

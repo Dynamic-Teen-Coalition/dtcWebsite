@@ -512,7 +512,7 @@ export const boardMembers: BoardMember[] = [
     name: "Gabriella Luma",
     role: "DTC Ambassador",
     age: "",
-    location: "USA",
+    location: "USA and Peru",
     description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
     achievements: [
       "Youth Leadership",

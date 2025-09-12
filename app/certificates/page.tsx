@@ -20,9 +20,11 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AnimatedBackground } from "@/components/animated-background"
+import CTA from "@/components/CTA"
 import { GridPattern } from "@/components/grid-pattern"
 import { WavePattern } from "@/components/wave-pattern"
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import { AnimatedLines } from "@/components/animated-background"
 import { 
@@ -31,6 +33,8 @@ import {
   pageContent 
 } from "@/data/certificates"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
+import Footer from "@/components/footer"
+import LogoAnimation from "@/components/logo-animation"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -116,6 +120,15 @@ export default function CertificatesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
+              {/* DTC Logo */}
+              <div className="flex justify-center ">
+                <img
+                  src="/dtclogo.png"
+                  alt="DTC Logo"
+                  className="w-84 h-72 object-contain drop-shadow-lg mb-8"
+                />
+              </div>
+
               <h1 className="text-6xl md:text-8xl font-bold text-gray-800 dark:text-white mb-8 leading-tight">
                 DTC
                 <br />
@@ -225,13 +238,16 @@ export default function CertificatesPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: index * 0.2 }}
-                    className={`flex flex-col ${
-                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                    } items-center gap-8 lg:gap-16`}
+                    className={level.id === 'board' ? 
+                      "flex justify-center" : 
+                      `flex flex-col ${
+                        index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                      } items-center gap-8 lg:gap-16`
+                    }
                     onMouseEnter={() => setActiveLevel(index)}
                   >
                     {/* Level Card */}
-                    <div className="flex-1 max-w-2xl">
+                    <div className={level.id === 'board' ? "w-full max-w-4xl" : "flex-1 max-w-2xl"}>
                       <motion.div
                         className={`${level.bgColor} ${level.borderColor} border-2 rounded-3xl p-8 shadow-2xl`}
                         whileHover={{ scale: 1.02, y: -5 }}
@@ -324,28 +340,37 @@ export default function CertificatesPage() {
                       </motion.div>
                     </div>
 
-                    {/* Visual Element */}
-                    <motion.div
-                      className="flex-shrink-0"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      animate={{
-                        scale: activeLevel === index ? 1.1 : 1,
-                        rotate: activeLevel === index ? 5 : 0,
-                      }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-2xl">
-                        <motion.div
-                          className={`text-6xl lg:text-8xl bg-gradient-to-r ${level.color} bg-clip-text text-transparent`}
-                          animate={{
-                            scale: activeLevel === index ? 1.2 : 1,
-                          }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {getIconComponent(level.iconName)}
-                        </motion.div>
-                      </div>
-                    </motion.div>
+                    {/* Visual Element - Only for non-board certificates */}
+                    {level.id !== 'board' && (
+                      <motion.div
+                        className="flex-shrink-0"
+                        whileHover={{ scale: 1.05, rotate: 2 }}
+                        animate={{
+                          scale: activeLevel === index ? 1.05 : 1,
+                          rotate: activeLevel === index ? 2 : 0,
+                        }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        {/* Ambassador and Friend levels - show certificate images */}
+                        <div className="w-64 h-48 lg:w-80 lg:h-60 bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 dark:border-gray-700">
+                          <motion.div
+                            className="w-full h-full relative"
+                            animate={{
+                              scale: activeLevel === index ? 1.05 : 1,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <Image
+                              src={level.id === 'ambassador' ? '/ambassador.png' : '/friends.png'}
+                              alt={level.title}
+                              fill
+                              className="object-contain p-2"
+                              sizes="(max-width: 1024px) 256px, 320px"
+                            />
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -411,49 +436,9 @@ export default function CertificatesPage() {
             </motion.div>
           </div>
         </section>
+        <CTA ctaRef={ctaRef} />
+        <Footer />
 
-        {/* Call to Action */}
-        <section ref={ctaRef} className="py-20 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 text-white relative">
-          <div className="max-w-6xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageContent.cta.title}</h2>
-              <p className="text-xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
-                {pageContent.cta.description}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg"
-                    onClick={() => window.open(DISCORD_INVITE_LINK, '_blank')}
-                  >
-                    <Shield className="mr-2 h-5 w-5" />
-                    {pageContent.cta.discordButton}
-                  </Button>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-12 px-4 bg-gray-900 dark:bg-black text-white relative">
-          <div className="max-w-6xl mx-auto text-center">
-            <motion.p
-              className="text-gray-400"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              {pageContent.footer.text}
-            </motion.p>
-          </div>
-        </footer>
       </div>
     </div>
   )

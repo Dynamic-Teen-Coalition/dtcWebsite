@@ -30,7 +30,7 @@ export const certificateLevels: CertificateLevel[] = [
   {
     id: "friend",
     title: "DTC Friend",
-    subtitle: "Anyone of any age",
+    subtitle: "Teens Only",
     description: "Join the DTC Friends Discord server, introduce yourself, and get involved.",
     requirements: ["Join Discord server", "Introduce yourself", "Participate in discussions"],
     benefits: ["Access to community", "Learning opportunities", "Global network"],
@@ -41,34 +41,6 @@ export const certificateLevels: CertificateLevel[] = [
     textColor: "text-green-700 dark:text-green-300",
     buttonText: "Join Discord",
     discordLink: DISCORD_INVITE_LINK,
-  },
-  {
-    id: "certificate",
-    title: "DTC Friends 25 Certificate",
-    subtitle: "Teens Only",
-    description: "Earned by teens through contribution and participation. A formal record of your engagement.",
-    requirements: [
-      "Be 13-19 years old",
-      "Active participation for 30+ days",
-      "Complete learning modules",
-      "Contribute to discussions",
-      "Peer collaboration",
-    ],
-    benefits: [
-      "Official DTC credential",
-      "Recognition of expertise",
-      "Portfolio enhancement",
-      "Advanced access",
-      "Mentorship opportunities",
-    ],
-    iconName: "Award",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
-    buttonText: "Join Discord",
-    discordLink: DISCORD_INVITE_LINK,
-
   },
   {
     id: "ambassador",
@@ -177,7 +149,7 @@ export const pageContent = {
   cta: {
     title: "Ready to Start Your Journey?",
     description: "Join thousands of teens worldwide who are shaping the future of digital governance. Your voice matters, and your time is now.",
-    discordButton: "Join DTC Friends Discord",
+    discordButton: "Join the DTC Friends Discord",
   },
   footer: {
     text: "© 2025 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside out.",

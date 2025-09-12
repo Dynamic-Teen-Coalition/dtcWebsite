@@ -76,7 +76,7 @@ export const boardMembers: BoardMember[] = [
       "Digital Inclusion"
     ],
     iconName: "Users",
-    image: "/stacypic.webp",
+    image: "/stacypic3.webp",
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50 dark:bg-blue-900/20",
     borderColor: "border-blue-200 dark:border-blue-800",
@@ -197,62 +197,8 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
-  {
-    id: "alia-gupta",
-    name: "Alia Gupta",
-    role: "DTC Board Member",
-    age: "",
-    location: "India",
-    description: "Leading innovative projects and initiatives. Passionate about creating positive change through technology and advocacy.",
-    achievements: [
-      "Project Eyeris",
-      "Innovation Award Winner",
-      "Youth Leadership Excellence",
-      "Community Impact Leader"
-    ],
-    expertise: [
-      "Project Management",
-      "Innovation Strategy",
-      "Youth Leadership",
-      "Community Development"
-    ],
-    iconName: "Lightbulb",
-    image: "/aliapic.webp",
-    color: "from-yellow-500 to-orange-500",
-    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
-    borderColor: "border-yellow-200 dark:border-yellow-800",
-    textColor: "text-yellow-700 dark:text-yellow-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "tejas-karusala",
-    name: "Tejas Karusala",
-    role: "DTC Board Member",
-    age: "",
-    location: "USA",
-    description: "Driving technological innovation and digital transformation initiatives. Expert in building scalable solutions.",
-    achievements: [
-      "Practicum",
-      "Tech Innovation Award",
-      "Software Development Excellence",
-      "Open Source Contributor"
-    ],
-    expertise: [
-      "Software Engineering",
-      "System Architecture",
-      "Digital Transformation",
-      "Innovation Management"
-    ],
-    iconName: "Code",
-    image: "/tejaspic.webp",
-    color: "from-gray-500 to-slate-500",
-    bgColor: "bg-gray-50 dark:bg-gray-900/20",
-    borderColor: "border-gray-200 dark:border-gray-800",
-    textColor: "text-gray-700 dark:text-gray-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
+  // DTC Lead Ambassador
+
   {
     id: "aditya-majumdar",
     name: "Aditya Majumdar",
@@ -301,7 +247,7 @@ export const boardMembers: BoardMember[] = [
       "Advocacy"
     ],
     iconName: "Heart",
-    image: "/bandanapic.webp",
+    image: "/hackwithher.jpg",
     color: "from-red-500 to-pink-500",
     bgColor: "bg-red-50 dark:bg-red-900/20",
     borderColor: "border-red-200 dark:border-red-800",
@@ -313,7 +259,7 @@ export const boardMembers: BoardMember[] = [
   {
     id: "jasper-tay-seng-hon",
     name: "Jasper Tay Seng Hon",
-    role: "DTC Ambassador",
+    role: "DTC Board Member",
     age: "",
     location: "Singapore",
     description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
@@ -330,7 +276,7 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Star",
     image: "/jasperpic.webp",
-    color: "from-yellow-400 to-orange-400",
+    color: "from-yellow-500 to-orange-500",
     bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
     borderColor: "border-yellow-200 dark:border-yellow-800",
     textColor: "text-yellow-700 dark:text-yellow-300",
@@ -340,7 +286,7 @@ export const boardMembers: BoardMember[] = [
   {
     id: "anusha-sharma",
     name: "Anusha Sharma",
-    role: "DTC Ambassador",
+    role: "DTC Board Member",
     age: "",
     location: "USA",
     description: "Advocating for youth voices in digital policy and promoting inclusive technology initiatives.",
@@ -358,10 +304,66 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Shield",
     image: "/anushupic.webp",
-    color: "from-blue-400 to-indigo-400",
+    color: "from-blue-500 to-indigo-500",
     bgColor: "bg-blue-50 dark:bg-blue-900/20",
     borderColor: "border-blue-200 dark:border-blue-800",
     textColor: "text-blue-700 dark:text-blue-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "tejas-karusala",
+    name: "Tejas Karusala",
+    role: "DTC Lead Ambassador",
+    age: "",
+    location: "USA",
+    description: "Driving technological innovation and digital transformation initiatives. Expert in building scalable solutions.",
+    achievements: [
+      "Practicum",
+      "Tech Innovation Award",
+      "Software Development Excellence",
+      "Open Source Contributor"
+    ],
+    expertise: [
+      "Software Engineering",
+      "System Architecture",
+      "Digital Transformation",
+      "Innovation Management"
+    ],
+    iconName: "Code",
+    image: "/tejaspic.webp",
+    color: "from-gray-400 to-slate-400",
+    bgColor: "bg-gray-50 dark:bg-gray-900/20",
+    borderColor: "border-gray-200 dark:border-gray-800",
+    textColor: "text-gray-700 dark:text-gray-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "alia-gupta",
+    name: "Alia Gupta",
+    role: "DTC Ambassador",
+    age: "",
+    location: "India",
+    description: "Leading innovative projects and initiatives. Passionate about creating positive change through technology and advocacy.",
+    achievements: [
+      "Project Eyeris",
+      "Innovation Award Winner",
+      "Youth Leadership Excellence",
+      "Community Impact Leader"
+    ],
+    expertise: [
+      "Project Management",
+      "Innovation Strategy",
+      "Youth Leadership",
+      "Community Development"
+    ],
+    iconName: "Lightbulb",
+    image: "/aliapic.webp",
+    color: "from-yellow-400 to-orange-400",
+    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
+    borderColor: "border-yellow-200 dark:border-yellow-800",
+    textColor: "text-yellow-700 dark:text-yellow-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -385,7 +387,7 @@ export const boardMembers: BoardMember[] = [
       "Student Leadership"
     ],
     iconName: "GraduationCap",
-    image: "/anayapic.webp",
+    image: "/anayapic.jpg",
     color: "from-green-400 to-emerald-400",
     bgColor: "bg-green-50 dark:bg-green-900/20",
     borderColor: "border-green-200 dark:border-green-800",
@@ -504,6 +506,34 @@ export const boardMembers: BoardMember[] = [
     textColor: "text-teal-700 dark:text-teal-300",
     linkedinLink: "",
     twitterLink: ""
+  },
+  {
+    id: "gabriella-luma",
+    name: "Gabriella Luma",
+    role: "DTC Ambassador",
+    age: "",
+    location: "USA and Peru",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/gabby.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
   }
 ]
 
@@ -540,10 +570,10 @@ export const boardSections = {
     subtitle: "The principles that guide our leadership",
   },
   join: {
-    title: "Join Our Leadership",
+    title: "Ready to Start Your Journey?",
     subtitle: "Opportunities to contribute to DTC's mission",
-    description: "We're always looking for passionate teens who want to make a difference in digital governance. Explore opportunities to join our team.",
-    ctaButton: "Apply for Leadership Position",
+    description: "Join thousands of teens worldwide who are shaping the future of digital governance. Your voice matters, and your time is now.",
+    ctaButton: "Join the DTC Friends Discord",
   },
   footer: {
     text: "© 2025 Dynamic Teen Coalition. Teen-led, globally connected, focused on outcomes.",
@@ -567,7 +597,7 @@ export const boardValues = [
     title: "Innovation",
     description: "Embracing new technologies and approaches to solve complex governance challenges",
     iconName: "Rocket",
-    color: "from-green-500 to-emerald-500",
+    color: "from-purple-500 to-pink-500",
   },
   {
     title: "Collaboration",

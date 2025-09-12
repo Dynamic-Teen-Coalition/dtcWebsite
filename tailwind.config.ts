@@ -53,7 +53,6 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom blue palette for the theme
         blue: {
           50: "#eff6ff",
           100: "#dbeafe",
@@ -83,6 +82,8 @@ const config = {
           800: "#166534",
           900: "#064e3b",
         },
+        "un-blue": "#5b92e5",
+        "un-gold": "#f5c55e"
       },
       borderRadius: {
         lg: "var(--radius)",

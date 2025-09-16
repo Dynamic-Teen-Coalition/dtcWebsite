@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-blue: #0066ff;
+  --accent-purple: #6366f1;
+  --gray-700: #374151;
+  --white: #ffffff;
+}
+
+/* Blue Glow Effects */
+.glow-text {
+  text-shadow: 0 0 10px rgba(91, 146, 229, 0.5),
+               0 0 20px rgba(91, 146, 229, 0.3),
+               0 0 30px rgba(91, 146, 229, 0.2);
+}
+
+/* UN Blue Color Definitions */
+.text-un-blue { color: #5B92E5; }
+.bg-un-blue { background-color: #5B92E5; }
+.border-un-blue { border-color: #5B92E5; }
+.hover\:bg-un-blue:hover { background-color: #5B92E5; }
+.hover\:text-un-blue:hover { color: #5B92E5; }
+
+.text-un-blue-dark { color: #7BAEF2; }
+.bg-un-blue-dark { background-color: #7BAEF2; }
+.border-un-blue-dark { border-color: #7BAEF2; }
+.hover\:bg-un-blue-dark:hover { background-color: #7BAEF2; }
+
+.text-un-blue-light { color: #4A85D9; }
+.bg-un-blue-light { background-color: #4A85D9; }
+.hover\:bg-un-blue-light:hover { background-color: #4A85D9; }
+
+/* UN Blue light backgrounds */
+.bg-un-blue-50 { background-color: #E8F1FD; }
+.bg-un-blue-100 { background-color: #D1E4FB; }
+.bg-un-blue-800 { background-color: #2D4B73; }
+.bg-un-blue-900 { background-color: #1E3556; }
+
+/* UN Blue text variants */
+.text-un-blue-800 { color: #2D4B73; }
+.text-un-blue-200 { color: #B8D4F7; }
+
+/* UN Gold Color Definitions */
+.text-un-gold { color: #FFB81C; }
+.bg-un-gold { background-color: #FFB81C; }
+.border-un-gold { border-color: #FFB81C; }
+.hover\:bg-un-gold:hover { background-color: #FFB81C; }
+.hover\:text-un-gold:hover { color: #FFB81C; }
+
+/* UN Blue gradients */
+.from-un-blue { --tw-gradient-from: #5B92E5 var(--tw-gradient-from-position); }
+.from-un-blue-dark { --tw-gradient-from: #7BAEF2 var(--tw-gradient-from-position); }
+.from-un-blue-50 { --tw-gradient-from: #E8F1FD var(--tw-gradient-from-position); }
+.to-un-blue-950 { --tw-gradient-to: #0F1D2E var(--tw-gradient-to-position); }
+
+.pirate-black-gradient {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: pirate-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes pirate-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+html.dark .pirate-black-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 25%, #cccccc 50%, #e5e5e5 75%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+}
+
+.hero-floating-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) translateX(var(--random-x, 50px));
+    opacity: 0;
+  }
+}
+
+.floating-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: floatUp 6s linear infinite;
+  box-shadow: 0 0 6px #3b82f6, 0 0 12px #3b82f6;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark Gray */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%; /* Blue-600 */
+    --primary-foreground: 210 40% 98%; /* White */
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%; /* Dark Gray */
+    --foreground: 210 40% 98%; /* White */
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%; /* Blue-500 */
+    --primary-foreground: 222.2 47.4% 11.2%; /* Dark Gray */
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Wave Animation Keyframes */
+@keyframes wave-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wave-1 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wave-2 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes wave-3 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Apply wave animations */
+.animate-wave-slow {
+  animation: wave-slow 120s linear infinite;
+}
+
+.animate-wave-1 {
+  animation: wave-1 8s ease-in-out infinite;
+}
+
+.animate-wave-2 {
+  animation: wave-2 6s ease-in-out infinite reverse;
+}
+
+.animate-wave-3 {
+  animation: wave-3 10s ease-in-out infinite;
+}
+
+/* Animated Lines Keyframes */
+@keyframes line-flow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -200;
+  }
+}
+
+@keyframes line-pulse {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Line animation classes */
+.animate-line-flow {
+  animation: line-flow 8s linear infinite;
+}
+
+.animate-line-pulse {
+  animation: line-pulse 4s ease-in-out infinite;
+}

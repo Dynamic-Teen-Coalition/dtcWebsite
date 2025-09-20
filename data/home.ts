@@ -204,11 +204,11 @@ export const partners: Partner[] = [
     featured: true
   },
   {
-    id: "Hack With Her", 
-    name: "Hack With Her",
+    id: "HackWithHer", 
+    name: "HackWithHer",
     fullName: "Bandana Kaur",
     title: "Cybersecurity Researcher",
-    organization: "Hack With Her",
+    organization: "HackWithHer",
     logo: "/hackwithher.JPEG",
     founderImage: "/hackwithher.jpg",
     socialLink: "https://linktr.ee/hackwither",
@@ -240,7 +240,7 @@ export const organizations: Organization[] = [
     name: "TechMinds Community",
     logo: "/techminds.png",
     description: "An international STEM education community providing electrical science and STEM programs to underserved students globally. Breaking the norm that STEM is just a bookish subject by making it fun, innovative, and collaborative.",
-    website: "#",
+    website: "https://techmindsorg.netlify.app/",
     socialLinks: {
     },
     featured: true,

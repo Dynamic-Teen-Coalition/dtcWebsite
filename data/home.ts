@@ -204,11 +204,11 @@ export const partners: Partner[] = [
     featured: true
   },
   {
-    id: "HackWithHer", 
-    name: "HackWithHer",
+    id: "Hackwither", 
+    name: "Hackwither",
     fullName: "Bandana Kaur",
     title: "Cybersecurity Researcher",
-    organization: "HackWithHer",
+    organization: "Hackwither",
     logo: "/hackwithher.JPEG",
     founderImage: "/hackwithher.jpg",
     socialLink: "https://linktr.ee/hackwither",

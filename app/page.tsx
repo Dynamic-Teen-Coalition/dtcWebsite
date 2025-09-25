@@ -611,9 +611,28 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">📢 DTC in Action: Very Recent UN Event Highlights</h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-8">
                 We spoke with purpose, from ECOSOC to the IGF, defending teen rights and building up our lifelong, inclusive multistakeholder model.
               </p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <a 
+                  href="https://docs.google.com/document/d/1xQoAw1v-Ku799gay4qZXx6a0nPzXcCxZ6-xZN2Jr2aA/edit?usp=drivesdk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <span className="mr-2">📋</span>
+                  Read DTC's Teen Inclusive Model
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </motion.div>
             </motion.div>
 
             <motion.div

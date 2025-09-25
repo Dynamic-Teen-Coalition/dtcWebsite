@@ -149,7 +149,6 @@ export const boardMembers: BoardMember[] = [
     achievements: [
       "Partnership Development Award",
       "Global Youth Network Builder",
-      "International Collaboration Expert",
       "Cross-Cultural Leadership"
     ],
     expertise: [

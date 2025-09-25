@@ -114,34 +114,6 @@ export const boardMembers: BoardMember[] = [
   },
   // DTC Board
   {
-    id: "yuma-soerianto",
-    name: "Yuma Soerianto",
-    role: "DTC Board Member",
-    age: "",
-    location: "Australia",
-    description: "Leading DTC's research initiatives and policy development. Bridging the gap between youth voices and global governance.",
-    achievements: [
-      "Made By Yuma",
-      "Policy Research Excellence Award",
-      "Published in Youth Policy Journal",
-      "UN Youth Assembly Delegate"
-    ],
-    expertise: [
-      "Policy Research",
-      "Data Analysis",
-      "Youth Advocacy",
-      "International Relations"
-    ],
-    iconName: "BookOpen",
-    image: "/yumapic.webp",
-    color: "from-orange-500 to-red-500",
-    bgColor: "bg-orange-50 dark:bg-orange-900/20",
-    borderColor: "border-orange-200 dark:border-orange-800",
-    textColor: "text-orange-700 dark:text-orange-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
     id: "boris-hong-pak-lo",
     name: "Boris Hong Pak Lo",
     role: "DTC Board Member",

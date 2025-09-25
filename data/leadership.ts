@@ -128,9 +128,7 @@ export const boardMembers: BoardMember[] = [
     ],
     expertise: [
       "Strategic Communications",
-      "Digital Media",
-      "Public Speaking",
-      "Content Creation"
+      "Digital Media"
     ],
     iconName: "MessageCircle",
     image: "/borispic.webp",

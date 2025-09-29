@@ -1,0 +1,1 @@
+export const DOC_LINK = "https://docs.google.com/document/d/1xQoAw1v-Ku799gay4qZXx6a0nPzXcCxZ6-xZN2Jr2aA/edit?usp=drivesdk"

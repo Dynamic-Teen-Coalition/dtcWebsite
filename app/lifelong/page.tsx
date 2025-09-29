@@ -373,7 +373,7 @@ export default function LifelongPage() {
         </section>
 
         {/* Stakeholder Stages Section - GSAP Stacking Animation */}
-        <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20 relative overflow-hidden">
+        <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-gray-50 via-slate-100 to-blue-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20 relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="max-w-4xl mx-auto relative">
             <motion.div
@@ -414,13 +414,13 @@ export default function LifelongPage() {
                     style={{
                       boxShadow: activeStage === index 
                         ? "0 25px 50px -12px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.1)" 
-                        : "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                        : "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
                       willChange: "transform, opacity, filter" // Optimize for animations
                     }}
                   >
                     {/* Decorative background elements */}
-                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-600/5 to-indigo-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute top-3 right-3 md:top-6 md:right-6 text-2xl md:text-4xl font-bold opacity-20 dark:opacity-30 select-none">
+                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-600/8 dark:from-blue-600/5 to-indigo-600/8 dark:to-indigo-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-3 right-3 md:top-6 md:right-6 text-2xl md:text-4xl font-bold opacity-30 dark:opacity-30 select-none text-gray-600 dark:text-gray-400">
                       {String(index + 1).padStart(2, '0')}
                     </div>
 
@@ -429,18 +429,12 @@ export default function LifelongPage() {
                         {/* Icon and Badge */}
                         <div className="flex-shrink-0 text-center lg:text-left">
                           <div
-                            className={`inline-flex items-center gap-2 md:gap-3 ${stage.color} text-white px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold shadow-lg mb-3 md:mb-4 transition-transform duration-300 hover:scale-105`}
+                            className={`inline-flex items-center gap-2 md:gap-3 ${stage.color} text-white px-4 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold shadow-lg hover:shadow-xl mb-3 md:mb-4 transition-all duration-300 hover:scale-105`}
                           >
-                            <div className="transition-transform duration-300">
-                              {getIconComponent(stage.iconName)}
-                            </div>
-                            <span className="text-xs md:text-sm">{stage.title}</span>
-                          </div>
-
-                          <div
-                            className={`${stage.textColor} mx-auto lg:mx-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center transition-all duration-300 ${activeStage === index ? "scale-110 shadow-xl" : ""}`}
-                          >
-                            {getIconComponent(stage.iconName)}
+                            <span className="text-lg">
+                              {index === 0 ? '💝' : index === 1 ? '🚀' : index === 2 ? '📈' : index === 3 ? '🏢' : '👑'}
+                            </span>
+                            <span className="text-xs md:text-sm text-black dark:text-white">{stage.title}</span>
                           </div>
                         </div>
 
@@ -452,7 +446,7 @@ export default function LifelongPage() {
                           
                           <div className="relative">
                             <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full hidden lg:block"></div>
-                            <p className="text-sm md:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed lg:pl-6">
+                            <p className="text-sm md:text-base lg:text-lg text-gray-800 dark:text-gray-300 leading-relaxed lg:pl-6">
                               {stage.details}
                             </p>
                           </div>
@@ -461,11 +455,11 @@ export default function LifelongPage() {
                     </div>
 
                     {/* Progress indicator */}
-                    <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full opacity-20"></div>
+                    <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full opacity-30 dark:opacity-20"></div>
                     
                     {/* Stacking depth indicator */}
                     <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 transition-opacity duration-500" 
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/8 dark:from-black/5 to-transparent opacity-0 transition-opacity duration-500" 
                            style={{ opacity: activeStage > index ? 0.3 : 0 }}></div>
                     </div>
                   </div>
@@ -476,68 +470,96 @@ export default function LifelongPage() {
         </section>
 
         {/* Implementation Strategy Section */}
-        <section className="py-20 px-4 relative">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-20 px-4 bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 dark:from-gray-900 dark:via-slate-800 dark:to-gray-900 relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute top-10 left-10 w-72 h-72 bg-blue-400/10 dark:bg-blue-400/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-400/10 dark:bg-indigo-400/5 rounded-full blur-3xl"></div>
+          
+          <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="text-center mb-20"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
+              <motion.div
+                className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl mb-6"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <TrendingUp className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              </motion.div>
+              <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
                 Transition Strategy
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                A phased implementation approach ensures sustainable adoption and continuous improvement 
-                of the inclusive lifelong multistakeholder model.
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                A systematic, phased implementation approach that ensures sustainable adoption and 
+                continuous improvement of the inclusive lifelong multistakeholder model.
               </p>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, margin: "-50px" }}
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-            >
-              {implementationPhases.map((phase, index) => (
-                <motion.div key={phase.phase} variants={fadeInUp}>
-                  <motion.div whileHover={{ scale: 1.05, y: -10 }} className="h-full">
-                    <Card className="h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/30 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
-                      <CardContent className="p-6">
-                        <motion.div
-                          className="text-6xl font-bold text-gray-800 dark:text-white mb-4"
-                          animate={{
-                            scale: [1, 1.1, 1],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatDelay: 3,
-                          }}
-                        >
-                          {phase.phase}
-                        </motion.div>
-                        <motion.div
-                          className={`text-white mb-4 mx-auto w-16 h-16 rounded-full ${phase.color} flex items-center justify-center`}
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          {getIconComponent(phase.iconName)}
-                        </motion.div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">
-                          {phase.title}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                          {phase.description}
-                        </p>
-                      </CardContent>
-                    </Card>
+            {/* Timeline Container */}
+            <div className="relative">
+              {/* Connection Line */}
+              <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-200 via-indigo-300 to-purple-200 dark:from-blue-800 dark:via-indigo-700 dark:to-purple-800 rounded-full transform -translate-y-1/2 hidden lg:block"></div>
+              
+              <motion.div
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: "-100px" }}
+                className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+              >
+                {implementationPhases.map((phase, index) => (
+                  <motion.div key={phase.phase} variants={fadeInUp} className="relative">
+                    <motion.div 
+                      whileHover={{ scale: 1.02, y: -8 }} 
+                      className="h-full group"
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <Card className="h-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-xl border-2 border-gray-200/50 dark:border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group-hover:border-blue-300 dark:group-hover:border-blue-600">
+                        <CardContent className="p-8 relative">                     
+                          {/* Icon Container */}
+                          <motion.div
+                            className={`inline-flex items-center bg-un-blue dark: justify-center w-20 h-20 rounded-2xl ${phase.color} shadow-lg mb-6 group-hover:shadow-xl transition-all duration-300`}
+                            whileHover={{ rotate: [0, -10, 10, 0] }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <div className="text-white">
+                              {getIconComponent(phase.iconName)}
+                            </div>
+                          </motion.div>
+                          
+                          {/* Content */}
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                            {phase.title}
+                          </h3>
+                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                            {phase.description}
+                          </p>
+                          
+                          {/* Progress Indicator */}
+                          <div className="mt-6 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                            <motion.div 
+                              className={`h-full ${phase.color} rounded-full`}
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${(index + 1) * 25}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1, delay: index * 0.2 }}
+                            ></motion.div>
+                          </div>
+                          
+                          {/* Decorative Elements */}
+                          <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-blue-50 dark:from-blue-900/20 to-transparent rounded-tl-full opacity-50"></div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </section>
 

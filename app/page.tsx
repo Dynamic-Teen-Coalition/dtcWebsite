@@ -106,6 +106,16 @@ export default function HomePage() {
   const [isPaused, setIsPaused] = useState(false)
   const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Auto-refresh on first visit to fix animation issues
+  useEffect(() => {
+    const hasRefreshed = sessionStorage.getItem('homePageRefreshed')
+    
+    if (!hasRefreshed) {
+      sessionStorage.setItem('homePageRefreshed', 'true')
+      window.location.reload()
+    }
+  }, [])
+
   // Convert waves data to include React components
   const waves = wavesData.map(wave => ({
     ...wave,

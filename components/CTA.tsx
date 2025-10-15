@@ -1,11 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { pageContent } from "@/data/certificates";
+import { pageContent as certificatesContent } from "@/data/certificates";
 import { MessageCircle } from "lucide-react";
 import { DISCORD_INVITE_LINK } from "@/data/discord";
 
-export default function CTA({ ctaRef }: { ctaRef: React.RefObject<HTMLElement | null> }) {
+interface CTAProps {
+  ctaRef: React.RefObject<HTMLElement | null>;
+  content?: {
+    title: string;
+    description: string;
+    discordButton: string;
+  };
+}
+
+export default function CTA({ ctaRef, content }: CTAProps) {
+  const ctaContent = content || certificatesContent.cta;
+
   return (
     <>
       {/* Call to Action */}
@@ -21,11 +32,11 @@ export default function CTA({ ctaRef }: { ctaRef: React.RefObject<HTMLElement | 
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent px-2">
-              {pageContent.cta.title}
+              {ctaContent.title}
             </h2>
 
             <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed text-gray-600 dark:text-gray-300 px-2">
-              {pageContent.cta.description}
+              {ctaContent.description}
             </p>
 
             <div className="flex justify-center max-w-lg sm:max-w-none mx-auto px-2">
@@ -37,7 +48,7 @@ export default function CTA({ ctaRef }: { ctaRef: React.RefObject<HTMLElement | 
                 >
                   <a href={DISCORD_INVITE_LINK} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
-                    {pageContent.cta.discordButton}
+                    {ctaContent.discordButton}
                   </a>
                 </Button>
               </motion.div>

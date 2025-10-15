@@ -14,7 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Home, Users, Award, GraduationCap, Globe, Mail } from 'lucide-react';
+import { Sun, Moon, Home, Users, Award, GraduationCap, Globe, Mail, FileText } from 'lucide-react';
 import { DISCORD_INVITE_LINK } from '../../../../data/discord';
 
 // DTC logo component for the navbar
@@ -74,6 +74,7 @@ const navIcons = {
   'Leadership': Users,
   'Certificates': Award,
   'Lifelong Model': Globe,
+  'Reports': FileText,
   'Contact': Mail,
 };
 
@@ -102,6 +103,7 @@ const getDTCNavigationLinks = (pathname: string): Navbar03NavItem[] => [
   { href: '/certificates', label: 'Certificates', active: pathname === '/certificates' },
   { href: '/lifelong', label: 'Lifelong Model', active: pathname === '/lifelong' },
   { href: '/dgn', label: 'DGN Program', active: pathname === '/dgn' },
+  { href: '/reports', label: 'Media', active: pathname === '/reports' },
   { href: '/leadership', label: 'Leadership', active: pathname === '/leadership' },
   { href: '/contact', label: 'Contact', active: pathname === '/contact' },
 ];

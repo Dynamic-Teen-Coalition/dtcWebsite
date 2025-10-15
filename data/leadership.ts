@@ -167,7 +167,6 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   // DTC Lead Ambassador
-
   {
     id: "aditya-majumdar",
     name: "Aditya Majumdar",
@@ -193,34 +192,6 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-pink-50 dark:bg-pink-900/20",
     borderColor: "border-pink-200 dark:border-pink-800",
     textColor: "text-pink-700 dark:text-pink-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "bandana-kaur",
-    name: "Bandana Kaur",
-    role: "DTC Board Member",
-    age: "",
-    location: "India",
-    description: "Advocating for women in technology and promoting inclusive digital communities. Passionate about diversity and inclusion.",
-    achievements: [
-      "HackWitHer",
-      "Women in Tech Advocate",
-      "Diversity & Inclusion Leader",
-      "Community Builder"
-    ],
-    expertise: [
-      "Diversity & Inclusion",
-      "Women in Tech",
-      "Community Building",
-      "Advocacy"
-    ],
-    iconName: "Heart",
-    image: "/hackwithher.jpg",
-    color: "from-red-500 to-pink-500",
-    bgColor: "bg-red-50 dark:bg-red-900/20",
-    borderColor: "border-red-200 dark:border-red-800",
-    textColor: "text-red-700 dark:text-red-300",
     linkedinLink: "",
     twitterLink: ""
   },

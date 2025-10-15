@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
+import { ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 export interface ShortsSlide {
   id: string
@@ -17,6 +18,7 @@ export interface ShortsSlide {
 
 interface ShortsCarouselProps {
   slides: ShortsSlide[]
+  playlistLink?: string
 }
 
 // Declare YouTube API types
@@ -32,7 +34,7 @@ const SHIFT = 60
 const SCALE_DELTA = 0.09
 const BLUR_DELTA = 2
 
-export function ShortsCarousel({ slides }: ShortsCarouselProps) {
+export function ShortsCarousel({ slides, playlistLink }: ShortsCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const carouselRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLElement | null)[]>([])
@@ -224,13 +226,13 @@ export function ShortsCarousel({ slides }: ShortsCarouselProps) {
   return (
     <div 
       ref={carouselRef}
-      className="group relative w-full max-w-[95vw] md:max-w-[90vw] mx-auto h-[min(75vh,650px)] md:h-[min(86vh,760px)] overflow-visible px-2 md:px-4 lg:px-6"
+      className="group relative w-full max-w-[95vw] md:max-w-[90vw] mx-auto h-[min(75vh,650px)] md:h-[min(86vh,760px)] overflow-visible px-2 md:px-4 lg:px-6 -my-12"
     >
       {/* Track */}
       <div
             ref={trackRef}
             onScroll={handleScroll}
-            className="flex h-full items-center gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pr-[14%] md:pr-[8%] lg:pr-[6%]"
+            className="flex h-full items-center gap-3 sm:gap-4 md:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pr-[10%] sm:pr-[12%] md:pr-[8%] lg:pr-[6%]"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -275,14 +277,14 @@ export function ShortsCarousel({ slides }: ShortsCarouselProps) {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
             {/* Bottom Overlay Card */}
-            <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6">
-              <div className="overlay-glass ring-1 ring-white/10 rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6 lg:gap-8"
+            <div className="absolute left-3 right-3 bottom-3 sm:left-4 sm:right-4 sm:bottom-4 md:left-6 md:right-6 md:bottom-6">
+              <div className="overlay-glass ring-1 ring-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-3 md:flex-row md:items-center md:gap-6 lg:gap-8"
                    style={{
                      background: 'rgba(15, 23, 42, 0.55)',
                      backdropFilter: 'blur(8px)'
                    }}>
-                <div className="flex-1 min-w-0 w-full md:w-auto">
-                  <h2 className="text-lg md:text-2xl font-semibold text-white truncate">
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-base sm:text-lg md:text-2xl font-semibold text-white truncate">
                     {slide.title}
                   </h2>
                 </div>
@@ -291,11 +293,11 @@ export function ShortsCarousel({ slides }: ShortsCarouselProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-colors w-full md:w-auto shadow-lg",
+                    "shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-colors shadow-lg whitespace-nowrap",
                     slide.ctaColor || "bg-blue-500 hover:bg-blue-400 text-white"
                   )}
                 >
-                  {slide.ctaText || "Watch on YouTube"}
+                  <span>Watch on YouTube</span>
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
@@ -312,30 +314,58 @@ export function ShortsCarousel({ slides }: ShortsCarouselProps) {
           disabled={activeIndex === 0}
           aria-label="Previous slide"
           className={cn(
-            "ml-1 h-12 w-12 rounded-full bg-slate-800/60 backdrop-blur-sm hover:bg-slate-700/70 text-white grid place-items-center shadow-xl transition-all duration-200",
+            "ml-0.5 sm:ml-1 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-slate-800/60 backdrop-blur-sm hover:bg-slate-700/70 text-white grid place-items-center shadow-xl transition-all duration-200",
             "opacity-0 pointer-events-none",
-            "group-hover:opacity-100 group-hover:pointer-events-auto",
-            "group-focus-within:opacity-100 group-focus-within:pointer-events-auto",
+            "md:group-hover:opacity-100 md:group-hover:pointer-events-auto",
+            "md:group-focus-within:opacity-100 md:group-focus-within:pointer-events-auto",
+            "opacity-100 pointer-events-auto md:opacity-0 md:pointer-events-none",
             activeIndex === 0 && "!opacity-50 !cursor-not-allowed"
           )}
         >
-          <ChevronLeft className="h-6 w-6" />
+          <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
         </button>
         <button
           onClick={goToNext}
           disabled={activeIndex === slides.length - 1}
           aria-label="Next slide"
           className={cn(
-            "mr-1 h-12 w-12 rounded-full bg-slate-800/60 backdrop-blur-sm hover:bg-slate-700/70 text-white grid place-items-center shadow-xl transition-all duration-200",
+            "mr-0.5 sm:mr-1 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-slate-800/60 backdrop-blur-sm hover:bg-slate-700/70 text-white grid place-items-center shadow-xl transition-all duration-200",
             "opacity-0 pointer-events-none",
-            "group-hover:opacity-100 group-hover:pointer-events-auto",
-            "group-focus-within:opacity-100 group-focus-within:pointer-events-auto",
+            "md:group-hover:opacity-100 md:group-hover:pointer-events-auto",
+            "md:group-focus-within:opacity-100 md:group-focus-within:pointer-events-auto",
+            "opacity-100 pointer-events-auto md:opacity-0 md:pointer-events-none",
             activeIndex === slides.length - 1 && "!opacity-50 !cursor-not-allowed"
           )}
         >
-          <ChevronRight className="h-6 w-6" />
+          <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
         </button>
       </div>
+      <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex justify-center -mt-12"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-un-blue hover:bg-un-blue/90 text-white px-12 py-6 text-xl rounded-full shadow-lg hover:shadow-xl transition-all duration-300 h-auto"
+                >
+                  <a
+                    href="https://www.youtube.com/playlist?list=PLmc3Zo0InVW9HkasC33_CK13zrnO530uY"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3"
+                  >
+                    <Play className="h-6 w-6" />
+                    View Full YouTube Playlist
+                    <ExternalLink className="h-6 w-6" />
+                  </a>
+                </Button>
+              </motion.div>
+            </motion.div>
     </div>
   )
 }

@@ -24,7 +24,7 @@ export interface ShortsSlide {
   description: string
   ctaText?: string
   ctaLink?: string
-  ctaColor?: string // e.g., "bg-sky-500 hover:bg-sky-400 text-slate-900"
+  ctaColor?: string 
 }
 
 export const shortsSlides: ShortsSlide[] = [
@@ -76,7 +76,7 @@ export const shortsSlides: ShortsSlide[] = [
       description:
         "Comprehensive report covering DTC's performance across 2023 and 2024. Two years of youth empowerment in digital governance.",
       coverImage: "/2023_2024_report.png",
-      driveLink: "https://drive.google.com/file/d/1sr4XUjxeJQBc78ereCgMG6YhuWMILyeV/view?usp=sharing", // TODO: paste the correct Drive link for the 2023–2024 report
+      driveLink: "https://drive.google.com/file/d/1sr4XUjxeJQBc78ereCgMG6YhuWMILyeV/view?usp=sharing",
       ctaColor: "bg-blue-500 hover:bg-blue-400 text-slate-900",
     },
 ];

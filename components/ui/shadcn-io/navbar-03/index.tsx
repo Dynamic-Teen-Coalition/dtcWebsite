@@ -14,7 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Home, Users, Award, GraduationCap, Globe, Mail } from 'lucide-react';
+import { Sun, Moon, Home, Users, Award, GraduationCap, Globe, Mail, FileText } from 'lucide-react';
 import { DISCORD_INVITE_LINK } from '../../../../data/discord';
 
 // DTC logo component for the navbar
@@ -74,6 +74,7 @@ const navIcons = {
   'Leadership': Users,
   'Certificates': Award,
   'Lifelong Model': Globe,
+  'Media': FileText,
   'Contact': Mail,
 };
 
@@ -102,6 +103,7 @@ const getDTCNavigationLinks = (pathname: string): Navbar03NavItem[] => [
   { href: '/certificates', label: 'Certificates', active: pathname === '/certificates' },
   { href: '/lifelong', label: 'Lifelong Model', active: pathname === '/lifelong' },
   { href: '/dgn', label: 'DGN Program', active: pathname === '/dgn' },
+  { href: '/reports', label: 'Media', active: pathname === '/reports' },
   { href: '/leadership', label: 'Leadership', active: pathname === '/leadership' },
   { href: '/contact', label: 'Contact', active: pathname === '/contact' },
 ];
@@ -183,7 +185,7 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
           )}
           {...props}
         >
-          <div className="flex h-14 items-center gap-4 px-6 w-full max-w-4xl justify-between">
+          <div className="flex h-14 items-center gap-2 md:gap-3 px-4 md:px-6 w-full max-w-6xl justify-between">
             {/* Logo - Always visible */}
             <Link
               href={logoHref}
@@ -203,7 +205,7 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
                       <Link href={link.href || '#'} passHref legacyBehavior>
                         <NavigationMenuLink
                           className={cn(
-                            'group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer relative',
+                            'group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-2 lg:px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer relative',
                             'before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100',
                             link.active && 'before:scale-x-100 text-primary'
                           )}
@@ -219,7 +221,7 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
             </div>
 
             {/* Right side buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {/* Mobile hamburger - Only visible on small screens */}
               <div className="md:hidden">
                 <Button
@@ -258,7 +260,7 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
               <Button
                 asChild
                 size="sm"
-                className="text-sm bg-un-blue dark:bg-un-blue text-gray-100 dark:text-white font-medium px-4 h-9 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
+                className="text-xs md:text-sm bg-un-blue dark:bg-un-blue text-gray-100 dark:text-white font-medium px-3 md:px-4 h-9 rounded-full shadow-sm hover:shadow-md transition-all duration-200 whitespace-nowrap"
               >
                 <a
                   href={ctaHref}

@@ -202,19 +202,6 @@ export const partners: Partner[] = [
     linkedinLink: "https://sg.linkedin.com/in/eveayl",
     description: "Immunova AI is a cloud-based, multimodal AI platform to forecast patient-specific immunotherapy responses by integrating whole-slide H&E medical images, transcriptomic profiles, and structured clinical data into one analytical pipeline. Powered by a 10-person core team from 7 countries and a 250-strong youth network across 45+ countries, Immunova combines five modules using Vision Transformers, Graph Neural Networks and Transformer encoders. After our successful 1.0 proof-of-concept, Immunova has secured more than US$10,000 in non-dilutive funding to support further development. Immunova's work has also been recognised by MICCAI, Moonshot Platform, beVisioneers: Mercedes-Benz, Heal The Planet and Paris Collaborative. Currently, Immunova is collaborating with partner laboratories to conduct beta-testing at Harvard Medical School, Massachusetts General Hospital, Yale School of Medicine, Columbia Department of Medicine, and the Computational Biology Unit at the University of Bergen.",
     featured: true
-  },
-  {
-    id: "HackWitHer", 
-    name: "HackWitHer",
-    fullName: "Bandana Kaur",
-    title: "Cybersecurity Researcher",
-    organization: "HackWitHer",
-    logo: "/hackwithher.JPEG",
-    founderImage: "/hackwithher.jpg",
-    socialLink: "https://linktr.ee/hackwither",
-    linkedinLink: "https://www.linkedin.com/in/hackwither/",
-    description: "HackWitHer is a brand built on one simple motto: making cyberspace livable for all. Founded at the age of 15 to bridge the gap between those who design technology and those most affected by it, HackWitHer operates on three core pillars. First, accessibility; cybersecurity knowledge should be open, understandable, and actionable for everyone, not locked behind jargon or privilege. Second, representation; women and underrepresented voices must be visible in cybersecurity, showing that femininity and intelligence not only coexist but strengthen one another. Third, offense as defense; the best protection comes from thinking like an attacker, anticipating threats, and staying steps ahead. Recognized as one of the Top 30 Ethical Hacking Content Creators of 2025 and acknowledged for vulnerability disclosure in security research by NASA, the US Department of Education, the Government of India, and more, HackWitHer empowers the next generation to shape a digital world where safety, inclusion, and innovation thrive.",
-    featured: true
   }
 ]
 
@@ -365,8 +352,8 @@ export const homeContent = {
   },
   dgn: {
     title: "Digital Governance Network",
-    subtitle: "Strategic Allies advancing teen inclusion in global governance",
-    description: "Our founding Allies share our vision of authentic youth participation in digital governance. Together, we're building the infrastructure for sustainable teen leadership in global policy spaces.",
+    subtitle: "Strategic Founding Ally advancing teen inclusion in global governance",
+    description: "Our founding Ally share our vision of authentic youth participation in digital governance. Together, we're building the infrastructure for sustainable teen leadership in global policy spaces.",
     viewMoreButton: "View All Allies",
   },
   boardMembers: {

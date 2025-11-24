@@ -266,14 +266,14 @@ export default function BoardMembersPage() {
                               scale: activeMember === index ? 1.02 : 1,
                             }}
                           >
-                            <div className="w-full h-full rounded-xl overflow-hidden bg-white dark:bg-gray-800 p-2 shadow-inner">
-                              <div className="w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800">
+                            <div className="w-full h-[105%] rounded-xl overflow-hidden bg-white dark:bg-gray-800 p-2 shadow-inner">
+                              <div className="w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-transparent dark:from-gray-700 dark:to-gray-800">
                                 <Image
                                   src={member.image}
                                   alt={member.name}
                                   width={192}
                                   height={224}
-                                  className="w-full h-full object-cover scale-90 rounded-lg shadow-sm hover:scale-95 transition-transform duration-300"
+                                  className="w-full h-[110%] object-cover scale-90 rounded-lg shadow-sm hover:scale-95 transition-transform duration-300"
                                 />
                               </div>
                             </div>

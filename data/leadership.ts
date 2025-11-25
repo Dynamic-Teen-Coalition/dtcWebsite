@@ -252,6 +252,34 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   {
+    id: "anvay-ajmera",
+    name: "Anvay Ajmera",
+    role: "DTC Board Member",
+    age: "",
+    location: "USA",
+    description: "Promoting coding education and bridging digital divides through technology initiatives.",
+    achievements: [
+      "Coders Over Borders",
+      "Coding Education Leader",
+      "Digital Divide Advocate",
+      "Technology Access"
+    ],
+    expertise: [
+      "Coding Education",
+      "Digital Divide",
+      "Technology Access",
+      "Community Outreach"
+    ],
+    iconName: "Laptop",
+    image: "/anvayPic.webp",
+    color: "from-purple-400 to-pink-400",
+    bgColor: "bg-purple-50 dark:bg-purple-900/20",
+    borderColor: "border-purple-200 dark:border-purple-800",
+    textColor: "text-purple-700 dark:text-purple-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
     id: "tejas-karusala",
     name: "Tejas Karusala",
     role: "DTC Lead Ambassador",
@@ -332,34 +360,6 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-green-50 dark:bg-green-900/20",
     borderColor: "border-green-200 dark:border-green-800",
     textColor: "text-green-700 dark:text-green-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "anvay-ajmera",
-    name: "Anvay Ajmera",
-    role: "DTC Ambassador",
-    age: "",
-    location: "USA",
-    description: "Promoting coding education and bridging digital divides through technology initiatives.",
-    achievements: [
-      "Coders Over Borders",
-      "Coding Education Leader",
-      "Digital Divide Advocate",
-      "Technology Access"
-    ],
-    expertise: [
-      "Coding Education",
-      "Digital Divide",
-      "Technology Access",
-      "Community Outreach"
-    ],
-    iconName: "Laptop",
-    image: "/anvayPic.webp",
-    color: "from-purple-400 to-pink-400",
-    bgColor: "bg-purple-50 dark:bg-purple-900/20",
-    borderColor: "border-purple-200 dark:border-purple-800",
-    textColor: "text-purple-700 dark:text-purple-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -452,7 +452,7 @@ export const boardMembers: BoardMember[] = [
     name: "Gabriella Luma",
     role: "DTC Ambassador",
     age: "",
-    location: "USA and Peru",
+    location: "USA/Peru",
     description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
     achievements: [
       "Youth Leadership",
@@ -474,7 +474,119 @@ export const boardMembers: BoardMember[] = [
     textColor: "text-teal-700 dark:text-teal-300",
     linkedinLink: "",
     twitterLink: ""
-  }
+  },
+  {
+    id: "sabine-daniela-manriquez-vega",
+    name: "Sabine Daniela Manriquez Vega",
+    role: "DTC Ambassador",
+    age: "",
+    location: "Mexico",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/ella.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "akramul-hoque",
+    name: "Akramul Hoque",
+    role: "DTC Ambassador",
+    age: "",
+    location: "Bangladesh",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/akramul.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "gini",
+    name: "Lương Long Giang",
+    role: "DTC Ambassador",
+    age: "",
+    location: "Vietnam/USA",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/gini.jpeg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "akash-enjeti",
+    name: "Akash Enjeti",
+    role: "DTC Ambassador",
+    age: "",
+    location: "Australia",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/akash.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
 ]
 
 export const boardSections = {

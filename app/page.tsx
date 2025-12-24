@@ -53,6 +53,7 @@ import {
   homeContent 
 } from "@/data/home"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -85,6 +86,8 @@ const slideInRight = {
   animate: { opacity: 1, x: 0 },
   transition: { duration: 0.8, ease: "easeOut" },
 }
+
+const url = "https://dtcigf.us22.list-manage.com/subscribe/post?u=557c45b2b3305c684e2dcaf47&id=e60f61cf44&f_id=008bc2e1f0";
 
 export default function HomePage() {
   const { scrollYProgress } = useScroll()
@@ -1676,9 +1679,15 @@ export default function HomePage() {
 
               {/* Email Form */}
               <div className="space-y-8">
-                <form className="flex flex-col gap-6">
+                <form 
+                  className="flex flex-col gap-6"
+                  action="https://dtcigf.us22.list-manage.com/subscribe/post?u=557c45b2b3305c684e2dcaf47&id=e60f61cf44&f_id=008bc2e1f0"
+                  method="POST"
+                  target="_blank"
+                >
                   <div className="w-full">
                     <motion.input
+                      name="EMAIL" // REQUIRED: This maps the input to Mailchimp
                       type="email"
                       placeholder="Your e-mail address"
                       className="w-full px-8 py-5 rounded-2xl border-0 focus:outline-none focus:ring-2 focus:ring-white/30 text-gray-900 placeholder-gray-500 bg-white/95 shadow-lg text-lg"
@@ -1686,6 +1695,12 @@ export default function HomePage() {
                       whileFocus={{ scale: 1.02 }}
                     />
                   </div>
+
+                  {/* HIDDEN HONEYPOT FIELD (Spam Protection) */}
+                  <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                    <input type="text" name="b_557c45b2b3305c684e2dcaf47_e60f61cf44" tabIndex={-1} readOnly />
+                  </div>
+
                   <div className="flex justify-center mt-4">
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button
@@ -1698,7 +1713,7 @@ export default function HomePage() {
                     </motion.div>
                   </div>
                 </form>
-                
+              </div>
                 <div className="text-center pt-6 border-t border-white/20">
                   <p className="text-sm text-white/80 mb-4">
                     Official DTC mailing list:
@@ -1712,7 +1727,6 @@ export default function HomePage() {
                     mail.intgovforum.org/mailman/listinfo/dtc_intgovforum.org
                   </a>
                 </div>
-              </div>
             </motion.div>
           </motion.div>
         )}

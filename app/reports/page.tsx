@@ -13,15 +13,36 @@ import { shortsSlides, documentSlides, pageContent } from "@/data/reports"
 import { FileText, Play, ArrowDown, MessageCircle, ExternalLink } from "lucide-react"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
 import Link from "next/link"
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 
 export default function ReportsPage() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const [mounted, setMounted] = useState(false)
 
   // Refs for smooth scrolling
   const videosRef = useRef<HTMLElement>(null)
   const reportsRef = useRef<HTMLElement>(null)
+
+  // Force reload on page navigation to ensure YouTube API loads properly
+  useEffect(() => {
+    const hasReloadedReports = sessionStorage.getItem('reportsPageReloaded')
+    
+    if (!hasReloadedReports) {
+      sessionStorage.setItem('reportsPageReloaded', 'true')
+      window.location.reload()
+    }
+    
+    // Cleanup when navigating away
+    return () => {
+      sessionStorage.removeItem('reportsPageReloaded')
+    }
+  }, [])
+
+  // Ensure proper mounting and initialization
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Smooth scroll function
   const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
@@ -139,7 +160,7 @@ export default function ReportsPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <ShortsCarousel slides={shortsSlides} />
+              {mounted && <ShortsCarousel slides={shortsSlides} />}
             </motion.div>
           </div>
         </section>
@@ -171,7 +192,7 @@ export default function ReportsPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <DocumentCarousel slides={documentSlides} />
+              {mounted && <DocumentCarousel slides={documentSlides} />}
             </motion.div>
           </div>
         </section>

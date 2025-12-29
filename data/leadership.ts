@@ -280,6 +280,34 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   {
+    id: "sabinmanriquez",
+    name: "Sabine Manriquez",
+    role: "DTC Board Member",
+    age: "",
+    location: "Mexico",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/ella.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
     id: "tejas-karusala",
     name: "Tejas Karusala",
     role: "DTC Lead Ambassador",
@@ -468,34 +496,6 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Globe",
     image: "/gabby.jpg",
-    color: "from-teal-400 to-cyan-400",
-    bgColor: "bg-teal-50 dark:bg-teal-900/20",
-    borderColor: "border-teal-200 dark:border-teal-800",
-    textColor: "text-teal-700 dark:text-teal-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "sabine-daniela-manriquez-vega",
-    name: "Sabine Daniela Manriquez Vega",
-    role: "DTC Ambassador",
-    age: "",
-    location: "Mexico",
-    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
-    achievements: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "Cross-Cultural Leadership"
-    ],
-    expertise: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "International Relations"
-    ],
-    iconName: "Globe",
-    image: "/ella.jpg",
     color: "from-teal-400 to-cyan-400",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",

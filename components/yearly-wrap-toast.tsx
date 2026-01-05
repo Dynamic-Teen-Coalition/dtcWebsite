@@ -56,16 +56,16 @@ export default function YearlyWrapToast() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-
-            <div className="mt-3 sm:mt-4 ">
-              <Button 
-                onClick={handleViewReport}
-                className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition-colors shadow-sm text-sm sm:text-base"
-              >
-                View Report
-              </Button>
-            </div>
           </div>
+        </div>
+
+        <div className="mt-4 sm:ml-16">
+          <Button 
+            onClick={handleViewReport}
+            className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition-colors shadow-sm text-sm sm:text-base"
+          >
+            View Report
+          </Button>
         </div>
       </div>
     </div>

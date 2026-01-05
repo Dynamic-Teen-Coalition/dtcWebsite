@@ -44,6 +44,15 @@ export const shortsSlides: ShortsSlide[] = [
 
   export const documentSlides: DocumentSlide[] = [
     {
+      id: "0",
+      title: "2025 DTC Yearly Report",
+      description:
+        "Annual summary of DTC activities and key achievements in 2025. Explore our global impact, ambassador programs, and digital governance initiatives.",
+      coverImage: "/2025_yearly_wrap.png",
+      driveLink: "https://drive.google.com/file/d/1twTWu_rJ0IhFWRPOCDWPoGB0THfC3fVk/view?usp=sharing",
+      ctaColor: "bg-blue-500 hover:bg-blue-400 text-slate-900",
+    },
+    {
       id: "1",
       title: "2025 DTC Mid Year Brief",
       description:

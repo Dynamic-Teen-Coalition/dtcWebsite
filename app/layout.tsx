@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar03 } from "@/components/ui/shadcn-io/navbar-03"
 import { PageTransition } from "@/components/page-transition"
+import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -40,6 +41,7 @@ export default function RootLayout({
           </div>
           {/* Modal portal container */}
           <div id="modal-root"></div>
+          <Toaster position="top-center" />
         </ThemeProvider>
       </body>
     </html>

@@ -152,6 +152,6 @@ export const pageContent = {
     discordButton: "Join the DTC Friends Discord",
   },
   footer: {
-    text: "© 2025 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside out.",
+    text: "© 2026 Dynamic Teen Coalition. Building the future, systematically, collaboratively, and from the inside out.",
   },
 } 

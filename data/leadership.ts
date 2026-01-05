@@ -112,6 +112,62 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
+  {
+    id: "gabriella-luma",
+    name: "Gabriella Luma",
+    role: "Intern CEO",
+    age: "",
+    location: "USA/Peru",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/gabby.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "gini",
+    name: "Lương Long Giang",
+    role: "Shadow Intern CEO",
+    age: "",
+    location: "Vietnam/USA",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/gini.jpeg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
   // DTC Board
   {
     id: "boris-hong-pak-lo",
@@ -476,34 +532,6 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   {
-    id: "gabriella-luma",
-    name: "Gabriella Luma",
-    role: "DTC Ambassador",
-    age: "",
-    location: "USA/Peru",
-    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
-    achievements: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "Cross-Cultural Leadership"
-    ],
-    expertise: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "International Relations"
-    ],
-    iconName: "Globe",
-    image: "/gabby.jpg",
-    color: "from-teal-400 to-cyan-400",
-    bgColor: "bg-teal-50 dark:bg-teal-900/20",
-    borderColor: "border-teal-200 dark:border-teal-800",
-    textColor: "text-teal-700 dark:text-teal-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
     id: "akramul-hoque",
     name: "Akramul Hoque",
     role: "DTC Ambassador",
@@ -524,34 +552,6 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Globe",
     image: "/akramul.jpg",
-    color: "from-teal-400 to-cyan-400",
-    bgColor: "bg-teal-50 dark:bg-teal-900/20",
-    borderColor: "border-teal-200 dark:border-teal-800",
-    textColor: "text-teal-700 dark:text-teal-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "gini",
-    name: "Lương Long Giang",
-    role: "DTC Ambassador",
-    age: "",
-    location: "Vietnam/USA",
-    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
-    achievements: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "Cross-Cultural Leadership"
-    ],
-    expertise: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "International Relations"
-    ],
-    iconName: "Globe",
-    image: "/gini.jpeg",
     color: "from-teal-400 to-cyan-400",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",
@@ -628,7 +628,7 @@ export const boardSections = {
     ctaButton: "Join the DTC Friends Discord",
   },
   footer: {
-    text: "© 2025 Dynamic Teen Coalition. Teen-led, globally connected, focused on outcomes.",
+    text: "© 2026 Dynamic Teen Coalition. Teen-led, globally connected, focused on outcomes.",
   },
 }
 

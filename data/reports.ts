@@ -27,25 +27,21 @@ export interface ShortsSlide {
   ctaColor?: string 
 }
 
+const playlistLink = "https://www.youtube.com/playlist?list=PLmc3Zo0InVW9HkasC33_CK13zrnO530uY"
+
 export const shortsSlides: ShortsSlide[] = [
-    { id: "1",  videoId: "u1FuFr0sBLQ", title: "Everyone belongs at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=u1FuFr0sBLQ", ctaColor: "bg-sky-500 hover:bg-sky-400 text-slate-900" },
-    { id: "2",  videoId: "NEywYygH6x0", title: "How teens ended up working at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=NEywYygH6x0", ctaColor: "bg-emerald-500 hover:bg-emerald-400 text-slate-900" },
-    { id: "3",  videoId: "5rHbkPmdrnw", title: "Teen Power at the UN 💥 The DTC Movement", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=5rHbkPmdrnw", ctaColor: "bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-900" },
-    { id: "4",  videoId: "5J06QeQP3Eg", title: "Teens are still forgotten", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=5J06QeQP3Eg", ctaColor: "bg-sky-500 hover:bg-sky-400 text-slate-900" },
-    { id: "5",  videoId: "JCbX4_4GhpE", title: "Adults Make the Rules — It’s our turn at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=JCbX4_4GhpE", ctaColor: "bg-emerald-500 hover:bg-emerald-400 text-slate-900" },
-    { id: "6",  videoId: "w-Yu3TnvfAo", title: "Our Teens Shone at IYC New York ✨", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=w-Yu3TnvfAo", ctaColor: "bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-900" },
-    { id: "7",  videoId: "XRFsbgyp4lk", title: "fr we sent several", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=XRFsbgyp4lk", ctaColor: "bg-sky-500 hover:bg-sky-400 text-slate-900" },
-    { id: "8",  videoId: "0HxVxXk2TiE", title: "First Teen Board at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=0HxVxXk2TiE", ctaColor: "bg-emerald-500 hover:bg-emerald-400 text-slate-900" },
-    { id: "9",  videoId: "9UX34Jeh9P8", title: "Sailing Into Change at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=9UX34Jeh9P8", ctaColor: "bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-900" },
-    { id: "10", videoId: "PnfNkwOezCI", title: "We're here to make a difference; will you join?", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=PnfNkwOezCI", ctaColor: "bg-sky-500 hover:bg-sky-400 text-slate-900" },
-    { id: "11", videoId: "Vxz5TKVqF3g", title: "Join us on Discord now ! ", description: "…", ctaText: "Watch on YouTube", ctaLink: "https://www.youtube.com/watch?v=Vxz5TKVqF3g", ctaColor: "bg-emerald-500 hover:bg-emerald-400 text-slate-900" },
+    { id: "1",  videoId: "u1FuFr0sBLQ", title: "Everyone belongs at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: playlistLink, ctaColor: "bg-sky-500 hover:bg-sky-400 text-slate-900" },
+    { id: "2",  videoId: "NEywYygH6x0", title: "How teens ended up working at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: playlistLink, ctaColor: "bg-emerald-500 hover:bg-emerald-400 text-slate-900" },
+    { id: "3",  videoId: "5rHbkPmdrnw", title: "Teen Power at the UN 💥 The DTC Movement", description: "…", ctaText: "Watch on YouTube", ctaLink: playlistLink, ctaColor: "bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-900" },
+    { id: "4",  videoId: "5J06QeQP3Eg", title: "Teens are still forgotten", description: "…", ctaText: "Watch on YouTube", ctaLink: playlistLink, ctaColor: "bg-sky-500 hover:bg-sky-400 text-slate-900" },
+    { id: "5",  videoId: "JCbX4_4GhpE", title: "Adults Make the Rules — It’s our turn at the UN", description: "…", ctaText: "Watch on YouTube", ctaLink: playlistLink, ctaColor: "bg-emerald-500 hover:bg-emerald-400 text-slate-900" },
   ];  
   
 
   export const documentSlides: DocumentSlide[] = [
     {
       id: "0",
-      title: "2025 DTC Yearly Report",
+      title: "2025 DTC Yearly Wrap",
       description:
         "Annual summary of DTC activities and key achievements in 2025. Explore our global impact, ambassador programs, and digital governance initiatives.",
       coverImage: "/2025_yearly_wrap.png",

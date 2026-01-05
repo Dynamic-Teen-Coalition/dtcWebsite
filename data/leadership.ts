@@ -113,11 +113,11 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   {
-    id: "gabriella-luma",
-    name: "Gabriella Luma",
+    id: "sabinmanriquez",
+    name: "Sabine Manriquez (Ella)",
     role: "Intern CEO",
     age: "",
-    location: "USA/Peru",
+    location: "Mexico",
     description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
     achievements: [
       "Youth Leadership",
@@ -132,7 +132,7 @@ export const boardMembers: BoardMember[] = [
       "International Relations"
     ],
     iconName: "Globe",
-    image: "/gabby.jpg",
+    image: "/ella.jpg",
     color: "from-teal-400 to-cyan-400",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",
@@ -251,7 +251,6 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
-  // DTC Ambassadors
   {
     id: "jasper-tay-seng-hon",
     name: "Jasper Tay Seng Hon",
@@ -332,34 +331,6 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-purple-50 dark:bg-purple-900/20",
     borderColor: "border-purple-200 dark:border-purple-800",
     textColor: "text-purple-700 dark:text-purple-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "sabinmanriquez",
-    name: "Sabine Manriquez",
-    role: "DTC Board Member",
-    age: "",
-    location: "Mexico",
-    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
-    achievements: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "Cross-Cultural Leadership"
-    ],
-    expertise: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "International Relations"
-    ],
-    iconName: "Globe",
-    image: "/ella.jpg",
-    color: "from-teal-400 to-cyan-400",
-    bgColor: "bg-teal-50 dark:bg-teal-900/20",
-    borderColor: "border-teal-200 dark:border-teal-800",
-    textColor: "text-teal-700 dark:text-teal-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -524,6 +495,34 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Globe",
     image: "/shamserpic.webp",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "gabriella-luma",
+    name: "Gabriella Luma",
+    role: "DTC Ambassador",
+    age: "",
+    location: "USA/Peru",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
+    achievements: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
+    ],
+    expertise: [
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
+    ],
+    iconName: "Globe",
+    image: "/gabby.jpg",
     color: "from-teal-400 to-cyan-400",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",

@@ -54,6 +54,7 @@ import {
 } from "@/data/home"
 import { DISCORD_INVITE_LINK } from "@/data/discord"
 import MailchimpSubscribe from "react-mailchimp-subscribe"
+import YearlyWrapToast from "@/components/yearly-wrap-toast"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -118,6 +119,7 @@ export default function HomePage() {
       window.location.reload()
     }
   }, [])
+
 
   // Convert waves data to include React components
   const waves = wavesData.map(wave => ({
@@ -231,6 +233,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-un-blue-50 to-indigo-100 dark:from-gray-900 dark:to-un-blue-950 transition-colors duration-300 relative overflow-hidden">
+      <YearlyWrapToast />
       <AnimatedBackground />
       <GridPattern />
       <WavePattern />

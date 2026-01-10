@@ -29,58 +29,58 @@ export interface BoardSection {
 export const boardMembers: BoardMember[] = [
   // DTC Co-Chairs
   {
-    id: "pyrate-ruby-passell",
-    name: "Pyrate Ruby Passell",
-    role: "DTC Co-Chair",
+    id: "sabinmanriquez_ella",
+    name: "Sabine Manriquez (Ella)",
+    role: "Intern CEO",
     age: "",
-    location: "Australia/USA",
-    description: "Leading DTC's strategic vision and global policy initiatives. Passionate about digital governance and youth empowerment.",
+    location: "Mexico",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
     achievements: [
-      "CERN Open Quantum Institute",
-      "UN Youth Delegate 2024",
-      "Global Digital Policy Summit Speaker",
-      "Teen Tech Innovation Award Winner"
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
     ],
     expertise: [
-      "Strategic Planning",
-      "Digital Policy",
-      "Youth Advocacy",
-      "Global Diplomacy"
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
     ],
-    iconName: "Crown",
-    image: "/pyratepic.webp",
-    color: "from blue-300 to blue-500",
-    bgColor: "bg-purple-50 dark:bg-purple-900/20",
-    borderColor: "border-purple-200 dark:border-purple-800",
-    textColor: "text-purple-700 dark:text-purple-300",
+    iconName: "Globe",
+    image: "/ella.jpg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
     linkedinLink: "",
     twitterLink: ""
   },
   {
-    id: "stacy-gildenston",
-    name: "Stacy Gildenston",
-    role: "DTC Co-Chair",
+    id: "gini",
+    name: "Lương Long Giang",
+    role: "Shadow Intern CEO",
     age: "",
-    location: "Australia/USA",
-    description: "Overseeing DTC's day-to-day operations and community engagement. Expert in building inclusive digital communities.",
+    location: "Vietnam/USA",
+    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
     achievements: [
-      "Community Builder of the Year 2024",
-      "Digital Inclusion Advocate",
-      "Youth Leadership Award",
-      "Mentored 50+ teens globally"
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "Cross-Cultural Leadership"
     ],
     expertise: [
-      "Community Management",
-      "Operations Strategy",
-      "Youth Mentorship",
-      "Digital Inclusion"
+      "Youth Leadership",
+      "Community Development",
+      "Digital Advocacy",
+      "International Relations"
     ],
-    iconName: "Users",
-    image: "/stacypic3.webp",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
+    iconName: "Globe",
+    image: "/gini.jpeg",
+    color: "from-teal-400 to-cyan-400",
+    bgColor: "bg-teal-50 dark:bg-teal-900/20",
+    borderColor: "border-teal-200 dark:border-teal-800",
+    textColor: "text-teal-700 dark:text-teal-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -109,6 +109,61 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-green-50 dark:bg-green-900/20",
     borderColor: "border-green-200 dark:border-green-800",
     textColor: "text-green-700 dark:text-green-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "jasper-tay-seng-hon",
+    name: "Jasper Tay Seng Hon",
+    role: "DTC Co-Chair",
+    age: "",
+    location: "Singapore",
+    description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
+    achievements: [
+      "Community Engagement Expert",
+      "Digital Advocacy Leader",
+      "Cross-Cultural Communication"
+    ],
+    expertise: [
+      "Youth Advocacy",
+      "Community Engagement",
+      "Digital Governance",
+      "International Relations"
+    ],
+    iconName: "Star",
+    image: "/jasperpic.webp",
+    color: "from-yellow-500 to-orange-500",
+    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
+    borderColor: "border-yellow-200 dark:border-yellow-800",
+    textColor: "text-yellow-700 dark:text-yellow-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "anusha-sharma",
+    name: "Anusha Sharma",
+    role: "DTC Co-Chair",
+    age: "",
+    location: "USA",
+    description: "Advocating for youth voices in digital policy and promoting inclusive technology initiatives.",
+    achievements: [
+      "Youth Policy Advocate",
+      "Digital Inclusion Leader",
+      "Community Builder",
+      "Technology for Good"
+    ],
+    expertise: [
+      "Policy Advocacy",
+      "Digital Inclusion",
+      "Community Development",
+      "Technology Ethics"
+    ],
+    iconName: "Shield",
+    image: "/anushupic.webp",
+    color: "from-blue-500 to-indigo-500",
+    bgColor: "bg-blue-50 dark:bg-blue-900/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    textColor: "text-blue-700 dark:text-blue-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -192,62 +247,6 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-pink-50 dark:bg-pink-900/20",
     borderColor: "border-pink-200 dark:border-pink-800",
     textColor: "text-pink-700 dark:text-pink-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  // DTC Ambassadors
-  {
-    id: "jasper-tay-seng-hon",
-    name: "Jasper Tay Seng Hon",
-    role: "DTC Board Member",
-    age: "",
-    location: "Singapore",
-    description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
-    achievements: [
-      "Community Engagement Expert",
-      "Digital Advocacy Leader",
-      "Cross-Cultural Communication"
-    ],
-    expertise: [
-      "Youth Advocacy",
-      "Community Engagement",
-      "Digital Governance",
-      "International Relations"
-    ],
-    iconName: "Star",
-    image: "/jasperpic.webp",
-    color: "from-yellow-500 to-orange-500",
-    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
-    borderColor: "border-yellow-200 dark:border-yellow-800",
-    textColor: "text-yellow-700 dark:text-yellow-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "anusha-sharma",
-    name: "Anusha Sharma",
-    role: "DTC Board Member",
-    age: "",
-    location: "USA",
-    description: "Advocating for youth voices in digital policy and promoting inclusive technology initiatives.",
-    achievements: [
-      "Youth Policy Advocate",
-      "Digital Inclusion Leader",
-      "Community Builder",
-      "Technology for Good"
-    ],
-    expertise: [
-      "Policy Advocacy",
-      "Digital Inclusion",
-      "Community Development",
-      "Technology Ethics"
-    ],
-    iconName: "Shield",
-    image: "/anushupic.webp",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -476,34 +475,6 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   {
-    id: "sabine-daniela-manriquez-vega",
-    name: "Sabine Daniela Manriquez Vega",
-    role: "DTC Ambassador",
-    age: "",
-    location: "Mexico",
-    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
-    achievements: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "Cross-Cultural Leadership"
-    ],
-    expertise: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "International Relations"
-    ],
-    iconName: "Globe",
-    image: "/ella.jpg",
-    color: "from-teal-400 to-cyan-400",
-    bgColor: "bg-teal-50 dark:bg-teal-900/20",
-    borderColor: "border-teal-200 dark:border-teal-800",
-    textColor: "text-teal-700 dark:text-teal-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
     id: "akramul-hoque",
     name: "Akramul Hoque",
     role: "DTC Ambassador",
@@ -524,34 +495,6 @@ export const boardMembers: BoardMember[] = [
     ],
     iconName: "Globe",
     image: "/akramul.jpg",
-    color: "from-teal-400 to-cyan-400",
-    bgColor: "bg-teal-50 dark:bg-teal-900/20",
-    borderColor: "border-teal-200 dark:border-teal-800",
-    textColor: "text-teal-700 dark:text-teal-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "gini",
-    name: "Lương Long Giang",
-    role: "DTC Ambassador",
-    age: "",
-    location: "Vietnam/USA",
-    description: "Representing DTC in Bangladesh and promoting youth engagement in digital governance.",
-    achievements: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "Cross-Cultural Leadership"
-    ],
-    expertise: [
-      "Youth Leadership",
-      "Community Development",
-      "Digital Advocacy",
-      "International Relations"
-    ],
-    iconName: "Globe",
-    image: "/gini.jpeg",
     color: "from-teal-400 to-cyan-400",
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",
@@ -587,6 +530,62 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
+  {
+    id: "pyrate-ruby-passell",
+    name: "Pyrate Ruby Passell",
+    role: "DTC Founders",
+    age: "",
+    location: "Australia/USA",
+    description: "Leading DTC's strategic vision and global policy initiatives. Passionate about digital governance and youth empowerment.",
+    achievements: [
+      "CERN Open Quantum Institute",
+      "UN Youth Delegate 2024",
+      "Global Digital Policy Summit Speaker",
+      "Teen Tech Innovation Award Winner"
+    ],
+    expertise: [
+      "Strategic Planning",
+      "Digital Policy",
+      "Youth Advocacy",
+      "Global Diplomacy"
+    ],
+    iconName: "Crown",
+    image: "/pyratepic.webp",
+    color: "from blue-300 to blue-500",
+    bgColor: "bg-purple-50 dark:bg-purple-900/20",
+    borderColor: "border-purple-200 dark:border-purple-800",
+    textColor: "text-purple-700 dark:text-purple-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "stacy-gildenston",
+    name: "Stacy Gildenston",
+    role: "DTC Founders",
+    age: "",
+    location: "Australia/USA",
+    description: "Overseeing DTC's day-to-day operations and community engagement. Expert in building inclusive digital communities.",
+    achievements: [
+      "Community Builder of the Year 2024",
+      "Digital Inclusion Advocate",
+      "Youth Leadership Award",
+      "Mentored 50+ teens globally"
+    ],
+    expertise: [
+      "Community Management",
+      "Operations Strategy",
+      "Youth Mentorship",
+      "Digital Inclusion"
+    ],
+    iconName: "Users",
+    image: "/stacypic3.webp",
+    color: "from-blue-500 to-indigo-500",
+    bgColor: "bg-blue-50 dark:bg-blue-900/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    textColor: "text-blue-700 dark:text-blue-300",
+    linkedinLink: "",
+    twitterLink: ""
+  }
 ]
 
 export const boardSections = {
@@ -628,7 +627,7 @@ export const boardSections = {
     ctaButton: "Join the DTC Friends Discord",
   },
   footer: {
-    text: "© 2025 Dynamic Teen Coalition. Teen-led, globally connected, focused on outcomes.",
+    text: "© 2026 Dynamic Teen Coalition. Teen-led, globally connected, focused on outcomes.",
   },
 }
 

@@ -29,62 +29,6 @@ export interface BoardSection {
 export const boardMembers: BoardMember[] = [
   // DTC Co-Chairs
   {
-    id: "pyrate-ruby-passell",
-    name: "Pyrate Ruby Passell",
-    role: "DTC Co-Chair",
-    age: "",
-    location: "Australia/USA",
-    description: "Leading DTC's strategic vision and global policy initiatives. Passionate about digital governance and youth empowerment.",
-    achievements: [
-      "CERN Open Quantum Institute",
-      "UN Youth Delegate 2024",
-      "Global Digital Policy Summit Speaker",
-      "Teen Tech Innovation Award Winner"
-    ],
-    expertise: [
-      "Strategic Planning",
-      "Digital Policy",
-      "Youth Advocacy",
-      "Global Diplomacy"
-    ],
-    iconName: "Crown",
-    image: "/pyratepic.webp",
-    color: "from blue-300 to blue-500",
-    bgColor: "bg-purple-50 dark:bg-purple-900/20",
-    borderColor: "border-purple-200 dark:border-purple-800",
-    textColor: "text-purple-700 dark:text-purple-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "stacy-gildenston",
-    name: "Stacy Gildenston",
-    role: "DTC Co-Chair",
-    age: "",
-    location: "Australia/USA",
-    description: "Overseeing DTC's day-to-day operations and community engagement. Expert in building inclusive digital communities.",
-    achievements: [
-      "Community Builder of the Year 2024",
-      "Digital Inclusion Advocate",
-      "Youth Leadership Award",
-      "Mentored 50+ teens globally"
-    ],
-    expertise: [
-      "Community Management",
-      "Operations Strategy",
-      "Youth Mentorship",
-      "Digital Inclusion"
-    ],
-    iconName: "Users",
-    image: "/stacypic3.webp",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
     id: "amrith-kumar",
     name: "Amrith Kumar",
     role: "DTC Co-Chair",
@@ -113,7 +57,7 @@ export const boardMembers: BoardMember[] = [
     twitterLink: ""
   },
   {
-    id: "sabinmanriquez",
+    id: "sabinmanriquez_ella",
     name: "Sabine Manriquez (Ella)",
     role: "Intern CEO",
     age: "",
@@ -586,6 +530,62 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
+  {
+    id: "pyrate-ruby-passell",
+    name: "Pyrate Ruby Passell",
+    role: "DTC Founders",
+    age: "",
+    location: "Australia/USA",
+    description: "Leading DTC's strategic vision and global policy initiatives. Passionate about digital governance and youth empowerment.",
+    achievements: [
+      "CERN Open Quantum Institute",
+      "UN Youth Delegate 2024",
+      "Global Digital Policy Summit Speaker",
+      "Teen Tech Innovation Award Winner"
+    ],
+    expertise: [
+      "Strategic Planning",
+      "Digital Policy",
+      "Youth Advocacy",
+      "Global Diplomacy"
+    ],
+    iconName: "Crown",
+    image: "/pyratepic.webp",
+    color: "from blue-300 to blue-500",
+    bgColor: "bg-purple-50 dark:bg-purple-900/20",
+    borderColor: "border-purple-200 dark:border-purple-800",
+    textColor: "text-purple-700 dark:text-purple-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "stacy-gildenston",
+    name: "Stacy Gildenston",
+    role: "DTC Founders",
+    age: "",
+    location: "Australia/USA",
+    description: "Overseeing DTC's day-to-day operations and community engagement. Expert in building inclusive digital communities.",
+    achievements: [
+      "Community Builder of the Year 2024",
+      "Digital Inclusion Advocate",
+      "Youth Leadership Award",
+      "Mentored 50+ teens globally"
+    ],
+    expertise: [
+      "Community Management",
+      "Operations Strategy",
+      "Youth Mentorship",
+      "Digital Inclusion"
+    ],
+    iconName: "Users",
+    image: "/stacypic3.webp",
+    color: "from-blue-500 to-indigo-500",
+    bgColor: "bg-blue-50 dark:bg-blue-900/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    textColor: "text-blue-700 dark:text-blue-300",
+    linkedinLink: "",
+    twitterLink: ""
+  }
 ]
 
 export const boardSections = {

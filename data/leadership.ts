@@ -29,91 +29,7 @@ export interface BoardSection {
 export const boardMembers: BoardMember[] = [
   // DTC Co-Chairs
   {
-    id: "pyrate-ruby-passell",
-    name: "Pyrate Ruby Passell",
-    role: "DTC Co-Chair",
-    age: "",
-    location: "Australia/USA",
-    description: "Leading DTC's strategic vision and global policy initiatives. Passionate about digital governance and youth empowerment.",
-    achievements: [
-      "CERN Open Quantum Institute",
-      "UN Youth Delegate 2024",
-      "Global Digital Policy Summit Speaker",
-      "Teen Tech Innovation Award Winner"
-    ],
-    expertise: [
-      "Strategic Planning",
-      "Digital Policy",
-      "Youth Advocacy",
-      "Global Diplomacy"
-    ],
-    iconName: "Crown",
-    image: "/pyratepic.webp",
-    color: "from blue-300 to blue-500",
-    bgColor: "bg-purple-50 dark:bg-purple-900/20",
-    borderColor: "border-purple-200 dark:border-purple-800",
-    textColor: "text-purple-700 dark:text-purple-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "stacy-gildenston",
-    name: "Stacy Gildenston",
-    role: "DTC Co-Chair",
-    age: "",
-    location: "Australia/USA",
-    description: "Overseeing DTC's day-to-day operations and community engagement. Expert in building inclusive digital communities.",
-    achievements: [
-      "Community Builder of the Year 2024",
-      "Digital Inclusion Advocate",
-      "Youth Leadership Award",
-      "Mentored 50+ teens globally"
-    ],
-    expertise: [
-      "Community Management",
-      "Operations Strategy",
-      "Youth Mentorship",
-      "Digital Inclusion"
-    ],
-    iconName: "Users",
-    image: "/stacypic3.webp",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "amrith-kumar",
-    name: "Amrith Kumar",
-    role: "DTC Co-Chair",
-    age: "",
-    location: "USA",
-    description: "Leading DTC's technological initiatives and digital infrastructure. Building the future of teen-led governance platforms.",
-    achievements: [
-      "Aiphabet.org",
-      "Tech Innovation Award 2024",
-      "Built DTC's governance platform",
-      "Open Source Contributor"
-    ],
-    expertise: [
-      "Software Development",
-      "AI & Machine Learning",
-      "Digital Infrastructure",
-      "Tech Ethics"
-    ],
-    iconName: "Rocket",
-    image: "/amrithpic.webp",
-    color: "from-green-500 to-emerald-500",
-    bgColor: "bg-green-50 dark:bg-green-900/20",
-    borderColor: "border-green-200 dark:border-green-800",
-    textColor: "text-green-700 dark:text-green-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "sabinmanriquez",
+    id: "sabinmanriquez_ella",
     name: "Sabine Manriquez (Ella)",
     role: "Intern CEO",
     age: "",
@@ -165,6 +81,89 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-teal-50 dark:bg-teal-900/20",
     borderColor: "border-teal-200 dark:border-teal-800",
     textColor: "text-teal-700 dark:text-teal-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "amrith-kumar",
+    name: "Amrith Kumar",
+    role: "DTC Co-Chair",
+    age: "",
+    location: "USA",
+    description: "Leading DTC's technological initiatives and digital infrastructure. Building the future of teen-led governance platforms.",
+    achievements: [
+      "Aiphabet.org",
+      "Tech Innovation Award 2024",
+      "Built DTC's governance platform",
+      "Open Source Contributor"
+    ],
+    expertise: [
+      "Software Development",
+      "AI & Machine Learning",
+      "Digital Infrastructure",
+      "Tech Ethics"
+    ],
+    iconName: "Rocket",
+    image: "/amrithpic.webp",
+    color: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-50 dark:bg-green-900/20",
+    borderColor: "border-green-200 dark:border-green-800",
+    textColor: "text-green-700 dark:text-green-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "jasper-tay-seng-hon",
+    name: "Jasper Tay Seng Hon",
+    role: "DTC Co-Chair",
+    age: "",
+    location: "Singapore",
+    description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
+    achievements: [
+      "Community Engagement Expert",
+      "Digital Advocacy Leader",
+      "Cross-Cultural Communication"
+    ],
+    expertise: [
+      "Youth Advocacy",
+      "Community Engagement",
+      "Digital Governance",
+      "International Relations"
+    ],
+    iconName: "Star",
+    image: "/jasperpic.webp",
+    color: "from-yellow-500 to-orange-500",
+    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
+    borderColor: "border-yellow-200 dark:border-yellow-800",
+    textColor: "text-yellow-700 dark:text-yellow-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "anusha-sharma",
+    name: "Anusha Sharma",
+    role: "DTC Co-Chair",
+    age: "",
+    location: "USA",
+    description: "Advocating for youth voices in digital policy and promoting inclusive technology initiatives.",
+    achievements: [
+      "Youth Policy Advocate",
+      "Digital Inclusion Leader",
+      "Community Builder",
+      "Technology for Good"
+    ],
+    expertise: [
+      "Policy Advocacy",
+      "Digital Inclusion",
+      "Community Development",
+      "Technology Ethics"
+    ],
+    iconName: "Shield",
+    image: "/anushupic.webp",
+    color: "from-blue-500 to-indigo-500",
+    bgColor: "bg-blue-50 dark:bg-blue-900/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    textColor: "text-blue-700 dark:text-blue-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -248,61 +247,6 @@ export const boardMembers: BoardMember[] = [
     bgColor: "bg-pink-50 dark:bg-pink-900/20",
     borderColor: "border-pink-200 dark:border-pink-800",
     textColor: "text-pink-700 dark:text-pink-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "jasper-tay-seng-hon",
-    name: "Jasper Tay Seng Hon",
-    role: "DTC Board Member",
-    age: "",
-    location: "Singapore",
-    description: "Representing DTC in Singapore and promoting youth engagement in digital governance initiatives.",
-    achievements: [
-      "Community Engagement Expert",
-      "Digital Advocacy Leader",
-      "Cross-Cultural Communication"
-    ],
-    expertise: [
-      "Youth Advocacy",
-      "Community Engagement",
-      "Digital Governance",
-      "International Relations"
-    ],
-    iconName: "Star",
-    image: "/jasperpic.webp",
-    color: "from-yellow-500 to-orange-500",
-    bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
-    borderColor: "border-yellow-200 dark:border-yellow-800",
-    textColor: "text-yellow-700 dark:text-yellow-300",
-    linkedinLink: "",
-    twitterLink: ""
-  },
-  {
-    id: "anusha-sharma",
-    name: "Anusha Sharma",
-    role: "DTC Board Member",
-    age: "",
-    location: "USA",
-    description: "Advocating for youth voices in digital policy and promoting inclusive technology initiatives.",
-    achievements: [
-      "Youth Policy Advocate",
-      "Digital Inclusion Leader",
-      "Community Builder",
-      "Technology for Good"
-    ],
-    expertise: [
-      "Policy Advocacy",
-      "Digital Inclusion",
-      "Community Development",
-      "Technology Ethics"
-    ],
-    iconName: "Shield",
-    image: "/anushupic.webp",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
     linkedinLink: "",
     twitterLink: ""
   },
@@ -586,6 +530,62 @@ export const boardMembers: BoardMember[] = [
     linkedinLink: "",
     twitterLink: ""
   },
+  {
+    id: "pyrate-ruby-passell",
+    name: "Pyrate Ruby Passell",
+    role: "DTC Founders",
+    age: "",
+    location: "Australia/USA",
+    description: "Leading DTC's strategic vision and global policy initiatives. Passionate about digital governance and youth empowerment.",
+    achievements: [
+      "CERN Open Quantum Institute",
+      "UN Youth Delegate 2024",
+      "Global Digital Policy Summit Speaker",
+      "Teen Tech Innovation Award Winner"
+    ],
+    expertise: [
+      "Strategic Planning",
+      "Digital Policy",
+      "Youth Advocacy",
+      "Global Diplomacy"
+    ],
+    iconName: "Crown",
+    image: "/pyratepic.webp",
+    color: "from blue-300 to blue-500",
+    bgColor: "bg-purple-50 dark:bg-purple-900/20",
+    borderColor: "border-purple-200 dark:border-purple-800",
+    textColor: "text-purple-700 dark:text-purple-300",
+    linkedinLink: "",
+    twitterLink: ""
+  },
+  {
+    id: "stacy-gildenston",
+    name: "Stacy Gildenston",
+    role: "DTC Founders",
+    age: "",
+    location: "Australia/USA",
+    description: "Overseeing DTC's day-to-day operations and community engagement. Expert in building inclusive digital communities.",
+    achievements: [
+      "Community Builder of the Year 2024",
+      "Digital Inclusion Advocate",
+      "Youth Leadership Award",
+      "Mentored 50+ teens globally"
+    ],
+    expertise: [
+      "Community Management",
+      "Operations Strategy",
+      "Youth Mentorship",
+      "Digital Inclusion"
+    ],
+    iconName: "Users",
+    image: "/stacypic3.webp",
+    color: "from-blue-500 to-indigo-500",
+    bgColor: "bg-blue-50 dark:bg-blue-900/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    textColor: "text-blue-700 dark:text-blue-300",
+    linkedinLink: "",
+    twitterLink: ""
+  }
 ]
 
 export const boardSections = {

@@ -27,7 +27,8 @@ import {
   CheckCircle,
   Twitter,
   MessageCircle,
-  Slack
+  Slack,
+  MapPin
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -193,6 +194,7 @@ export default function HomePage() {
   const homePageBoardMembers = boardMembers.map(member => ({
     name: member.name,
     role: member.role,
+    country: member.location,
     specialties: member.expertise,
     image: member.image,
     available: true,
@@ -1437,6 +1439,10 @@ export default function HomePage() {
                                 'bg-blue-600 dark:bg-blue-500'
                               }`}>
                                 {member.role}
+                              </div>
+                              <div className="flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <MapPin className="h-4 w-4 mr-1" />
+                                {member.country}
                               </div>
                           </div>
                         </CardContent>

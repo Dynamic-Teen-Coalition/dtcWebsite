@@ -5,8 +5,12 @@ import { useEffect, useState, useRef } from 'react';
 import { Button } from '../../button';
 import {
   NavigationMenu,
+  NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from '../../navigation-menu';
 import { cn } from '../../../../lib/utils';
 import Image from 'next/image';
@@ -78,11 +82,20 @@ const navIcons = {
 };
 
 // Types
-export interface Navbar03NavItem {
-  href?: string;
+export interface Navbar03NavLinkItem {
+  href: string;
   label: string;
   active?: boolean;
+  description?: string;
 }
+
+export interface Navbar03NavDropdownItem {
+  label: string;
+  items: Navbar03NavLinkItem[];
+  active?: boolean;
+}
+
+export type Navbar03NavItem = Navbar03NavLinkItem | Navbar03NavDropdownItem;
 
 export interface Navbar03Props extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
@@ -96,16 +109,46 @@ export interface Navbar03Props extends React.HTMLAttributes<HTMLElement> {
   onCtaClick?: () => void;
 }
 
-// DTC navigation links function
-const getDTCNavigationLinks = (pathname: string): Navbar03NavItem[] => [
-  { href: '/', label: 'Home', active: pathname === '/' },
-  { href: '/certificates', label: 'Certificates', active: pathname === '/certificates' },
-  { href: '/lifelong', label: 'Lifelong Model', active: pathname === '/lifelong' },
-  { href: '/dgn', label: 'DGN Program', active: pathname === '/dgn' },
-  { href: '/reports', label: 'Media', active: pathname === '/reports' },
-  { href: '/leadership', label: 'Leadership', active: pathname === '/leadership' },
-  { href: '/contact', label: 'Contact', active: pathname === '/contact' },
-];
+const isDropdownItem = (item: Navbar03NavItem): item is Navbar03NavDropdownItem =>
+  (item as Navbar03NavDropdownItem).items !== undefined;
+
+const markActive = (pathname: string, item: Navbar03NavItem): Navbar03NavItem => {
+  if (isDropdownItem(item)) {
+    const items = item.items.map((child) => ({
+      ...child,
+      active: child.active ?? pathname === child.href,
+    }));
+    const active = item.active ?? items.some((x) => x.active);
+    return { ...item, items, active };
+  }
+
+  return { ...item, active: item.active ?? pathname === item.href };
+};
+
+const flattenNavLinks = (items: Navbar03NavItem[]): Navbar03NavLinkItem[] =>
+  items.flatMap((item) => (isDropdownItem(item) ? item.items : [item]));
+
+// DTC navigation links function (dropdown-based)
+const getDTCNavigationLinks = (pathname: string): Navbar03NavItem[] =>
+  [
+    { href: '/', label: 'Home' },
+    {
+      label: 'Programs',
+      items: [
+        { href: '/dgn', label: 'DGN Program', description: 'Digital Governance Network' },
+        { href: '/certificates', label: 'Certificates', description: 'View issued certificates' },
+        { href: '/lifelong', label: 'Lifelong Model', description: 'Our learning journey model' },
+      ],
+    },
+    {
+      label: 'About',
+      items: [
+        { href: '/leadership', label: 'Leadership', description: 'Meet the team' },
+        { href: '/reports', label: 'Media', description: 'News, reports, and updates' },
+      ],
+    },
+    { href: '/contact', label: 'Contact' },
+  ].map((item) => markActive(pathname, item));
 
 export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
   (
@@ -132,7 +175,10 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
     const [mounted, setMounted] = useState(false);
 
     // Get DTC navigation links based on current pathname
-    const dtcNavLinks = navigationLinks || getDTCNavigationLinks(pathname);
+    const dtcNavLinks = (navigationLinks || getDTCNavigationLinks(pathname)).map((item) =>
+      markActive(pathname, item)
+    );
+    const mobileNavLinks = flattenNavLinks(dtcNavLinks).map((item) => markActive(pathname, item) as Navbar03NavLinkItem);
 
     useEffect(() => {
       setMounted(true);
@@ -199,21 +245,60 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
             <div className="hidden md:flex">
               <NavigationMenu className="flex">
                 <NavigationMenuList className="gap-1">
-                  {dtcNavLinks.map((link, index) => (
-                    <NavigationMenuItem key={index}>
-                      <Link 
-                        href={link.href || '#'}
-                        className={cn(
-                          'group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-2 lg:px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer relative',
-                          'before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100',
-                          link.active && 'before:scale-x-100 text-primary'
-                        )}
-                        data-active={link.active}
-                      >
-                        {link.label}
-                      </Link>
-                    </NavigationMenuItem>
-                  ))}
+                  {dtcNavLinks.map((item, index) => {
+                    const desktopItemBase = cn(
+                      navigationMenuTriggerStyle(),
+                      'bg-transparent px-2 lg:px-3 py-2 rounded-md relative',
+                      'before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary before:scale-x-0 before:transition-transform before:duration-300',
+                      'hover:before:scale-x-100 data-[state=open]:before:scale-x-100',
+                      isDropdownItem(item) ? '' : 'h-10'
+                    );
+
+                    if (!isDropdownItem(item)) {
+                      return (
+                        <NavigationMenuItem key={index}>
+                          <NavigationMenuLink asChild className={cn(desktopItemBase, item.active && 'before:scale-x-100 text-primary')}>
+                            <Link href={item.href} data-active={item.active}>
+                              {item.label}
+                            </Link>
+                          </NavigationMenuLink>
+                        </NavigationMenuItem>
+                      );
+                    }
+
+                    return (
+                      <NavigationMenuItem key={index}>
+                        <NavigationMenuTrigger className={cn(desktopItemBase, item.active && 'text-primary')}>
+                          {item.label}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid gap-2 p-4 md:w-[380px] bg-popover/95 backdrop-blur border rounded-xl shadow-lg">
+                            {item.items.map((link) => (
+                              <li key={link.href}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={link.href}
+                                    className={cn(
+                                      'block rounded-lg p-3 no-underline outline-none transition-colors',
+                                      'hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                                      link.active && 'bg-accent/60 text-accent-foreground'
+                                    )}
+                                  >
+                                    <div className="text-sm font-medium leading-none">{link.label}</div>
+                                    {link.description ? (
+                                      <p className="mt-1 text-xs leading-snug text-muted-foreground">
+                                        {link.description}
+                                      </p>
+                                    ) : null}
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </NavigationMenuItem>
+                    );
+                  })}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -351,13 +436,13 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
             {/* Enhanced Mobile navigation with better animations and icons */}
             <div className="flex-1 flex items-center justify-center px-6 py-8">
               <div className="flex flex-col items-center gap-4 w-full max-w-sm">
-                {dtcNavLinks.map((link, index) => {
+                {mobileNavLinks.map((link, index) => {
                   const IconComponent = navIcons[link.label as keyof typeof navIcons];
                   
                   return (
                     <Link
                       key={index}
-                      href={link.href || '#'}
+                      href={link.href}
                       className={cn(
                         'group relative flex items-center justify-between w-full rounded-2xl px-6 py-5 text-lg font-semibold transition-all duration-300 cursor-pointer no-underline',
                         'bg-background/40 border border-border/20 backdrop-blur-sm',

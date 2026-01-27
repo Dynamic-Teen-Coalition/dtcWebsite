@@ -19,6 +19,14 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { Sun, Moon, Home, Users, Award, GraduationCap, Globe, Mail, FileText } from 'lucide-react';
 import { DISCORD_INVITE_LINK } from '../../../../data/discord';
+import {
+  flattenNavbarItems,
+  getDtcNavbarItems,
+  isNavbarDropdownItem,
+  markNavbarItemActive,
+  type NavbarNavItem,
+  type NavbarNavLinkItem,
+} from '@/data/navbar';
 
 // DTC logo component for the navbar
 const DTCLogo = () => {
@@ -81,21 +89,7 @@ const navIcons = {
   'Contact': Mail,
 };
 
-// Types
-export interface Navbar03NavLinkItem {
-  href: string;
-  label: string;
-  active?: boolean;
-  description?: string;
-}
-
-export interface Navbar03NavDropdownItem {
-  label: string;
-  items: Navbar03NavLinkItem[];
-  active?: boolean;
-}
-
-export type Navbar03NavItem = Navbar03NavLinkItem | Navbar03NavDropdownItem;
+export type Navbar03NavItem = NavbarNavItem;
 
 export interface Navbar03Props extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
@@ -108,47 +102,6 @@ export interface Navbar03Props extends React.HTMLAttributes<HTMLElement> {
   onSignInClick?: () => void;
   onCtaClick?: () => void;
 }
-
-const isDropdownItem = (item: Navbar03NavItem): item is Navbar03NavDropdownItem =>
-  (item as Navbar03NavDropdownItem).items !== undefined;
-
-const markActive = (pathname: string, item: Navbar03NavItem): Navbar03NavItem => {
-  if (isDropdownItem(item)) {
-    const items = item.items.map((child) => ({
-      ...child,
-      active: child.active ?? pathname === child.href,
-    }));
-    const active = item.active ?? items.some((x) => x.active);
-    return { ...item, items, active };
-  }
-
-  return { ...item, active: item.active ?? pathname === item.href };
-};
-
-const flattenNavLinks = (items: Navbar03NavItem[]): Navbar03NavLinkItem[] =>
-  items.flatMap((item) => (isDropdownItem(item) ? item.items : [item]));
-
-// DTC navigation links function (dropdown-based)
-const getDTCNavigationLinks = (pathname: string): Navbar03NavItem[] =>
-  [
-    { href: '/', label: 'Home' },
-    {
-      label: 'Programs',
-      items: [
-        { href: '/dgn', label: 'DGN Program', description: 'Digital Governance Network' },
-        { href: '/certificates', label: 'Certificates', description: 'View issued certificates' },
-        { href: '/lifelong', label: 'Lifelong Model', description: 'Our learning journey model' },
-      ],
-    },
-    {
-      label: 'About',
-      items: [
-        { href: '/leadership', label: 'Leadership', description: 'Meet the team' },
-        { href: '/reports', label: 'Media', description: 'News, reports, and updates' },
-      ],
-    },
-    { href: '/contact', label: 'Contact' },
-  ].map((item) => markActive(pathname, item));
 
 export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
   (
@@ -175,10 +128,12 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
     const [mounted, setMounted] = useState(false);
 
     // Get DTC navigation links based on current pathname
-    const dtcNavLinks = (navigationLinks || getDTCNavigationLinks(pathname)).map((item) =>
-      markActive(pathname, item)
+    const dtcNavLinks = (navigationLinks || getDtcNavbarItems(pathname)).map((item) =>
+      markNavbarItemActive(pathname, item)
     );
-    const mobileNavLinks = flattenNavLinks(dtcNavLinks).map((item) => markActive(pathname, item) as Navbar03NavLinkItem);
+    const mobileNavLinks = flattenNavbarItems(dtcNavLinks).map(
+      (item) => markNavbarItemActive(pathname, item) as NavbarNavLinkItem
+    );
 
     useEffect(() => {
       setMounted(true);
@@ -251,10 +206,10 @@ export const Navbar03 = React.forwardRef<HTMLElement, Navbar03Props>(
                       'bg-transparent px-2 lg:px-3 py-2 rounded-md relative',
                       'before:absolute before:bottom-0 before:left-0 before:right-0 before:h-0.5 before:bg-primary before:scale-x-0 before:transition-transform before:duration-300',
                       'hover:before:scale-x-100 data-[state=open]:before:scale-x-100',
-                      isDropdownItem(item) ? '' : 'h-10'
+                      isNavbarDropdownItem(item) ? '' : 'h-10'
                     );
 
-                    if (!isDropdownItem(item)) {
+                    if (!isNavbarDropdownItem(item)) {
                       return (
                         <NavigationMenuItem key={index}>
                           <NavigationMenuLink asChild className={cn(desktopItemBase, item.active && 'before:scale-x-100 text-primary')}>
